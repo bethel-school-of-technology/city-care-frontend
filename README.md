@@ -34,3 +34,6 @@ cd back - changed into the back end directory to install the necessary dependenc
           added the org router to the app.js file
           created the auth.js service and folder, use email authentication for it. 
 
+# Add project to the repository the instructor made. 
+          
+
