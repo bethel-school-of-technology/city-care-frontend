@@ -35,5 +35,15 @@ cd back - changed into the back end directory to install the necessary dependenc
           created the auth.js service and folder, use email authentication for it. 
 
 # Add project to the repository the instructor made. 
+
+# Generate the starter templates for the structure of the app
+          ng g c components/registration
+          ng g c components/login
+          ng g c components/profile
+          ng g c components/home
+          ng g c components/create
+          ng g c components/search
+          ng g c components/header
+          ng g c components/footer
           
 
