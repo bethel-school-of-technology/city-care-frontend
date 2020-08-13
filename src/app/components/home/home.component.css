@@ -1,0 +1,15 @@
+.img {
+  display: flex;
+  width: 450px;
+  height: auto;
+  margin-top: 13%;
+  margin-left: 10%
+}
+
+.jumbotron {
+  width: 45%;
+  height: auto;
+  margin: 0 auto;
+  float: none;
+  margin-top: 10%
+}
