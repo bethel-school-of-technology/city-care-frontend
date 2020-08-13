@@ -1,4 +1,4 @@
-# CityCare After forking and cloning repository, run npm install to install all of the dependencies.  Do this in the city-care directory and in the back directory if it doesn't work with the node_modules.  Also make sure you are checked out to the dev branch before starting and run a git pull.
+<!-- # CityCare After forking and cloning repository, run npm install to install all of the dependencies.  Do this in the city-care directory and in the back directory if it doesn't work with the node_modules.  Also make sure you are checked out to the dev branch before starting and run a git pull.
 
           First steps create a project on GitHub to host for the group temporarily.  Create the basic angular front end with an empty express backend called back.
                     ng new City-Care - create the angular front end basic app with routing and css styles.
@@ -17,33 +17,38 @@
                     git push -u origin dev - push the dev branch to the remote repository
                    on GitHub changed the default branch to the dev branch to leave the master branch in tact. 
                    From the terminal git pull to sync remote repository to the local repository. 
+ -->
 
+# Navigation        
+          Connected the navigation links used in the header to the components they belong to
 
-
-## Work on backend code invite collaborators. 
-
-cd back - changed into the back end directory to install the necessary dependencies. 
-          npm install 
-          npm install --save-dev nodemon
-          npm install --save mysql2 sequelize@4.43.0 jsonwebtoken cors bcryptjs
-
-          sequelize init - create the config file
-          added the connection code to the app.js file to communicate with MySQL.
-          added the cors policy to the app.js file
-          created the basic crud outline for the users and org routes. 
-          added the org router to the app.js file
-          created the auth.js service and folder, use email authentication for it. 
-
-# Add project to the repository the instructor made. 
 
 # Generate the starter templates for the structure of the app
-          ng g c components/registration
-          ng g c components/login
-          ng g c components/profile
-          ng g c components/home
-          ng g c components/create
-          ng g c components/search
-          ng g c components/header
-          ng g c components/footer
+
+
+          ng g c components/registration - creates registration component
+          ng g c components/login - creates login component
+          ng g c components/profile - creates profile component
+          ng g c components/home - creates home component
+          ng g c components/create - creates the create post component
+          ng g c components/search - creates the search component
+          ng g c components/header - creates the header component
+          ng g c components/footer - creates the footer component
+
+# Create the models for the front end use
+
+          ng g class shared/models/user --type=model - create the front end user model
+          ng g class shared/models/authorization --type=model - create the front end authorization model
+          ng g class shared/models/category --type=model - create the front end category model
+          ng g class shared/models/subcategory --type=model - create the front end subcategory model
+          ng g class shared/models/listing --type-model -  create the front end listing model
+          ng g class shared/models/request --type=model - create the front end request model
+          ng g class shared/models/organization --type=model - create the organization model
+
+# Create three services for use in the application
+          ng g s shared/services/authorization - create an authoriztion service for registration, login and authentication
+          ng g s shared/services/search - create a service for searching the databases
+          ng g s shared/services/post - create a service for the posts made by organizations and users
+
           
 
