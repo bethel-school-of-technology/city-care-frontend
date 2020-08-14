@@ -48,7 +48,9 @@
 # Create three services for use in the application
           ng g s shared/services/authorization - create an authoriztion service for registration, login and authentication
           ng g s shared/services/search - create a service for searching the databases
-          ng g s shared/services/post - create a service for the posts made by organizations and users
+          ng g s shared/services/request - create a service for the requests made by organizations and users
+          ng g s shared/services/listing - create a service for the listings made by organizations and users
+          
 
           
 

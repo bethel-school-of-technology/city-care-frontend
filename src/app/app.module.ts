@@ -13,6 +13,7 @@ import { CreateComponent } from './components/create/create.component';
 import { SearchComponent } from './components/search/search.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TeamBioComponent } from './components/team-bio/team-bio.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FooterComponent } from './components/footer/footer.component';
     CreateComponent,
     SearchComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    TeamBioComponent
   ],
   imports: [
     BrowserModule,
