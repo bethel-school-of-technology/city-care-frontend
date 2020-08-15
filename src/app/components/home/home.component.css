@@ -1,16 +1,48 @@
+ .img {
+   width: 75%;
+   height: auto;
 
-.img {
-  display: flex;
-  width: 450px;
-  height: auto;
-  margin-top: 13%;
-  margin-left: 10%
-}
 
-.jumbotron {
-  width: 45%;
-  height: auto;
-  margin: 0 auto;
-  float: none;
-  margin-top: 10%
-}
+   margin-left: auto;
+   padding-top: 15px;
+
+
+ }
+
+ .jumbotron {
+   width: 125%;
+   text-align: center;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: rgb(255, 255, 255);
+
+ }
+
+
+ .icons {
+   width: 45px;
+   height: auto;
+ }
+
+ .icon-container {
+
+   padding-bottom: 35px;
+
+
+   width: 125%
+ }
+
+
+ body {
+   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ }
+
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+   font-weight: 700;
+ }
