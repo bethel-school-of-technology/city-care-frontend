@@ -34,6 +34,7 @@
           ng g c components/search - creates the search component
           ng g c components/header - creates the header component
           ng g c components/footer - creates the footer component
+          ng g c components/team-bio - create an about us component
 
 # Create the models for the front end use
 

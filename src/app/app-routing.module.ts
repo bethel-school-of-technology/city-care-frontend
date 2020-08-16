@@ -5,6 +5,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'city-care/user-registration', component: RegistrationComponent },
   { path: 'city-care/user-login', component: LoginComponent },
   { path: 'city-care/about-us', component: TeamBioComponent },
+  { path: 'city-care/profile', component: ProfileComponent },
+  { path: 'city-care/search', component: SearchComponent },
   { path: '* *', component: HomeComponent } //If no matching route is found, go back to the home page
 
 ];

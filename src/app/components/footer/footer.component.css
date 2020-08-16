@@ -1,4 +1,9 @@
 div {
           text-align: center;
           font-size: 19px;
+          font-weight: medium;
+          color: black;
+}
+a {
+          color: white;
 }
