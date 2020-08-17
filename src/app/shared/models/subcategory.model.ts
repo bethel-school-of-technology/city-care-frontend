@@ -1,4 +1,4 @@
-export class Subcategory {
+export interface Subcategory {
           id: number;
           CatId: number;
           Name: string;

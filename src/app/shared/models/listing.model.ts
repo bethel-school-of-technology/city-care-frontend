@@ -1,4 +1,4 @@
-export class Listing {
+export interface Listing {
           id: number;
           Quantity: number;
           Description: string;

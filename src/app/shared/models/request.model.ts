@@ -1,4 +1,4 @@
-export class Request {
+export interface Request {
           id: number;
           Description: string;
           Category: string;
