@@ -8,7 +8,6 @@ import { TeamBioComponent } from './components/team-bio/team-bio.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SearchComponent } from './components/search/search.component';
 
-
 const routes: Routes = [
   { path: ' ', redirectTo: 'city-care/home', pathMatch: 'full' },
   { path: 'city-care/home', component: HomeComponent },
@@ -17,12 +16,11 @@ const routes: Routes = [
   { path: 'city-care/about-us', component: TeamBioComponent },
   { path: 'city-care/profile', component: ProfileComponent },
   { path: 'city-care/search', component: SearchComponent },
-  { path: '* *', component: HomeComponent } //If no matching route is found, go back to the home page
-
+  { path: '* *', component: HomeComponent }, //If no matching route is found, go back to the home page
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

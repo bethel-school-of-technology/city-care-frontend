@@ -15,6 +15,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,15 +28,16 @@ import { TeamBioComponent } from './components/team-bio/team-bio.component';
     SearchComponent,
     HeaderComponent,
     FooterComponent,
-    TeamBioComponent
+    TeamBioComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
