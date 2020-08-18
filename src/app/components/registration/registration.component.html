@@ -1,59 +1,106 @@
-<!-- <h2>Please register below</h2>
+<h2>Please register below</h2>
 <div class="form-container">
-          <form (ngSubmit)="registerUser()" name="registerUser">
-                    <div class="form-group">
-                              <label for="inputFirstName">First Name:</label>
-                              <input type="text" class="form-control" id="inputFirstName" placeholder="Enter first name" required>
-                    </div>
-                    <div class="form-group">
-                              <label for="inputLastName">Last Name:</label>
-                              <input type="text" class="form-control" id="inputLastName" placeholder="Enter last name" required>
-                    </div>
-                    <div class="form-group">
-                              <label for="inputEmail">Email:</label>
-                              <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" aria-describedby="emailHelp" required>
-                              <small id="emailHelp" class="form-text text-muted">We will never share your email with anyone.</small>
-                    </div>
-                    <div class="form-group">
-                              <label for="inputPhone">Home Phone:</label>
-                              <input type="tel" class="form-control" id="inputPhone" placeholder="(xxx)xxx-xxxx">
-                    </div>
-                    <div class="form-group">
-                              <label for="inputMobilePhone">Mobile Phone:</label>
-                              <input type="tel" class="form-control" id="inputMobilePhone" placeholder="(xxx)xxx-xxxx">
-                    </div>
-                    <div class="form-group">
-                              <label for="inputContactMethod">Contact Method:</label>
-                              <input type="text" class="form-control" id="inputContactMethod" placeholder="How should we contact you?" required>
-                    </div>
-                    <div class="form-group">
-                              <label for="inputAddress1">Address 1:</label>
-                              <input type="text" class="form-control" id="inputAddress1" placeholder="Street address 1" required>
-                    </div>
-                    <div class="form-group">
-                              <label for="inputAddress2">Address 2:</label>
-                              <input type="text" class="form-control" id="inputAddress2" placeholder="Street address 2" required>
-                    </div>
-                    <div class="form-group">
-                              <label for="inputCity">City:</label>
-                              <input type="text" class="form-control" id="inputCity" placeholder="Enter City" required>
-                    </div>
-                    <div class="form-group">
-                              <label for="inputState">State:</label>
-                              <input type="text" class="form-control" id="inputState" placeholder="Enter State">
-                    </div>
-                    <div class="form-group">
-                              <label for="inputCounty">County:</label>
-                              <input type="text" class="form-control" id="inputCounty" placeholder="Enter County">
-                    </div>
-                    <div class="form-group">
-                              <label for="inputZip">Zip Code:</label>
-                              <input type="text" class="form-control" id="inputZip" placeholder="Enter zip code">
-                    </div>
-                    <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="confirmationCheck">
-                              <label for="confirmationCheck" class="form-check-label">Check here to confirm</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Register</button>
-          </form>
-</div> -->
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" name="registerUser">
+
+        <div id="contactInfoContainer">
+            <div class="form-group" [ngClass]="{ 'has-error': invalidFirstName() }">
+                <label for="first_name" class="control-label">First Name:</label>
+                <input type="text" formControlName="first_name" class="form-control" id="first_name" name="first_name"
+                    placeholder="Enter first name">
+                <p *ngIf="invalidFirstName()" id="first_name_error" class="help-block">
+                    {{this.serviceErrors.first_name || 'Invalid first name.'}}</p>
+            </div>
+
+            <div class="form-group" [ngClass]="{ 'has-error': invalidLastName() }">
+                <label for="last_name" class="control-label">Last Name:</label>
+                <input type="text" formControlName="last_name" class="form-control" id="last_name" name="last_name"
+                    placeholder="Enter last name">
+                <p *ngIf="invalidLastName()" id="last_name_error" class="help-block">
+                    {{this.serviceErrors.last_name || 'Invalid last name.'}}</p>
+            </div>
+
+            <div class="form-group" [ngClass]="{ 'has-error': invalidEmail() }">
+                <label for="email" class="control-label">Email:</label>
+                <input type="email" formControlName="email" class="form-control" id="email" name="email"
+                    placeholder="Enter email" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We will never share your email with anyone.</small>
+                <p *ngIf="invalidEmail()" id="email_error" class="help-block">
+                    {{this.serviceErrors.email || 'Invalid email address.'}}</p>
+            </div>
+
+            <div class="form-group" [ngClass]="{ 'has-error': invalidPhone() }">
+                <label for="phone" class="control-label">Home Phone:</label>
+                <input type="tel" formControlName="phone" class="form-control" id="phone" name="phone"
+                    placeholder="(xxx)xxx-xxxx">
+                <p *ngIf="invalidPhone()" id="phone_error" class="help-block">
+                    {{this.serviceErrors.phone || 'Invalid phone number.'}}</p>
+            </div>
+
+            <div class="form-group" [ngClass]="{ 'has-error': invalidPhone() }">
+                <label for="mobilePhone" class="control-label">Mobile Phone:</label>
+                <input type="tel" formControlName="mobilePhone" class="form-control" id="mobilePhone" name="mobilePhone"
+                    placeholder="(xxx)xxx-xxxx">
+                <p *ngIf="invalidPhone()" id="phone_error" class="help-block">
+                    {{this.serviceErrors.phone || 'Invalid phone number.'}}</p>
+            </div>
+
+            <div class="form-group">
+                <label for="inputContactMethod">Contact Method:</label>
+                <input type="radio" class="form-control" id="inputContactMethod"
+                    placeholder="How should we contact you?" required>
+            </div>
+        </div>
+
+        <div id="addressContainer">
+            <div class="form-group">
+                <label for="inputAddress1">Address 1:</label>
+                <input type="text" class="form-control" id="inputAddress1" placeholder="Street address 1">
+            </div>
+
+            <div class="form-group">
+                <label for="inputAddress2">Address 2:</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Street address 2">
+            </div>
+
+            <div class="form-group">
+                <label for="inputCity">City:</label>
+                <input type="text" class="form-control" id="inputCity" placeholder="Enter City">
+            </div>
+
+            <div class="form-group">
+                <label for="inputState">State:</label>
+                <input type="text" class="form-control" id="inputState" placeholder="Enter State">
+            </div>
+
+            <div class="form-group">
+                <label for="inputCounty">County:</label>
+                <input type="text" class="form-control" id="inputCounty" placeholder="Enter County">
+            </div>
+
+            <div class="form-group" [ngClass]="{ 'has-error': invalidZipcode() }">
+                <label for="zipcode" class="control-label">Zip Code:</label>
+                <input type="text" formControlName="zipcode" class="form-control" id="zipcode" name="zipcode"
+                    placeholder="Enter zip code">
+                <p *ngIf="invalidZipcode()" id="zipcode_error" class="help-block">
+                    {{this.serviceErrors.zipcode || 'Invalid zip code.'}}</p>
+            </div>
+        </div>
+
+        <div id="passwordContainer">
+            <div class="form-group" [ngClass]="{ 'has-error': invalidPassword() }">
+                <label for="password" class="control-label">Password:</label>
+                <input type="password" formControlName="password" class="form-control" id="password" name="password"
+                    placeholder="*****">
+                <p *ngIf="invalidPassword()" id="password_error" class="help-block">
+                    {{this.serviceErrors.password || 'Invalid password.'}}</p>
+            </div>
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="confirmationCheck">
+            <label for="confirmationCheck" class="form-check-label">Check here to confirm</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
