@@ -18,6 +18,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,16 +31,21 @@ import { TeamBioComponent } from './components/team-bio/team-bio.component';
     SearchComponent,
     HeaderComponent,
     FooterComponent,
-    TeamBioComponent
+    TeamBioComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
     Ng2SearchPipeModule,
     AppRoutingModule
+=======
+    AppRoutingModule,
+>>>>>>> 873bc3cc00433b295a5bf1f8c6393b3465f1395a
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
