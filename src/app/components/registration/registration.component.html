@@ -38,7 +38,7 @@
 
             <div class="form-group" [ngClass]="{ 'has-error': invalidPhone() }">
                 <label for="mobilePhone" class="control-label">Mobile Phone:</label>
-                <input type="tel" formControlName="mobilePhone" class="form-control" id="mobilePhone" name="mobilePhone"
+                <input type="tel" formControlName="mobile_phone" class="form-control" id="mobilePhone" name="mobilePhone"
                     placeholder="(xxx)xxx-xxxx">
                 <p *ngIf="invalidPhone()" id="phone_error" class="help-block">
                     {{this.serviceErrors.phone || 'Invalid phone number.'}}</p>

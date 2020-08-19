@@ -1,10 +1,10 @@
 export interface Listing {
           id: number;
-          Quantity: number;
-          Description: string;
-          Availability: string;
-          Requirements: string;
-          Category: string;
-          SubCategory: string;
-          OrgId: number;
+          quantity: number;
+          description: string;
+          availability: string;
+          requirements: string;
+          category: string;
+          sub_category: string;
+          org_id: number;
 }
