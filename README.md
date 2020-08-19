@@ -20,7 +20,8 @@
  -->
 
 # Navigation        
-          Connected the navigation links used in the header to the components they belong to
+          Connected the navigation links used in the header to the components they belong to.
+          Connected the team name in the footer to a link leading to the about us page. 
 
 
 # Generate the starter templates for the structure of the app
@@ -46,6 +47,8 @@
           ng g class shared/models/request --type=model - create the front end request model
           ng g class shared/models/organization --type=model - create the organization model
 
+          Install the ng2-search-filter package - npm i ng2-search-filter --save - update the app module to include the ng2searchpipemodule
+
 # Create three services for use in the application
           ng g s shared/services/authorization - create an authoriztion service for registration, login and authentication
           ng g s shared/services/search - create a service for searching the databases
@@ -53,5 +56,5 @@
           ng g s shared/services/listing - create a service for the listings made by organizations and users
           
 
-          
+          npm install --save @ng-select/ng-select
 

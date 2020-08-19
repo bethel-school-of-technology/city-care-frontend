@@ -1,15 +1,20 @@
 export class User {
           id: number;
-          FirstName: string;
-          LastName: string;
-          Email: string;
-          Phone: number;
-          MobilePhone: number;
-          ContactMethod: string;
-          Address1: string;
-          Address2: string;
-          City: string;
-          State: string;
-          County: string;
-          Zip: number;
+          first_name: string;
+          last_name: string;
+          username: string;
+          org_name: string;
+          contact_name: string;
+          email: string;
+          phone: number;
+          mobile_phone: number;
+          fax: number;
+          contact_method: string;
+          address1: string;
+          address2: string;
+          city: string;
+          state: string;
+          county: string;
+          zip: number;
+          password: string;
 }

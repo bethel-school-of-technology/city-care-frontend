@@ -1,1 +1,21 @@
-<p>search works!</p>
+<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="users">
+        </div>
+        <div class="table">
+          <thead>
+            <tr>
+              <th scope="col">City</th>
+              <th scope="col">State</th>
+              <th scope="col">Zip Code</th>
+              <th scope="col">County</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of filterData | filter:users">
+              <td>{{item.city}}</td>
+              <td>{{item.state}}</td>
+              <td>{{item.zip}}</td>
+              <td>{{item.county}}</td>
+            </tr>
+          </tbody>
+        </div>

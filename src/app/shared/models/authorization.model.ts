@@ -1,6 +1,6 @@
-export class Authorization {
-          Email: string;
-          Password: string;
-          Role: boolean;
-          Active: boolean;
+export interface Authorization {
+          email: string;
+          password: string;
+          role: boolean;
+          active: boolean;
 }

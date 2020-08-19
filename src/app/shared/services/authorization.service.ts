@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-import { User } from '../models/user.model';
-import { Organization } from '../models/organization.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthorizationService {
+<<<<<<< HEAD
+
+  
+  constructor() {}  
+
+=======
   orgApi: string = 'http://localhost:3000/orgs';
   userApi: string = 'http://localhost:3000/users';
 
@@ -20,4 +21,5 @@ export class AuthorizationService {
   registerUser() {}
   login() {}
   getProfile() {}
+>>>>>>> 873bc3cc00433b295a5bf1f8c6393b3465f1395a
 }

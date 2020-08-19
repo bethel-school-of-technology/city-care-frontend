@@ -1,6 +1,6 @@
-export class Subcategory {
+export interface Subcategory {
           id: number;
-          CatId: number;
-          Name: string;
-          Type: string;
+          cat_id: number;
+          name: string;
+          type: string;
 }
