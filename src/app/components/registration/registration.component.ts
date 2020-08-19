@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< Updated upstream
 import {
   FormBuilder,
   FormGroup,
@@ -9,9 +8,6 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 // import { User } from '../../shared/models/user.model';
-=======
-
->>>>>>> Stashed changes
 
 @Component({
   selector: 'app-registration',
@@ -19,7 +15,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
-<<<<<<< Updated upstream
   registered = false;
   submitted = false;
   userForm: FormGroup;
@@ -43,10 +38,6 @@ export class RegistrationComponent implements OnInit {
     //   }
     // );
   }
-=======
-  
-  // user: User = new User();
->>>>>>> Stashed changes
 
   invalidFirstName() {
     return (
@@ -96,10 +87,6 @@ export class RegistrationComponent implements OnInit {
     );
   }
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
   ngOnInit() {
     this.userForm = this.formBuilder.group({
       first_name: ['', [Validators.required, Validators.maxLength(50)]],

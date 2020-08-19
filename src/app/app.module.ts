@@ -19,7 +19,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
 import { CreateComponent } from './components/create/create.component';
 
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,22 +31,14 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     TeamBioComponent,
-<<<<<<< Updated upstream
-=======
-    CreateComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-<<<<<<< HEAD
     Ng2SearchPipeModule,
     AppRoutingModule
-=======
-    AppRoutingModule,
->>>>>>> 873bc3cc00433b295a5bf1f8c6393b3465f1395a
   ],
   providers: [],
   bootstrap: [AppComponent],
