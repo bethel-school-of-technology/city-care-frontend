@@ -10,16 +10,10 @@ import { Router } from '@angular/router';
 })
 export class SearchService {
 
-  // Fake API URL
-url: string = 'https://jsonplaceholder.typicode.com/users';
+url: string = 'http://localhost:3000/search';
 usersArray: Array<any> = [];
 
 constructor(private http: HttpClient) {
-  this.http.get(this.url).subscribe(data => {
-    // Populating usersArray with names from API
-    data.json().forEach(element => {
-      this.usersArray.push(element.name);
-    });
-  });
+
 }
 }

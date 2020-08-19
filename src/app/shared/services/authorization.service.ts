@@ -7,11 +7,7 @@ export class AuthorizationService {
 <<<<<<< HEAD
 
   
-  constructor(
-    
-  ) {}
-  
-  
+  constructor() {}  
 
 =======
   orgApi: string = 'http://localhost:3000/orgs';

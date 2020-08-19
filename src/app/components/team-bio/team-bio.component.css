@@ -1,5 +1,8 @@
-body {
+/* body {
           background-color: honeydew;
+} */
+.about {
+          text-align: center;
 }
 img {
           height: 50px;
@@ -11,8 +14,7 @@ img {
 }
 .card {
           border: 3px inset darkslateblue;
-          margin: 7.5px 10px 0 10px;
-          background-color: honeydew;
+          margin: 7.5px 10px 5px 10px;
 }
 h2 {
           margin: 10px 0 10px 0;
@@ -35,10 +37,16 @@ p {
           font-weight: bolder;
 }
 .team-info {
-          margin: 7.5px 12.5px 0 12.5px;
+          margin: 7.5px 15px 0 15px;
           text-align: center;
 }
-.thomas {
+ .jonathon {
+          width: 150px;
+          height: auto;
+          border: 4px inset lightslategrey;
+          border-radius: 15%;
+}
+.thomas { 
           width: 150px;
           height: auto;
           border: 4px inset lightslategrey;

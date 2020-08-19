@@ -20,7 +20,8 @@
  -->
 
 # Navigation        
-          Connected the navigation links used in the header to the components they belong to
+          Connected the navigation links used in the header to the components they belong to.
+          Connected the team name in the footer to a link leading to the about us page. 
 
 
 # Generate the starter templates for the structure of the app
