@@ -56,5 +56,5 @@
           ng g s shared/services/listing - create a service for the listings made by organizations and users
           
 
-          
+          npm install --save @ng-select/ng-select
 

@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 //Bring in the FormsModule and the ReactiveFormsModule
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+//Import ngselectmodule
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
 import { CreateRequestComponent } from './components/create-request/create-request.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 @NgModule({
@@ -32,12 +34,14 @@ import { CreateRequestComponent } from './components/create-request/create-reque
     FooterComponent,
     TeamBioComponent,
     CreateRequestComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgSelectModule,
     Ng2SearchPipeModule,
     AppRoutingModule
   ],
