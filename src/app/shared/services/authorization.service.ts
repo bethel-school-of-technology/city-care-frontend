@@ -1,25 +1,40 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { observable } from 'rxjs';
+import { User } from '../models/user.model';
+
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthorizationService {
-<<<<<<< HEAD
 
-  
-  constructor() {}  
 
-=======
-  orgApi: string = 'http://localhost:3000/orgs';
   userApi: string = 'http://localhost:3000/users';
 
-  public organizations: Organization[];
+
   public users: User[];
 
-  constructor(private http: HttpClient, public router: Router) {}
+  constructor(private http: HttpClient, public router: Router) { }
   //Register a user
-  registerUser() {}
-  login() {}
-  getProfile() {}
->>>>>>> 873bc3cc00433b295a5bf1f8c6393b3465f1395a
+  registerUser() { }
+
+  getLogin() {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.get(`${this.userApi}/login`, { headers: header })
+  }
+
+  login(user: any) {
+    return this.http.post(`${this.userApi}/login`, user)
+  }
+
+  get isLoggedIn(): boolean {
+    let authToken = localStorage.getItem('access-token');
+    return (authToken !== null) ? true : false
+  }
+
+  getProfile() { }
 }

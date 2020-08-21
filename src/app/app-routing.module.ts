@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'city-care/user-login', component: LoginComponent },
   { path: 'city-care/list-item', component: CreateComponent },
   { path: 'city-care/about-us', component: TeamBioComponent },
-  { path: 'city-care/profile', component: ProfileComponent },
+  { path: 'city-care/users-profile', component: ProfileComponent },
   { path: 'city-care/search', component: SearchComponent },
   { path: '* *', component: HomeComponent }, //If no matching route is found, go back to the home page
 ];
@@ -25,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,0 +1,24 @@
+<body>
+  <div class='parent'>
+    <form (ngSubmit)="login()" name='login' class='form'>
+      <fieldset>
+        <legend>Login to your profile</legend>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email"
+            [(ngModel)]='user.email' required>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]='user.password'
+            required>
+        </div>
+        <div>
+          <a class='forgot' href='#'>Forgot Password</a>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</body>

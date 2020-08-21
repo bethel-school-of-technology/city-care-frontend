@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //Bring in the ng2searchpipemodule
-import { Ng2SearchPipeModule } from 'ng2-search-filter' ;
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -43,4 +43,4 @@ import { CreateComponent } from './components/create/create.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
