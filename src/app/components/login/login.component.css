@@ -9,3 +9,18 @@
           border: 3px inset darkslateblue;
           margin: 7.5px 10px 5px 10px;
 } */
+.parent {
+  width: 100%;
+}
+
+.form {
+  position: absolute;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-top: 40px;
+
+}
+
+.forgot {
+  padding-right: 50px;
+}

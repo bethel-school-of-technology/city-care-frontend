@@ -17,6 +17,8 @@ const routes: Routes = [
   { path: 'city-care/user-login', component: LoginComponent },
   { path: 'city-care/about-us', component: TeamBioComponent },
   { path: 'city-care/users-profile', component: ProfileComponent },
+
+  { path: 'city-care/search', component: SearchComponent },
   { path: 'city-care/site-search', component: SearchComponent },
   { path: 'city-care/user-request', component: CreateRequestComponent },
   { path: 'city-care/update-request/:id', component: UpdateRequestComponent },
@@ -28,4 +30,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

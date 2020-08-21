@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../shared/models/user.model';
 
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -29,7 +30,6 @@ export class SearchComponent implements OnInit {
       zip: 27278
     }
   ]
-
   users: string;
   filterData = [
     {
@@ -75,8 +75,8 @@ export class SearchComponent implements OnInit {
       zip: 27278
     },
     {
-      id: 3,
-      userId: 4,
+      id: 4,
+      userId: 5,
       first_name: 'Frank',
       last_name: 'Furter',
       org_name: 'Franks',
@@ -96,6 +96,7 @@ export class SearchComponent implements OnInit {
       zip: 27278
     },
     {
+
       id: 5,
       userId: 6,
       first_name: 'Adam',
@@ -139,8 +140,6 @@ export class SearchComponent implements OnInit {
     }
   ]
   constructor() { }
-
   ngOnInit(): void {
   }
-
 }
