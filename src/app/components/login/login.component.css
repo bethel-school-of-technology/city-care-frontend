@@ -1,18 +1,18 @@
-<<<<<<< HEAD
 .parent {
+
   width: 100%;
+  height: 100%;
+
 }
 
-.form {
-  position: absolute;
-  margin: 0 auto;
-  padding-left: 40px;
-  padding-top: 40px;
+.form_login {
+  padding-left: 100px;
+  padding-top: 100px;
+  margin: auto;
 
 }
 
 .forgot {
   padding-right: 50px;
+
 }
-=======
->>>>>>> b6d41bfeed2b0af101debd86b6dae6adfd26813b

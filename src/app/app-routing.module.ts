@@ -16,12 +16,7 @@ const routes: Routes = [
   { path: 'city-care/user-login', component: LoginComponent },
   { path: 'city-care/about-us', component: TeamBioComponent },
   { path: 'city-care/users-profile', component: ProfileComponent },
-<<<<<<< HEAD
   { path: 'city-care/search', component: SearchComponent },
-=======
-  { path: 'city-care/site-search', component: SearchComponent },
-  { path: 'city-care/user-request', component: CreateRequestComponent },
->>>>>>> b6d41bfeed2b0af101debd86b6dae6adfd26813b
   { path: '* *', component: HomeComponent }, //If no matching route is found, go back to the home page
 ];
 
