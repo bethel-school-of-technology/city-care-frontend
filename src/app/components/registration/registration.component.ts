@@ -89,6 +89,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
+      type: ['', Validators.required],
       first_name: ['', [Validators.required, Validators.maxLength(50)]],
       last_name: ['', [Validators.required, Validators.maxLength(50)]],
       email: [
@@ -119,7 +120,7 @@ export class RegistrationComponent implements OnInit {
     } else {
       let data: any = Object.assign({ id: this.id }, this.userForm.value);
 
-      this.http.post('**insert data entry POST route**', data).subscribe(
+      this.http.post('/register', data).subscribe(
         (data: any) => {
           let path = '**profile route**' + data.user.id;
 
