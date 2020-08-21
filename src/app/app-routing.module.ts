@@ -17,16 +17,7 @@ const routes: Routes = [
   { path: 'city-care/user-login', component: LoginComponent },
   { path: 'city-care/about-us', component: TeamBioComponent },
   { path: 'city-care/users-profile', component: ProfileComponent },
-<<<<<<< HEAD
   { path: 'city-care/search', component: SearchComponent },
-=======
-
-  { path: 'city-care/search', component: SearchComponent },
-  { path: 'city-care/site-search', component: SearchComponent },
-  { path: 'city-care/user-request', component: CreateRequestComponent },
-  { path: 'city-care/update-request/:id', component: UpdateRequestComponent },
-  { path: 'city-care/update-listing/:id', component: UpdateRequestComponent },
->>>>>>> 58833edb06bd95ed0a95a35a3e9264ffe2f786b2
   { path: '* *', component: HomeComponent }, //If no matching route is found, go back to the home page
 ];
 
