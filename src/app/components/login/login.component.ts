@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthorizationService } from '../../shared/services/authorization.service';
+import { Router } from '@angular/router';
 import { User } from '../../shared/models/user.model';
 
 
@@ -22,9 +22,9 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.authorizationService.login(this.user).subscribe((res: any) => {
+      console.log(res);
       localStorage.setItem('access-token', res.token);
-      this.router.navigate(['/city-care/users-profile'])
-    })
+      this.router.navigate(['/city-care/users-profile']);
+    });
   }
-
 }

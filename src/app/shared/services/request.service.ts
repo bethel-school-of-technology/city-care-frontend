@@ -1,9 +1,28 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Request } from '../models/request.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
 
-  constructor() { }
+  api: string = "http://localhost:3000/requests";
+
+  public requests: Request[];
+
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) { }
+
+  //Get all of a users requests for goods or services
+  getUserRequests(): Observable <Request[]> {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<Request[]>(`${this.api}/requests`, { headers: header});
+  }
 }
