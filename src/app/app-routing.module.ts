@@ -8,6 +8,7 @@ import { TeamBioComponent } from './components/team-bio/team-bio.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SearchComponent } from './components/search/search.component';
 import { CreateRequestComponent } from './components/create-request/create-request.component';
+import { UpdateRequestComponent } from './components/update-request/update-request.component';
 
 const routes: Routes = [
   { path: ' ', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,8 @@ const routes: Routes = [
   { path: 'city-care/users-profile', component: ProfileComponent },
   { path: 'city-care/site-search', component: SearchComponent },
   { path: 'city-care/user-request', component: CreateRequestComponent },
+  { path: 'city-care/update-request/:id', component: UpdateRequestComponent },
+  { path: 'city-care/update-listing/:id', component: UpdateRequestComponent },
   { path: '* *', component: HomeComponent }, //If no matching route is found, go back to the home page
 ];
 

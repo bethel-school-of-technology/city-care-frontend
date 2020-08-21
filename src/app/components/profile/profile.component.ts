@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthorizationService } from '../../shared/services/authorization.service';
+import { RequestService } from '../../shared/services/request.service';
+import { ListingService } from '../../shared/services/listing.service'; 
+import { User } from '../../shared/models/user.model';
+import { Request } from '../../shared/models/request.model';
+import { Listing } from '../../shared/models/listing.model';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +14,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  user: User;
+  requests: Request[] = [];
+  listings: Listing[] = [];
 
-  ngOnInit(): void {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authorizationService: AuthorizationService,
+    private requestService: RequestService,
+    private listingService: ListingService
+  ) { }
+
+  ngOnInit() {
+    this.getProfile();
+    this.getUserListings();
+    this.getUserRequests(); 
   }
-
+getProfile() {
+  const userId = +this.route.snapshot.paramMap.get('user_id');
+  this.authorizationService.getProfile(userId).subscribe(user => this.user = user);
+}
+getUserListings() {
+  this.listingService.getUserListings().subscribe((listings: any) => {
+    console.log(listings);
+    this.listings = listings;
+  });
+}
+getUserRequests() {
+  this.requestService.getUserRequests().subscribe((requests: any) => {
+    console.log(requests);
+    this.requests = requests;
+  })
+}
 }

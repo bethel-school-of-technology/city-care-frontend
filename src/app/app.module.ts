@@ -19,7 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
 import { CreateRequestComponent } from './components/create-request/create-request.component';
-import { ErrorComponent } from './components/error/error.component';
+import { UpdateRequestComponent } from './components/update-request/update-request.component';
 
 
 @NgModule({
@@ -34,7 +34,7 @@ import { ErrorComponent } from './components/error/error.component';
     FooterComponent,
     TeamBioComponent,
     CreateRequestComponent,
-    ErrorComponent,
+    UpdateRequestComponent,
   ],
   imports: [
     BrowserModule,

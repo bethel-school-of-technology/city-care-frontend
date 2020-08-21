@@ -33,7 +33,8 @@ export class SearchComponent implements OnInit {
   users: string;
   filterData = [
     {
-      id: 0,
+      id: 1,
+      userId: 2,
       first_name: 'John',
       last_name: 'Doe',
       org_name: 'WebTEK',
@@ -53,7 +54,8 @@ export class SearchComponent implements OnInit {
       zip: 27278
     },
     {
-      id: 0,
+      id: 2,
+      userId: 3,
       first_name: 'Jimmy',
       last_name: 'Dean',
       org_name: ' ',
@@ -73,7 +75,8 @@ export class SearchComponent implements OnInit {
       zip: 27278
     },
     {
-      id: 0,
+      id: 3,
+      userId: 4,
       first_name: 'Frank',
       last_name: 'Furter',
       org_name: 'Franks',
@@ -93,7 +96,8 @@ export class SearchComponent implements OnInit {
       zip: 27278
     },
     {
-      id: 0,
+      id: 5,
+      userId: 6,
       first_name: 'Adam',
       last_name: 'Ellis',
       org_name: ' ',
@@ -113,7 +117,8 @@ export class SearchComponent implements OnInit {
       zip: 27616
     },
     {
-      id: 0,
+      id: 7,
+      userId: 8,
       first_name: 'James',
       last_name: 'Bond',
       org_name: 'Bondtek',

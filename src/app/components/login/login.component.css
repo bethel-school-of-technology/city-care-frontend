@@ -1,0 +1,11 @@
+/* :host {
+          display: block;
+}
+.card, h2 {
+          margin: 1 auto;
+          text-align: center;
+}
+.card {
+          border: 3px inset darkslateblue;
+          margin: 7.5px 10px 5px 10px;
+} */
