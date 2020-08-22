@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   requests: Request[] = [];
   listings: Listing[] = [];
+  userIsIndividual = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -47,4 +48,5 @@ getUserRequests() {
     this.requests = requests;
   })
 }
+
 }
