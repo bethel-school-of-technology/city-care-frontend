@@ -21,6 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
 import { CreateRequestComponent } from './components/create-request/create-request.component';
 import { UpdateRequestComponent } from './components/update-request/update-request.component';
+import { UpdateListingComponent } from './components/update-listing/update-listing.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { UpdateRequestComponent } from './components/update-request/update-reque
     TeamBioComponent,
     CreateRequestComponent,
     UpdateRequestComponent,
+    UpdateListingComponent,
+    UpdateUserComponent,
   ],
   imports: [
     BrowserModule,

@@ -19,11 +19,11 @@ export class AuthorizationService {
   ) {}  
 
 //Get the login route
-getLogin() {
-  let token = localStorage.getItem('access-token');
-  let header = new HttpHeaders().set('jwt', token);
-  return this.http.get(`${this.api}/login`, { headers: header});
-}
+// getLogin() {
+//   let token = localStorage.getItem('access-token');
+//   let header = new HttpHeaders().set('jwt', token);
+//   return this.http.get(`${this.api}/login`, { headers: header});
+// }
 //Log a user in 
   login(user: any) {
     return this.http.post(`${this.api}/login`, user);

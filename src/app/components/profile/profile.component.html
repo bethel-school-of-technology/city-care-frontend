@@ -12,8 +12,9 @@
           <br>
           <button class="back" routerLink="/city-care/home">Back</button>&nbsp;
 </div>
-<h1>My Requests</h1>
-<div class="requests" *ngFor="let request of requests">
+<div class="card">
+          <h1 class="card-title">My Requests</h1>
+<div class="card-body requests" *ngFor="let request of requests">
           <ul>
                     <li>
                               <a routerLink="/city-care/update-request/{{request.id}}">
@@ -22,8 +23,10 @@
                     </li>
           </ul>
 </div>
-<h1>My Listings</h1>
-<div class="listings" *ngFor="let listing of listings">
+</div>
+<div class="card">
+          <h1 class="card-title">My Listings</h1>
+<div class="card-body listings" *ngFor="let listing of listings">
           <ul>
                     <li>
                               <a routerLink="/city-care/update-listing/{{listing.id}}">
@@ -31,4 +34,5 @@
                               </a>
                     </li>
           </ul>
+</div>
 </div>

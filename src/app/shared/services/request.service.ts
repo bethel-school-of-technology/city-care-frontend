@@ -25,4 +25,11 @@ export class RequestService {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Request[]>(`${this.api}/requests`, { headers: header});
   }
+  //Get a single request made by an individual
+  getUserRequest(requestId): Observable <Request> {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<Request>(`${this.api}/${requestId}`, {headers: header});
+
+  }
 }
