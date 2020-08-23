@@ -19,7 +19,8 @@
                     <li>
                               <a routerLink="/city-care/update-request/{{request.id}}">
                               <span class="badge">{{request.id}} {{request.description}}</span>
-                              </a>
+                              </a>&nbsp;
+                              <button class="btn btn-warn delete" (click)="onClickDeleteRequest(request)">X</button>
                     </li>
           </ul>
 </div>
@@ -31,7 +32,8 @@
                     <li>
                               <a routerLink="/city-care/update-listing/{{listing.id}}">
                               <span class="badge">{{listing.id}} {{listing.description}}</span>
-                              </a>
+                              </a>&nbsp;
+                              <button class="btn btn-warn delete" (click)="onClickDeletListing(listing)">X</button>
                     </li>
           </ul>
 </div>

@@ -17,6 +17,8 @@ export class ProfileComponent implements OnInit {
   user: User;
   requests: Request[] = [];
   listings: Listing[] = [];
+  listing: Listing;
+  rquest: Request;
   userIsIndividual = false;
 
   constructor(
@@ -48,5 +50,14 @@ getUserRequests() {
     this.requests = requests;
   })
 }
-
+onClickDeleteRequest(request: Request) {
+  this.requests = this.requests.filter(request => request.id !== request.id);
+  this.requestService.deleteRequest(request.id).subscribe();
+  window.location.reload();
+}
+onClickDeleteListing(listing: Listing) {
+  this.listings = this.listings.filter(listing => listing.id !== listing.id);
+  this.listingService.deleteListing(listing.id).subscribe();
+  window.location.reload()
+}
 }

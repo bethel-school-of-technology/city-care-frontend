@@ -30,6 +30,11 @@ export class RequestService {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Request>(`${this.api}/${requestId}`, {headers: header});
-
+  }
+  //Delete a request from the UI and from the database
+  deleteRequest(id: number): Observable <Request> {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.delete<Request>(`${this.api}/delete/${id}`, {headers: header});
   }
 }
