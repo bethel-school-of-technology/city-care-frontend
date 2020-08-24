@@ -28,7 +28,7 @@ export class ListingService {
   deleteListing(id: number): Observable<Listing> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.put<Listing>(`${this.api}/${id}`, { headers: header });
+    return this.http.delete<Listing>(`${this.api}/${id}`, { headers: header });
   }
   getUserListing(listingId): Observable <Listing> {
     let token = localStorage.getItem('access-token');

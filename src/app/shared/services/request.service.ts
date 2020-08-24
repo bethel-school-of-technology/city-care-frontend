@@ -35,6 +35,6 @@ export class RequestService {
   deleteRequest(id: number): Observable <Request> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.delete<Request>(`${this.api}/delete/${id}`, {headers: header});
+    return this.http.delete<Request>(`${this.api}/${id}`, {headers: header});
   }
 }

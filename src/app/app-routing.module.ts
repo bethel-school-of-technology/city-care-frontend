@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from './shared/services/auth.guard';
+
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -20,6 +22,7 @@ const routes: Routes = [
   { path: 'city-care/about-us', component: TeamBioComponent },
   { path: 'city-care/users-profile', component: ProfileComponent },
   { path: 'city-care/site-search', component: SearchComponent },
+  { path: 'city-care/create-request', component: CreateRequestComponent },
   { path: 'city-care/update-request/:id', component: UpdateRequestComponent },
   { path: 'city-care/update-listing/:id', component: UpdateListingComponent },
   { path: 'city-care/update-user/:id', component: UpdateUserComponent },

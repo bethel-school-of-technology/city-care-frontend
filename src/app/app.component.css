@@ -1,5 +1,7 @@
 main {
-          width: 100%;
+          width: auto;
+          height: 100%;
+          margin-bottom: 130px;
          /*  padding-left: 50px;
           padding-right: 50px; */
 }
