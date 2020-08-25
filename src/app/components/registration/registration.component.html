@@ -1,144 +1,130 @@
 <h2>Please register below</h2>
 <div class="form-container">
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()" name="registerUser">
-
         <div id="typeSelection">
             <div class="form-group">
                 <p>Type of User:</p>
                 <label>
                     <input type="radio" formControlName="type" value="individual" class="form-control"
-                        id="individual_type" name="type">
+                        id="individual_type" name="type" />
                     <span>Individual</span>
                 </label>
                 <label>
                     <input type="radio" formControlName="type" value="organization" class="form-control"
-                        id="organization_type" name="type">
+                        id="organization_type" name="type" />
                     <span>Organization</span>
                 </label>
+                <p *ngIf="invalidType()" id="type_error" class="help-block">
+                    {{ this.serviceErrors.type || "User type selection is required." }}
+                </p>
             </div>
         </div>
-
         <div id="contactInfoContainer">
             <div class="form-group" [ngClass]="{ 'has-error': invalidFirstName() }">
                 <label for="first_name" class="control-label">First Name:</label>
                 <input type="text" formControlName="first_name" class="form-control" id="first_name" name="first_name"
-                    placeholder="Enter first name">
+                    placeholder="Enter first name" />
                 <p *ngIf="invalidFirstName()" id="first_name_error" class="help-block">
-                    {{this.serviceErrors.first_name || 'Invalid first name.'}}</p>
+                    {{ this.serviceErrors.first_name || "Invalid first name." }}
+                </p>
             </div>
-
             <div class="form-group" [ngClass]="{ 'has-error': invalidLastName() }">
                 <label for="last_name" class="control-label">Last Name:</label>
                 <input type="text" formControlName="last_name" class="form-control" id="last_name" name="last_name"
-                    placeholder="Enter last name">
+                    placeholder="Enter last name" />
                 <p *ngIf="invalidLastName()" id="last_name_error" class="help-block">
-                    {{this.serviceErrors.last_name || 'Invalid last name.'}}</p>
+                    {{ this.serviceErrors.last_name || "Invalid last name." }}
+                </p>
             </div>
-
             <div class="form-group" [ngClass]="{ 'has-error': invalidEmail() }">
                 <label for="email" class="control-label">Email:</label>
                 <input type="email" formControlName="email" class="form-control" id="email" name="email"
-                    placeholder="Enter email" aria-describedby="emailHelp">
+                    placeholder="Enter email" aria-describedby="emailHelp" />
                 <small id="emailHelp" class="form-text text-muted">We will never share your email with anyone.</small>
                 <p *ngIf="invalidEmail()" id="email_error" class="help-block">
-                    {{this.serviceErrors.email || 'Invalid email address.'}}</p>
+                    {{ this.serviceErrors.email || "Invalid email address." }}
+                </p>
             </div>
-
             <div class="form-group" [ngClass]="{ 'has-error': invalidPhone() }">
                 <label for="phone" class="control-label">Home Phone:</label>
                 <input type="tel" formControlName="phone" class="form-control" id="phone" name="phone"
-                    placeholder="(xxx)xxx-xxxx">
+                    placeholder="(xxx)xxx-xxxx" />
                 <p *ngIf="invalidPhone()" id="phone_error" class="help-block">
-                    {{this.serviceErrors.phone || 'Invalid phone number.'}}</p>
+                    {{ this.serviceErrors.phone || "Invalid phone number." }}
+                </p>
             </div>
-
             <div class="form-group" [ngClass]="{ 'has-error': invalidPhone() }">
                 <label for="mobile_phone" class="control-label">Mobile Phone:</label>
                 <input type="tel" formControlName="mobile_phone" class="form-control" id="mobile_phone"
-                    name="mobile_phone" placeholder="(xxx)xxx-xxxx">
+                    name="mobile_phone" placeholder="(xxx)xxx-xxxx" />
                 <p *ngIf="invalidPhone()" id="phone_error" class="help-block">
-                    {{this.serviceErrors.phone || 'Invalid phone number.'}}</p>
+                    {{ this.serviceErrors.phone || "Invalid phone number." }}
+                </p>
             </div>
-
             <div class="form-group">
                 <p>Preferred Contact Method:</p>
                 <label>
                     <input type="radio" formControlName="contact_method" value="email" class="form-control"
-                        id="email_method" name="contact_method">
+                        id="email_method" name="contact_method" />
                     <span>E-mail</span>
                 </label>
                 <label>
                     <input type="radio" formControlName="contact_method" value="phone" class="form-control"
-                        id="phone_method" name="contact_method">
+                        id="phone_method" name="contact_method" />
                     <span>Phone</span>
                 </label>
                 <label>
                     <input type="radio" formControlName="contact_method" value="mobile_phone" class="form-control"
-                        id="mobile_phone_method" name="contact_method">
+                        id="mobile_phone_method" name="contact_method" />
                     <span>Mobile Phone</span>
                 </label>
             </div>
         </div>
-
         <div id="addressContainer">
             <div class="form-group">
                 <label for="address1">Address 1:</label>
                 <input type="text" formControlName="address1" class="form-control" id="address1" name="address1"
-                    placeholder="Street address 1">
+                    placeholder="Street address 1" />
             </div>
-
             <div class="form-group">
                 <label for="address2">Address 2:</label>
                 <input type="text" formControlName="address2" class="form-control" id="address2" name="address2"
-                    placeholder="Street address 2">
+                    placeholder="Street address 2" />
             </div>
-
             <div class="form-group">
                 <label for="city">City:</label>
                 <input type="text" formControlName="city" class="form-control" id="city" name="city"
-                    placeholder="Enter City">
+                    placeholder="Enter City" />
             </div>
-
             <div class="form-group">
                 <label for="state">State:</label>
                 <input type="text" formControlName="state" class="form-control" id="state" name="state"
-                    placeholder="Enter State">
+                    placeholder="Enter State" />
             </div>
-
             <div class="form-group">
                 <label for="country">County:</label>
                 <input type="text" formControlName="country" class="form-control" id="country" name="country"
-                    placeholder="Enter County">
+                    placeholder="Enter County" />
             </div>
-
             <div class="form-group" [ngClass]="{ 'has-error': invalidZipcode() }">
                 <label for="zipcode" class="control-label">Zip Code:</label>
                 <input type="text" formControlName="zipcode" class="form-control" id="zipcode" name="zipcode"
-                    placeholder="Enter zip code">
+                    placeholder="Enter zip code" />
                 <p *ngIf="invalidZipcode()" id="zipcode_error" class="help-block">
-                    {{this.serviceErrors.zipcode || 'Invalid zip code.'}}</p>
+                    {{ this.serviceErrors.zipcode || "Invalid zip code." }}
+                </p>
             </div>
         </div>
-
         <div id="passwordContainer">
             <div class="form-group" [ngClass]="{ 'has-error': invalidPassword() }">
                 <label for="password" class="control-label">Password:</label>
                 <input type="password" formControlName="password" class="form-control" id="password" name="password"
-                    placeholder="*****">
+                    placeholder="*****" />
                 <p *ngIf="invalidPassword()" id="password_error" class="help-block">
-                    {{this.serviceErrors.password || 'Invalid password.'}}</p>
+                    {{ this.serviceErrors.password || "Invalid password." }}
+                </p>
             </div>
         </div>
-
-        <!-- Not sure what this check might have been for: JK -->
-        <!-- <div id="formCheck">
-            <div class="form-group">
-                <label for="confirmation_check" class="form-check-label">Check here to confirm</label>
-                <input type="checkbox" formControlName="confirmation_check" class="form-check-input"
-                    id="confirmation_check" name="confirmation_check">
-            </div>
-        </div> -->
-
-        <button type="submit" class="btn btn-primary">Register</button>
+        <div><button type="submit" class="btn btn-primary">Register</button></div>
     </form>
 </div>

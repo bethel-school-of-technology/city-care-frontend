@@ -1,0 +1,19 @@
+<h2>Enter your request details below</h2>
+<div class="form-container">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" name="postRequest">
+        <div> <label for="description">
+                <p>Please describe the goods and/or services you have need for. Consider including the following
+                    information:</p>
+                <ul>
+                    <li>A brief description</li>
+                    <li>Quantity</li>
+                    <li>Urgency of the need</li>
+                </ul>
+            </label> <input type="text" formControlName="description" class="form-control" id="description"
+                name="description" />
+            <p *ngIf="invalidDescription()" id="description_error" class="help-block">
+                {{this.serviceErrors.description || 'Request description is required.'}}</p>
+        </div>
+        <div> <button type="submit" class="btn btn-primary">Submit Request</button> </div>
+    </form>
+</div>

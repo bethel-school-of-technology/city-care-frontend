@@ -23,6 +23,7 @@ import { CreateRequestComponent } from './components/create-request/create-reque
 import { UpdateRequestComponent } from './components/update-request/update-request.component';
 import { UpdateListingComponent } from './components/update-listing/update-listing.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { RequestComponent } from './componenets/request/request.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
     UpdateRequestComponent,
     UpdateListingComponent,
     UpdateUserComponent,
+    RequestComponent,
   ],
   imports: [
     BrowserModule,

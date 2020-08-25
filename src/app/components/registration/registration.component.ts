@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-// import { User } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-registration',
@@ -20,25 +19,18 @@ export class RegistrationComponent implements OnInit {
   userForm: FormGroup;
   id: string;
   serviceErrors: any = {};
-
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router
-  ) {
-    // this.http.get('/api/v1/generate_uid').subscribe(
-    //   (data: any) => {
-    //     this.guid = data.guid;
-    //   },
-    //   (error) => {
-    //     console.log(
-    //       'There was an error generating the proper GUID on the server',
-    //       error
-    //     );
-    //   }
-    // );
+  ) {}
+  invalidType() {
+    return (
+      this.submitted &&
+      (this.serviceErrors.type != null ||
+        this.userForm.controls.type.errors != null)
+    );
   }
-
   invalidFirstName() {
     return (
       this.submitted &&
@@ -46,7 +38,6 @@ export class RegistrationComponent implements OnInit {
         this.userForm.controls.first_name.errors != null)
     );
   }
-
   invalidLastName() {
     return (
       this.submitted &&
@@ -54,7 +45,6 @@ export class RegistrationComponent implements OnInit {
         this.userForm.controls.last_name.errors != null)
     );
   }
-
   invalidEmail() {
     return (
       this.submitted &&
@@ -62,7 +52,6 @@ export class RegistrationComponent implements OnInit {
         this.userForm.controls.email.errors != null)
     );
   }
-
   invalidPhone() {
     return (
       this.submitted &&
@@ -70,7 +59,6 @@ export class RegistrationComponent implements OnInit {
         this.userForm.controls.phone.errors != null)
     );
   }
-
   invalidZipcode() {
     return (
       this.submitted &&
@@ -78,7 +66,6 @@ export class RegistrationComponent implements OnInit {
         this.userForm.controls.zipcode.errors != null)
     );
   }
-
   invalidPassword() {
     return (
       this.submitted &&
@@ -86,7 +73,6 @@ export class RegistrationComponent implements OnInit {
         this.userForm.controls.password.errors != null)
     );
   }
-
   ngOnInit() {
     this.userForm = this.formBuilder.group({
       type: ['', Validators.required],
@@ -111,26 +97,21 @@ export class RegistrationComponent implements OnInit {
       ],
     });
   }
-
   onSubmit() {
     this.submitted = true;
-
     if (this.userForm.invalid == true) {
       return;
     } else {
       let data: any = Object.assign({ id: this.id }, this.userForm.value);
-
       this.http.post('/register', data).subscribe(
         (data: any) => {
           let path = '**profile route**' + data.user.id;
-
           this.router.navigate([path]);
         },
         (error) => {
           this.serviceErrors = error.error.error;
         }
       );
-
       this.registered = true;
     }
   }
