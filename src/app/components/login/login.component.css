@@ -1,17 +1,18 @@
-.parent {
 
+body {
+  margin-left: 25px;
+}
+.parent {
   width: 100%;
   height: 100%;
 
 }
-
 .form_login {
   padding-left: 100px;
   padding-top: 100px;
   margin: auto;
 
 }
-
 .forgot {
   padding-right: 50px;
 
