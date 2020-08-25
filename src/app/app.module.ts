@@ -19,11 +19,10 @@ import { SearchComponent } from './components/search/search.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
-import { CreateRequestComponent } from './components/create-request/create-request.component';
 import { UpdateRequestComponent } from './components/update-request/update-request.component';
 import { UpdateListingComponent } from './components/update-listing/update-listing.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
-import { RequestComponent } from './componenets/request/request.component';
+import { RequestComponent } from './components/request/request.component';
 
 
 @NgModule({
@@ -37,7 +36,6 @@ import { RequestComponent } from './componenets/request/request.component';
     HeaderComponent,
     FooterComponent,
     TeamBioComponent,
-    CreateRequestComponent,
     UpdateRequestComponent,
     UpdateListingComponent,
     UpdateUserComponent,

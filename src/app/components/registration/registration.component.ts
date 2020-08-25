@@ -19,11 +19,13 @@ export class RegistrationComponent implements OnInit {
   userForm: FormGroup;
   id: string;
   serviceErrors: any = {};
+
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router
   ) {}
+  
   invalidType() {
     return (
       this.submitted &&

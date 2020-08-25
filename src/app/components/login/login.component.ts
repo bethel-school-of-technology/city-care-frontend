@@ -12,7 +12,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
 
   submitted = false;
   serviceErrors: any = {};
@@ -49,17 +49,15 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: [' ', [Validators.required, Validators.email, Validators.maxLength(75)]],
       password: [' ', [ Validators.required, Validators.minLength(5), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]]
     });
-    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
-      authStatus => {
-        this.isLoading = false;
-      }
-    )
+    
   }
   login() {
     this.isLoading =true;
-    this.authorizationService.login(this.user);
+    this.authorizationService.login(this.user).subscribe((res: any) => {
+      console.log(res);
+      localStorage.setItem('access-token', res.token);
+      this.router.navigate(['/city-care/users-profile']);
+    });
   }
-ngOnDestroy() {
-  this.authStatusSub.unsubscribe();
-}
+
 }

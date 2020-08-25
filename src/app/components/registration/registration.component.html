@@ -6,12 +6,12 @@
                 <p>Type of User:</p>
                 <label>
                     <input type="radio" formControlName="type" value="individual" class="form-control"
-                        id="individual_type" name="type" />
+                        id="individual_type" name="type"/>
                     <span>Individual</span>
                 </label>
                 <label>
                     <input type="radio" formControlName="type" value="organization" class="form-control"
-                        id="organization_type" name="type" />
+                        id="organization_type" name="type"/>
                     <span>Organization</span>
                 </label>
                 <p *ngIf="invalidType()" id="type_error" class="help-block">
@@ -102,8 +102,8 @@
                     placeholder="Enter State" />
             </div>
             <div class="form-group">
-                <label for="country">County:</label>
-                <input type="text" formControlName="country" class="form-control" id="country" name="country"
+                <label for="county">County:</label>
+                <input type="text" formControlName="county" class="form-control" id="county" name="county"
                     placeholder="Enter County" />
             </div>
             <div class="form-group" [ngClass]="{ 'has-error': invalidZipcode() }">
