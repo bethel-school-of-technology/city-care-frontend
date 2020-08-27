@@ -12,6 +12,7 @@
                     <div class="details"><span>County: {{user.county}}</span>&nbsp; {{user.zip}}</div>
                     <br>
                     <button class="back" routerLink="/city-care/home">Back</button>&nbsp;
+                    <button type="submit" class="btn btn-info btn-sm" routerLink="/city-care/update-user/{{user.id}}">Update</button>
           </div>
           <div class="card col">
                     <h1 class="card-title">My Requests</h1>
@@ -19,9 +20,9 @@
                     <ul>
                               <li>
                                         <a routerLink="/city-care/update-request/{{request.id}}">
-                                        <span class="badge">{{request.id}} {{request.description}}</span>
+                                        <span class="badge badge-info">{{request.id}} {{request.description}}</span>
                                         </a>&nbsp;
-                                        <button class="btn btn-warn delete" (click)="onClickDeleteRequest(request)">X</button>
+                                        <button class="btn btn-danger delete" (click)="onClickDeleteRequest(request)">X</button>
                               </li>
                     </ul>
           </div>
@@ -32,9 +33,9 @@
                     <ul>
                               <li>
                                         <a routerLink="/city-care/update-listing/{{listing.id}}">
-                                        <span class="badge">{{listing.id}} {{listing.description}}</span>
+                                        <span class="badge badge-info">{{listing.id}} {{listing.description}}</span>
                                         </a>&nbsp;
-                                        <button class="btn btn-warn delete" (click)="onClickDeleteListing(listing)">X</button>
+                                        <button class="btn btn-danger delete" (click)="onClickDeleteListing(listing)">X</button>
                               </li>
                     </ul>
           </div>

@@ -1,1 +1,75 @@
-<p>update-user works!</p>
+<h2>Update your profile</h2>
+
+<div *ngIf="user">
+          <h5>Details:</h5>
+          <p><span>Name: {{user.first_name}} {{user.last_name}} Phone: {{user.phone}}</span></p>
+          <p><span>Email: {{user.email}} Username: {{user.username}}</span></p>
+          <p><span>Address: {{user.address1}}, {{user.city}}, {{user.state}}, {{user.zip}}</span></p>
+
+          <form (ngSubmit)="updateUser()" name="updateUser">
+                    <div>
+                              <label for="name">First Name: </label>&nbsp;
+                              <input type="text" name="first_name" placeholder="{{user.first_name}}" [(ngModel)]="user.first_name" />&nbsp;
+                    </div>
+                    <div>
+                              <label for="name">Last Name: </label>&nbsp;
+                              <input type="text" name="last_name" placeholder="{{user.last_name}}" [(ngModel)]="user.last_name" />
+                    </div>
+                    <div>
+                              <label for="name">Contact Person: </label>&nbsp;
+                              <input type="text" name="contact_name" placeholder="{{user.contact_name}}" [(ngModel)]="user.contact_name" />
+                    </div>
+                    <div>
+                              <label for="name">Organization: </label>&nbsp;
+                              <input type="text" name="org_name" placeholder="{{user.org_name}}" [(ngModel)]="user.org_name" />
+                    </div>
+                    <div>
+                              <label for="name">Email: </label>&nbsp;
+                              <input type="email" name="email" placeholder="{{user.email}}" [(ngModel)]="user.email" />&nbsp;                             
+                    </div>
+                    <div>
+                              <label for="name">Username: </label>&nbsp;
+                              <input type="text" name="username" placeholder="{{user.username}}" [(ngModel)]="user.username" />
+                    </div>
+                    <div>
+                              <label for="name">Contact Method: </label>&nbsp;
+                              <input type="text" name="contact_method" placeholder="{{user.contact_method}}" [(ngModel)]="user.contact_method" />
+                              
+                    </div>
+                    <div>
+                              <label for="name">Phone: </label>&nbsp;
+                              <input type="tel" name="phone" placeholder="{{user.phone}}" [(ngModel)]="user.phone" />
+                    </div>
+                    <div>
+                              <label for="name">Mobile: </label>&nbsp;
+                              <input type="tel" name="mobile_phone" placeholder="{{user.mobile_phone}}" [(ngModel)]="user.mobile_phone" />
+                    </div>
+                    <div>
+                              <label for="name">Fax: </label>&nbsp;
+                              <input type="tel" name="fax" placeholder="{{user.fax}}" [(ngModel)]="user.fax" />
+                    </div>
+                    <div>
+                              <label for="name">Address Line 1: </label>&nbsp;
+                              <input type="text" name="address1" placeholder="{{user.address1}}" [(ngModel)]="user.address1" />
+                    </div>
+                    <div>
+                              <label for="name">Address Line 2: </label>&nbsp;
+                              <input type="text" name="address2" placeholder="{{user.address2}}" [(ngModel)]="user.address2" />
+                    </div>
+                    <div>
+                              <label for="name">City: </label>&nbsp;
+                              <input type="text" name="city" placeholder="{{user.city}}" [(ngModel)]="user.city" />
+                    </div>
+                    <div>
+                              <label for="name">State: </label>&nbsp;
+                              <input type="text" name="state" placeholder="{{user.state}}" [(ngModel)]="user.state" />
+                    </div>
+                    <div>
+                              <label for="name">Zip Code: </label>&nbsp;
+                              <input type="text" name="zip" placeholder="{{user.zip}}" [(ngModel)]="user.zip" />
+                    </div>
+                    <div>
+                              <button type="submit">Update</button>
+                    </div>
+          </form>
+</div>

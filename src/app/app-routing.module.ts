@@ -14,10 +14,12 @@ import { UpdateListingComponent } from './components/update-listing/update-listi
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 
 const routes: Routes = [
-  { path: ' ', redirectTo: 'home', pathMatch: 'full' },
+  { path: ' ', redirectTo: '/', pathMatch: 'full' },
   { path: 'city-care/home', component: HomeComponent },
   { path: 'city-care/user-registration', component: RegistrationComponent },
   { path: 'city-care/user-login', component: LoginComponent },
+  { path: 'city-care/email-login', component: LoginComponent },
+  { path: 'city-care/username-login', component: LoginComponent },
   { path: 'city-care/about-us', component: TeamBioComponent },
   { path: 'city-care/users-profile', component: ProfileComponent },
   { path: 'city-care/site-search', component: SearchComponent },
