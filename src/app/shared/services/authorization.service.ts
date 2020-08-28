@@ -20,10 +20,7 @@ export class AuthorizationService {
     private router: Router
   ) {}  
 
-get isLoggedIn(): boolean {
-  let authToken = localStorage.getItem('access-token');
-  return(authToken !== null) ? true: false;
-}
+
 //Register a user
 registerUser(){
 
@@ -34,12 +31,30 @@ login(user: any) {
 }
 
 
-
   //Get a user/organization profile
   getProfile(userId: number): Observable<User> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<User>(`${this.api}/profile`, { headers: header });
+  }
+//Get the user by the user id for the update profile page
+  getUser(userId): Observable <User> {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<User>(`${this.api}/${userId}`, { headers: header });
+  }
+
+  updateUser(userId: number, user: any) {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.put<User>(`${this.api}/${userId}`, user, { headers: header });
+  }
+  get isLoggedIn(): boolean {
+    let authToken = localStorage.getItem('access-token');
+    return(authToken !== null) ? true: false;
+  }
+  //Logout method should remove everything from local storage 
+  logout() {
   }
 
 

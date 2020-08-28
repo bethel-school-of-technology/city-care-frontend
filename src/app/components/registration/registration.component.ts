@@ -25,12 +25,12 @@ export class RegistrationComponent implements OnInit {
     private http: HttpClient,
     private router: Router
   ) {}
-  
-  invalidType() {
+
+  invalidIsOrg() {
     return (
       this.submitted &&
-      (this.serviceErrors.type != null ||
-        this.userForm.controls.type.errors != null)
+      (this.serviceErrors.isOrg != null ||
+        this.userForm.controls.isOrg.errors != null)
     );
   }
   invalidFirstName() {
@@ -77,7 +77,7 @@ export class RegistrationComponent implements OnInit {
   }
   ngOnInit() {
     this.userForm = this.formBuilder.group({
-      type: ['', Validators.required],
+      isOrg: ['', Validators.required],
       first_name: ['', [Validators.required, Validators.maxLength(50)]],
       last_name: ['', [Validators.required, Validators.maxLength(50)]],
       email: [
