@@ -1,21 +1,21 @@
 <h2>Please register below</h2>
 <div class="form-container">
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()" name="registerUser">
-        <div id="typeSelection">
+        <div id="isOrgSelection">
             <div class="form-group">
                 <p>Type of User:</p>
                 <label>
-                    <input type="radio" formControlName="type" value="individual" class="form-control"
-                        id="individual_type" name="type"/>
-                    <span>Individual</span>
-                </label>
-                <label>
-                    <input type="radio" formControlName="type" value="organization" class="form-control"
-                        id="organization_type" name="type"/>
+                    <input type="radio" formControlName="isOrg" value="1" class="form-control" id="organizationTrue"
+                        name="isOrg" />
                     <span>Organization</span>
                 </label>
-                <p *ngIf="invalidType()" id="type_error" class="help-block">
-                    {{ this.serviceErrors.type || "User type selection is required." }}
+                <label>
+                    <input type="radio" formControlName="isOrg" value="0" class="form-control" id="organizationFalse"
+                        name="isOrg" />
+                    <span>Individual</span>
+                </label>
+                <p *ngIf="invalidIsOrg()" id="isOrg_error" class="help-block">
+                    {{ this.serviceErrors.isOrg || "User type selection is required." }}
                 </p>
             </div>
         </div>

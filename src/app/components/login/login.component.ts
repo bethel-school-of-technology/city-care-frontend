@@ -45,6 +45,11 @@ localStorage.setItem('access-token', res.token);
 this.router.navigate(['/city-care/users-profile']);
 });
   }
+  
+
+onLogout() {
+  this.authorizationService.logout();
+}
 
 ngOnDestroy() {
   this.authStatusSub.unsubscribe();

@@ -104,17 +104,6 @@ login(user: any) {//Log a user in
 // }
 
 //Log a user out
-logout() {
-  this.token = null;
-  this.isAuthenticated = false;
-  this.authStatusListener.next(false);
-  // clearTimeout(this.tokenTimer);//clears the token timer out when logout method is called
-  // this.clearAuthData(); //clears the local storage
-  // this.userId = null; //ensures the user Id is reset correctly after the user logs out
-  // this.isOrg = null;//Clear the user type 
-  // this.isAdmin = null;//Clear the admin authenticator
-  this.router.navigate(['/city-care/user-login'])//navigate back to login 
-}
 
 
   //Get a user/organization profile
@@ -123,22 +112,41 @@ logout() {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<User>(`${this.api}/profile`, { headers: header });
   }
-
-
-  //Get the user for the update profile page
-  getUser(userId: any): Observable <User> {
+//Get the user by the user id for the update profile page
+  getUser(userId): Observable <User> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<User>(`${this.api}/${userId}`, {headers: header});
+    return this.http.get<User>(`${this.api}/${userId}`, { headers: header });
   }
+
+  updateUser(userId: number, user: any) {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.put<User>(`${this.api}/${userId}`, user, { headers: header });
+  }
+  get isLoggedIn(): boolean {
+    let authToken = localStorage.getItem('access-token');
+    return(authToken !== null) ? true: false;
+  }
+  //Logout method should remove everything from local storage 
+  logout() {
+  }
+
+
+  // //Get the user for the update profile page
+  // getUser(userId: any): Observable <User> {
+  //   let token = localStorage.getItem('access-token');
+  //   let header = new HttpHeaders().set('jwt', token);
+  //   return this.http.get<User>(`${this.api}/${userId}`, {headers: header});
+  // }
 
 
   //Update the users profile
-  updateUser(userId: number, user: any): Observable <User> {
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.put<User>(`${this.api}/${userId}`, user, {headers: header})
-  }
+  // updateUser(userId: number, user: any): Observable <User> {
+  //   let token = localStorage.getItem('access-token');
+  //   let header = new HttpHeaders().set('jwt', token);
+  //   return this.http.put<User>(`${this.api}/${userId}`, user, {headers: header})
+  // }
   
 //Create the authorization timer
 

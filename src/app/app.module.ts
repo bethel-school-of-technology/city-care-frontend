@@ -24,6 +24,7 @@ import { ProfileEditorComponent } from './components/profile-editor/profile-edit
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
