@@ -39,11 +39,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   login() {
-      this.authorizationService.login(this.user).subscribe((res: any) => {
-console.log(res);
-localStorage.setItem('access-token', res.token);
-this.router.navigate(['/city-care/users-profile']);
-});
+      this.authorizationService.login(this.user);
   }
   
 

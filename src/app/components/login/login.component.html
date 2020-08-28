@@ -1,73 +1,89 @@
-<body>
+  <body>
 
-  <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
-
-    <span class="sr-only">Loading...</span>
-
-  </div>
-
-  <div class='parent'>
-
-    <form (ngSubmit)="login()" name='login' class='needs-validation' *ngIf="!isLoading">
-
-      <fieldset>
-
-        <legend>Login to your profile</legend>
-
-        <div class="form-group">
-
-          <label for="name">Email Address Or Username</label>
-
-          <div class="input-group">
-
-            <input type="email" class="form-control-input is-valid" id="validationEmail" name="email" aria-describedby="emailHelp" placeholder="email or username"
-            [(ngModel)]='user.email' required>
-
+    <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+  
+      <span class="sr-only">Loading...</span>
+  
+    </div>
+  
+    <div class='parent'>
+  
+      <form (ngSubmit)="login()" name='login' class='needs-validation' *ngIf="!isLoading">
+  
+        <fieldset>
+  
+          <legend>Login to your profile</legend>
+  
+          <div class="form-group">
+  
+            <label for="name">Email Address Or Username</label>
+  
+            <div class="input-group">
+  
+              <input type="email" class="form-control-input is-valid" id="validationEmail" name="email" aria-describedby="emailHelp" placeholder="email or username"
+              [(ngModel)]='user.email' required>
+  
+            </div>
+  
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  
           </div>
-
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-
-        </div>
-
-        <div class="form-group">
-
-          <label for="password">Password</label>
-
-          <div class="input-group">
-
-            <input type="password" class="form-control-input is-valid" id="password" name="password" placeholder="Password" [(ngModel)]='user.password' required>
-
+  
+          <div class="form-group">
+  
+            <label for="password">Password</label>
+  
+            <div class="input-group">
+  
+              <input type="password" class="form-control-input is-valid" id="password" name="password" placeholder="Password" [(ngModel)]='user.password' required>
+  
+            </div>
+  
           </div>
+  
+          <div class="form-group">
+  
+            <!-- <div class="form-check pl-0">
+  
+              <input class="form-check-input" type="checkbox" value="true" id="invalidCheck222" required>
+  
+              <label class="form-check-label" for="invalidCheck222">
+  
+                Agree to terms and conditions
+              </label>
+  
+            </div> -->
+  
+          </div>
+  
+          <div>
+  
+            <a class='forgot' href='/city-care/update-user'>Forgot Password</a>
+  
+            <button type="submit"   class="btn btn-success">Submit</button>
+  
+          </div>
+  
+        </fieldset>
+  
+      </form>
+  
+    </div>
+  <script src="../../../script.js"></script>
+  </body>
 
-        </div>
-
-        <div class="form-group">
-
-          <!-- <div class="form-check pl-0">
-
-            <input class="form-check-input" type="checkbox" value="true" id="invalidCheck222" required>
-
-            <label class="form-check-label" for="invalidCheck222">
-
-              Agree to terms and conditions
-            </label>
-
-          </div> -->
-
-        </div>
-
-        <div>
-
-          <a class='forgot' href='/city-care/update-user'>Forgot Password</a>
-
-          <button type="submit"   class="btn btn-success">Submit</button>
-
-        </div>
-
-      </fieldset>
-
-    </form>
-
-  </div>
-<script src="../../../script.js"></script>
-</body>
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form  #loginForm="ngForm" *ngIf="!isLoading">
+            <mat-form-field>
+                      <input matInput type="email" name="email" ngModel placeholder="E-Mail"
+                                #emailInput="ngModel" required email><!--Adding the required and email validators-->
+                      <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                      <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+                      <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" *ngIf="!isLoading">Login</button>
+  </form>
+</mat-card>
