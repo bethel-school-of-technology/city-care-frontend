@@ -7,6 +7,8 @@ import {
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { User } from '../../shared/models/user.model';
+import { AuthorizationService } from 'src/app/shared/services/authorization.service';
 
 @Component({
   selector: 'app-registration',
@@ -19,10 +21,11 @@ export class RegistrationComponent implements OnInit {
   userForm: FormGroup;
   id: string;
   serviceErrors: any = {};
-
+  user: User = new User();
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
+    private authorizationService: AuthorizationService,
     private router: Router
   ) {}
   
@@ -80,15 +83,22 @@ export class RegistrationComponent implements OnInit {
       type: ['', Validators.required],
       first_name: ['', [Validators.required, Validators.maxLength(50)]],
       last_name: ['', [Validators.required, Validators.maxLength(50)]],
+      contact_method: [' ', [Validators.required, Validators.maxLength(25)]],
       email: [
         '',
         [Validators.required, Validators.email, Validators.maxLength(75)],
       ],
+      address1: [' ', [Validators.required, Validators.maxLength(25)]],
+      address2: [' ', [Validators.required, Validators.maxLength(25)]],
+      city: [' ', [Validators.required, Validators.maxLength(25)]],
+      state: [' ', [Validators.required, Validators.maxLength(25)]],
+      county: [' ', [Validators.required, Validators.maxLength(25)]],
       zipcode: [
         '',
         [Validators.required, Validators.pattern('^[0-9]{5}(?:-[0-9]{4})?$')],
       ],
       phone: ['', [Validators.minLength(10), Validators.maxLength(10)]],
+      mobile_phone: [' ', [Validators.minLength(10), Validators.maxLength(10)]],
       password: [
         '',
         [
@@ -99,7 +109,7 @@ export class RegistrationComponent implements OnInit {
       ],
     });
   }
-  onSubmit() {
+ /*  onSubmit() {
     this.submitted = true;
     if (this.userForm.invalid == true) {
       return;
@@ -116,5 +126,11 @@ export class RegistrationComponent implements OnInit {
       );
       this.registered = true;
     }
+  } */
+  onSubmit() {
+    this.authorizationService.registerUser(this.user).subscribe(result => {
+      console.log(result);
+      this.router.navigate(['/city-care/user-login']);
+    })
   }
 }

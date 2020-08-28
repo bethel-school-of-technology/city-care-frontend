@@ -1,3 +1,7 @@
+:host {
+  display: block;
+  margin-top: 1rem;
+}
 
 body {
   margin-left: 25px;
@@ -15,5 +19,10 @@ body {
 }
 .forgot {
   padding-right: 50px;
-
+}
+.ng-valid[required], .ng-valid.required {
+  border-bottom: 5px solid green;
+}
+.ng-invalid:not(form) {
+  border-bottom: 5px solid red;
 }

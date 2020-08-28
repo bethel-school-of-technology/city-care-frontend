@@ -3,7 +3,6 @@ import { AuthorizationService } from '../../shared/services/authorization.servic
 import { Router } from '@angular/router';
 import { User } from '../../shared/models/user.model';
 import { Subscription } from 'rxjs';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -12,52 +11,42 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  submitted = false;
-  serviceErrors: any = {};
+  /* submitted = false;
 
-  user: User = new User();
-  isLoading = false;
+  serviceErrors: any = {}; */
+
+  public user: User = new User();
+
+  public isLoading = false;
+
   private authStatusSub: Subscription;
-  loginForm: FormGroup;
-
+  public isAuthenticated = false;
+  
+   
   constructor(
-    private formBuilder: FormBuilder,
     private authorizationService: AuthorizationService,
     public router: Router
   ) { }
 
-  invalidEmail() {
-    return (
-      this.submitted &&
-      (this.serviceErrors.email != null ||
-        this.loginForm.controls.email.errors != null)
-    );
-  }
 
-  invalidPassword() {
-    return (
-      this.submitted &&
-      (this.serviceErrors.password != null ||
-        this.loginForm.controls.password.errors != null)
-    );
-  }
-  
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email: [' ', [Validators.required, Validators.email, Validators.maxLength(75)]],
-      password: [' ', [ Validators.required, Validators.minLength(5), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]]
-    });
-    
-  }
-  login() {
-    this.isLoading =true;
-    this.authorizationService.login(this.user).subscribe((res: any) => {
-      console.log(res);
-      localStorage.setItem('access-token', res.token);
-      this.router.navigate(['/city-care/users-profile']);
-    });
+    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
+      authStatus => {
+        this.isLoading = false;
+      });
   }
 
+  login() {
+      this.authorizationService.login(this.user).subscribe((res: any) => {
+console.log(res);
+localStorage.setItem('access-token', res.token);
+this.router.navigate(['/city-care/users-profile']);
+});
+  }
+
+ngOnDestroy() {
+  this.authStatusSub.unsubscribe();
+}
 }

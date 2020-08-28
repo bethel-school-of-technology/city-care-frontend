@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 //Bring in the FormsModule and the ReactiveFormsModule
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//Import ngselectmodule
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,8 +19,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
 import { UpdateRequestComponent } from './components/update-request/update-request.component';
 import { UpdateListingComponent } from './components/update-listing/update-listing.component';
-import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { RequestComponent } from './components/request/request.component';
+import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -38,8 +37,8 @@ import { RequestComponent } from './components/request/request.component';
     TeamBioComponent,
     UpdateRequestComponent,
     UpdateListingComponent,
-    UpdateUserComponent,
     RequestComponent,
+    ProfileEditorComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +46,8 @@ import { RequestComponent } from './components/request/request.component';
     FormsModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
