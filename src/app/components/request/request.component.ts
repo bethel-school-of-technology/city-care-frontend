@@ -6,18 +6,16 @@ import {
   Validators,
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
   styleUrls: ['./request.component.css'],
 })
 export class RequestComponent implements OnInit {
-
-  registered = false;
+  requested = false;
   submitted = false;
   userForm: FormGroup;
-  id: string;
   serviceErrors: any = {};
 
   constructor(
@@ -45,7 +43,7 @@ export class RequestComponent implements OnInit {
     if (this.userForm.invalid == true) {
       return;
     } else {
-      let data: any = Object.assign({ id: this.id }, this.userForm.value);
+      let data: any = Object.assign(this.userForm.value);
       this.http.post('/register', data).subscribe(
         (data: any) => {
           let path = '/city-care/users-profile' + data.user.id;
@@ -55,7 +53,7 @@ export class RequestComponent implements OnInit {
           this.serviceErrors = error.error.error;
         }
       );
-      this.registered = true;
+      this.requested = true;
     }
   }
 }

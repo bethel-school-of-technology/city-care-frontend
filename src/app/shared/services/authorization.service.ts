@@ -8,32 +8,25 @@ import { User } from '../models/user.model';
   providedIn: 'root',
 })
 export class AuthorizationService {
-
   api: string = 'http://localhost:3000/users';
 
   private isLoading = false;
   public users: User[];
-  
-  
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {}  
 
-get isLoggedIn(): boolean {
-  let authToken = localStorage.getItem('access-token');
-  return(authToken !== null) ? true: false;
-}
-//Register a user
-registerUser(){
+  constructor(private http: HttpClient, private router: Router) {}
 
-}
-//Log a user in 
-login(user: any) {
-  return this.http.post(`${this.api}/login`, user);
-}
-
-
+  get isLoggedIn(): boolean {
+    let authToken = localStorage.getItem('access-token');
+    return authToken !== null ? true : false;
+  }
+  //Register a user
+  registerUser(user: User) {
+    return this.http.post(`${this.api}/register`, user);
+  }
+  //Log a user in
+  login(user: any) {
+    return this.http.post(`${this.api}/login`, user);
+  }
 
   //Get a user/organization profile
   getProfile(userId: number): Observable<User> {
@@ -41,8 +34,4 @@ login(user: any) {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<User>(`${this.api}/profile`, { headers: header });
   }
-
-
-
-
 }
