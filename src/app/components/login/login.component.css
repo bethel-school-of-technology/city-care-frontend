@@ -1,19 +1,39 @@
+/* .parent {
+  width: 100vw;
+  height: 50vh;
 
-body {
-  margin-left: 25px;
-}
-.parent {
-  width: 100%;
-  height: 100%;
 
 }
-.form_login {
-  padding-left: 100px;
-  padding-top: 100px;
-  margin: auto;
 
-}
 .forgot {
   padding-right: 50px;
+
+
+}
+
+.form-group {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.needs-validation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 25px;
+
+}
+
+.input-group {
+  padding-left: 44px
+} */
+
+.login-div {
+  max-width: 500px;
+  padding: 35px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
 
 }

@@ -1,4 +1,4 @@
-<body>
+<!-- <body>
   <div class='parent'>
     <form (ngSubmit)="login()" name='login' class='needs-validation' *ngIf="!isLoading">
       <fieldset>
@@ -6,10 +6,10 @@
         <div class="form-group">
           <label for="validationEmail">Email address</label>
           <div class="input-group">
-            <input type="email" class="form-control-input is-valid" id="validationEmail" name="email" aria-describedby="emailHelp" placeholder="someone@email.com"
-            [(ngModel)]='user.email' required>
-            <div class="valid-feedback">
-              Looks like an email
+            <p> <input #email='ngModel' type="email" class="form-control-input" id="validationEmail" name="email"
+                aria-describedby="emailHelp" placeholder="someone@email.com" [(ngModel)]='user.email' required> </p>
+            <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+              Email is required
             </div>
           </div>
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -18,12 +18,13 @@
         <div class="form-group" [ngClass]="{ 'has-error': invalidPassword() }">
           <label for="password">Password</label>
           <div class="input-group">
-            <input type="password" class="form-control-input is-valid" id="password" name="password" placeholder="Password" [(ngModel)]='user.password' required>
+            <p><input type="password" class="form-control-input is-valid" id="password" name="password"
+                placeholder="Password" [(ngModel)]='user.password' required> </p>
             <p *ngIf="invalidPassword()" id="password_error" class="help-block">
               {{this.serviceErrors.password || 'Invalid password.'}}
-            <div class="valid-feedback">
+              <div class="valid-feedback">
                 Looks like a password
-            </div>
+              </div>
           </div>
         </div>
         <div class="form-group">
@@ -41,5 +42,35 @@
       </fieldset>
     </form>
   </div>
-</body>
+</body> -->
 
+<body>
+  <div class="container">
+    <div class="login-div">
+      <div class='row center-align'>
+        <h5>Sign in</h5>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input #email='ngModel' [(ngModel)]='user.email' required id="email_input" type="email" class="validate">
+          <label for="email_input">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input [(ngModel)]='user.password' required id="password_input" type="password" class="validate">
+          <label for="password_input">Password</label>
+          <div><a href='/city-care/update-user'><b>Forgot Password?</b></a></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          We will never share your private information.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6 right-align"><a type="submit" class="waves-effect waves-light btn">Submit</a></div>
+      </div>
+    </div>
+  </div>
+</body>

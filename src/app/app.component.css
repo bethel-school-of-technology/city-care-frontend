@@ -1,7 +1,12 @@
 main {
-          width: auto;
-          height: 100%;
-          margin-bottom: 130px;
-         /*  padding-left: 50px;
+  width: auto;
+  height: 100%;
+  margin-bottom: 130px;
+  /*  padding-left: 50px;
           padding-right: 50px; */
+}
+
+
+body {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
