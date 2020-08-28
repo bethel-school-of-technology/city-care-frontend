@@ -1,71 +1,30 @@
-<<<<<<< HEAD
-<!-- <body>
-  <div class='parent'>
-    <form (ngSubmit)="login()" name='login' class='needs-validation' *ngIf="!isLoading">
-      <fieldset>
-        <legend>Login to your profile</legend>
-        <div class="form-group">
-          <label for="validationEmail">Email address</label>
-          <div class="input-group">
-            <p> <input #email='ngModel' type="email" class="form-control-input" id="validationEmail" name="email"
-                aria-describedby="emailHelp" placeholder="someone@email.com" [(ngModel)]='user.email' required> </p>
-            <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
-              Email is required
-            </div>
-=======
-<body>
-  <div  class='parent'>
-    <form (ngSubmit)="login()" name='login' class='needs-validation'>
-      <fieldset>
-        <legend>Login to your profile</legend>
-        <div class="form-group">
-<!--           <label for="validationEmail">Email address</label>
- -->          <div class="input-group">
-            <input type="email" class="form-control-input is-valid" id="validationEmail" name="email" aria-describedby="emailHelp" placeholder="someone@email.com"
-            [(ngModel)]='user.email' required>
-            <input type="text" class="form-control-input is-valid" id="validationUsername" name="username" aria-describedby="username" placeholder="username"
-            [(ngModel)]='user.username' required>
->>>>>>> 620109499ee4a1a82e277a0bfdcf849c858e246d
-          </div>
-<!--           <small ngIf="!showOption" id="usernameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
- -->        </div>
-
-<<<<<<< HEAD
-        <div class="form-group" [ngClass]="{ 'has-error': invalidPassword() }">
-          <label for="password">Password</label>
-          <div class="input-group">
-            <p><input type="password" class="form-control-input is-valid" id="password" name="password"
-                placeholder="Password" [(ngModel)]='user.password' required> </p>
-            <p *ngIf="invalidPassword()" id="password_error" class="help-block">
-              {{this.serviceErrors.password || 'Invalid password.'}}
-              <div class="valid-feedback">
-                Looks like a password
-              </div>
-=======
-        <div class="form-group">
-<!--           <label for="password">Password</label>
- -->          <div class="input-group">
-            <input type="password" class="form-control-input is-valid" id="password" name="password" placeholder="Password" [(ngModel)]='user.password' required>
-            <p class="help-block"></p>
->>>>>>> 620109499ee4a1a82e277a0bfdcf849c858e246d
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-check pl-0">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck222" required>
-            <label class="form-check-label" for="invalidCheck222">
-              Agree to terms and conditions
-            </label>
-          </div>
-        </div>
-        <div>
-          <a class='forgot' href='/city-care/update-user'>Forgot Password</a>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </fieldset>
-    </form>
+<!-- <div class="form-group" [ngClass]="{ 'has-error': invalidPassword() }">
+  <label for="password">Password</label>
+  <div class="input-group">
+    <p><input type="password" class="form-control-input is-valid" id="password" name="password" placeholder="Password"
+        [(ngModel)]='user.password' required> </p>
+    <p *ngIf="invalidPassword()" id="password_error" class="help-block">
+      {{this.serviceErrors.password || 'Invalid password.'}}
+      <div class="valid-feedback">
+        Looks like a password
+      </div>
   </div>
-</body> -->
+</div>
+<div class="form-group">
+  <div class="form-check pl-0">
+    <input class="form-check-input" type="checkbox" value="" id="invalidCheck222" required>
+    <label class="form-check-label" for="invalidCheck222">
+      Agree to terms and conditions
+    </label>
+  </div>
+</div>
+<div>
+  <a class='forgot' href='/city-care/update-user'>Forgot Password</a>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</fieldset>
+</form>
+</div>  -->
 
 <body>
   <div class="container">
