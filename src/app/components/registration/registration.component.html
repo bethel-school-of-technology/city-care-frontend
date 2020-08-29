@@ -6,11 +6,12 @@
             <p>Type of User:</p>
             <label>
                 <input type="radio" value="1" id="organizationTrue" name="isOrg" (click)="setIsOrg(true)"
-                    [checked]="true" />
+                    [checked]="true" [(ngModel)]="user.isOrg" />
                 <span>Organization</span>
             </label>
             <label>
-                <input type="radio" value="0" id="organizationFalse" name="isOrg" (click)="setIsOrg(false)" />
+                <input type="radio" value="0" id="organizationFalse" name="isOrg" (click)="setIsOrg(false)"
+                    [(ngModel)]="user.isOrg" />
                 <span>Individual</span>
             </label>
         </div>
@@ -18,55 +19,63 @@
     <div *ngIf="isOrg" class="orgFields">
         <div>
             <label for="org_name">Organization Name:</label>
-            <input type="text" id="org_name" name="org_name" placeholder="Enter organization name" />
+            <input type="text" id="org_name" name="org_name" placeholder="Enter organization name"
+                [(ngModel)]="user.org_name" />
         </div>
         <div>
             <label for="contact_name">Oranization Contact Name:</label>
-            <input type="text" id="contact_name" name="contact_name" placeholder="Enter organization contact name" />
+            <input type="text" id="contact_name" name="contact_name" placeholder="Enter organization contact name"
+                [(ngModel)]="user.contact_name" />
         </div>
     </div>
     <div id="contactInfoContainer">
         <div>
             <label for="first_name">User First Name:</label>
-            <input type="text" id="first_name" name="first_name" placeholder="Enter first name" />
+            <input type="text" id="first_name" name="first_name" placeholder="Enter first name"
+                [(ngModel)]="first_name" />
         </div>
         <div>
             <label for="last_name">User Last Name:</label>
-            <input type="text" id="last_name" name="last_name" placeholder="Enter last name" />
+            <input type="text" id="last_name" name="last_name" placeholder="Enter last name" [(ngModel)]="last_name" />
         </div>
         <div>
             <label for="email">User Email:</label>
-            <input type="email" id="email" name="email" placeholder="Enter email" aria-describedby="emailHelp" />
+            <input type="email" id="email" name="email" placeholder="Enter email" aria-describedby="emailHelp"
+                [(ngModel)]="email" />
             <small id="emailHelp" class="text-muted">We will never share your email with anyone.</small>
         </div>
         <div>
             <label for="phone">Home Phone:</label>
-            <input type="tel" id="phone" name="phone" placeholder="(xxx)xxx-xxxx" />
+            <input type="tel" id="phone" name="phone" placeholder="(xxx)xxx-xxxx" [(ngModel)]="phone" />
         </div>
         <div>
             <label for="mobile_phone">Mobile Phone:</label>
-            <input type="tel" id="mobile_phone" name="mobile_phone" placeholder="(xxx)xxx-xxxx" />
+            <input type="tel" id="mobile_phone" name="mobile_phone" placeholder="(xxx)xxx-xxxx"
+                [(ngModel)]="mobile_phone" />
         </div>
     </div>
     <div *ngIf="isOrg" class="orgFields">
         <div>
             <label for="fax">Organization Fax:</label>
-            <input type="tel" id="fax" name="fax" placeholder="(xxx)xxx-xxxx" />
+            <input type="tel" id="fax" name="fax" placeholder="(xxx)xxx-xxxx" [(ngModel)]="fax" />
         </div>
     </div>
     <div id="contactMethodContainer">
         <div>
             <p>Preferred Contact Method:</p>
             <label>
-                <input type="radio" value="email" id="email_method" name="contact_method" />
+                <input type="radio" value="email" id="email_method" name="contact_method"
+                    [(ngModel)]="contact_method" />
                 <span>E-mail</span>
             </label>
             <label>
-                <input type="radio" value="phone" id="phone_method" name="contact_method" />
+                <input type="radio" value="phone" id="phone_method" name="contact_method"
+                    [(ngModel)]="contact_method" />
                 <span>Phone</span>
             </label>
             <label>
-                <input type="radio" value="mobile_phone" id="mobile_phone_method" name="contact_method" />
+                <input type="radio" value="mobile_phone" id="mobile_phone_method" name="contact_method"
+                    [(ngModel)]="contact_method" />
                 <span>Mobile Phone</span>
             </label>
         </div>
@@ -75,37 +84,37 @@
     <div id="addressContainer">
         <div>
             <label for="address1">Address 1:</label>
-            <input type="text" id="address1" name="address1" placeholder="Street address 1" />
+            <input type="text" id="address1" name="address1" placeholder="Street address 1" [(ngModel)]="address1" />
         </div>
         <div>
             <label for="address2">Address 2:</label>
-            <input type="text" id="address2" name="address2" placeholder="Street address 2" />
+            <input type="text" id="address2" name="address2" placeholder="Street address 2" [(ngModel)]="address2" />
         </div>
         <div>
             <label for="city">City:</label>
-            <input type="text" id="city" name="city" placeholder="Enter City" />
+            <input type="text" id="city" name="city" placeholder="Enter City" [(ngModel)]="city" />
         </div>
         <div>
             <label for="state">State:</label>
-            <input type="text" id="state" name="state" placeholder="Enter State" />
+            <input type="text" id="state" name="state" placeholder="Enter State" [(ngModel)]="state" />
         </div>
         <div>
             <label for="county">County:</label>
-            <input type="text" id="county" name="county" placeholder="Enter County" />
+            <input type="text" id="county" name="county" placeholder="Enter County" [(ngModel)]="county" />
         </div>
         <div>
             <label for="zipcode">Zip Code:</label>
-            <input type="text" id="zipcode" name="zipcode" placeholder="Enter zip code" />
+            <input type="text" id="zipcode" name="zipcode" placeholder="Enter zip code" [(ngModel)]="zipcode" />
         </div>
     </div>
     <div id="authenticationContainer">
         <div>
             <label for="username">User Name:</label>
-            <input type="text" id="username" name="username" placeholder="Enter a user name" />
+            <input type="text" id="username" name="username" placeholder="Enter a user name" [(ngModel)]="username" />
         </div>
         <div>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="*****" />
+            <input type="password" id="password" name="password" placeholder="*****" [(ngModel)]="password" />
         </div>
     </div>
     <div><button type="submit" class="btn btn-primary">Register</button></div>
