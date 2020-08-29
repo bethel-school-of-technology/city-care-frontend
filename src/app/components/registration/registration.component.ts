@@ -11,7 +11,6 @@ import { User } from '../../shared/models/user.model';
 export class RegistrationComponent implements OnInit {
   user: User = new User();
   isOrg: boolean = true;
-  // private _prevSelected: any;
 
   constructor(
     private authService: AuthorizationService,
@@ -23,7 +22,7 @@ export class RegistrationComponent implements OnInit {
   registerUser() {
     this.authService.registerUser(this.user).subscribe((result) => {
       console.log(result);
-      this.router.navigate(['/users/user-login']);
+      this.router.navigate(['/city-care/user-login']);
     });
   }
 
