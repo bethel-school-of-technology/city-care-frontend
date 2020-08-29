@@ -28,13 +28,7 @@ export class RequestComponent implements OnInit, OnDestroy {
     private router: Router
   ) {}
 
-  invalidDescription() {
-    return (
-      this.submitted &&
-      (this.serviceErrors.description != null ||
-        this.userForm.controls.description.errors != null)
-    );
-  }
+  constructor(private requestService: RequestService, private router: Router) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -50,23 +44,8 @@ export class RequestComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSubmit() {
-    this.submitted = true;
-    if (this.userForm.invalid == true) {
-      return;
-    } else {
-      let data: any = Object.assign(this.userForm.value);
-      this.http.post('/register', data).subscribe(
-        (data: any) => {
-          let path = '/city-care/users-profile' + data.user.id;
-          this.router.navigate(['path']);
-        },
-        (error) => {
-          this.serviceErrors = error.error.error;
-        }
-      );
-      this.requested = true;
-    }
+  createRequest() {
+    this.requestService.createRequest(this.request);
   }
 
   ngOnDestroy() {

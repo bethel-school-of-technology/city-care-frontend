@@ -1,7 +1,12 @@
 <h2>Enter your request details below</h2>
-<div class="form-container">
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" name="postRequest">
-        <div> <label for="description">
+<form (ngSubmit)="createRequest()" name="createRequest">
+    <div id="listingInfoContainer">
+        <div>
+            <label for="name">Enter a name for the request:</label>
+            <input type="text" id="name" name="name" placeholder="Request name" [(ngModel)]="request.name" />
+        </div>
+        <div>
+            <label for="description">
                 <p>Please describe the goods and/or services you have need for. Consider including the following
                     information:</p>
                 <ul>
@@ -9,11 +14,15 @@
                     <li>Quantity</li>
                     <li>Urgency of the need</li>
                 </ul>
-            </label> <input type="text" formControlName="description" class="form-control" id="description"
-                name="description" />
-            <p *ngIf="invalidDescription()" id="description_error" class="help-block">
-                {{this.serviceErrors.description || 'Request description is required.'}}</p>
+            </label> <input type="text" id="description" name="description" [(ngModel)]="request.description" />
         </div>
-        <div> <button type="submit" class="btn btn-primary">Submit Request</button> </div>
-    </form>
-</div>
+        <div>
+            <label for="needByDate">Need By Date:</label>
+            <input type="text" id="needByDate" name="needByDate" placeholder="MM/DD/YYYY"
+                [(ngModel)]="request.needByDate" />
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Submit Request</button>
+    </div>
+</form>
