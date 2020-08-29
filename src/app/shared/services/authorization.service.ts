@@ -50,14 +50,12 @@ export class AuthorizationService {
     return this.authStatusListener.asObservable();
   }
 
-  /* get isLoggedIn(): boolean { //This was for the authguard route protection 
-  let authToken = localStorage.getItem('access-token');
-  return(authToken !== null) ? true: false;
-} */
-
   registerUser(user: any) {
     //Register a user
-    return this.http.post(`${this.api}/register`, user);
+    return this.http.post(`${this.api}/register`, user).subscribe((result) => {
+      console.log(result);
+      this.router.navigate(['/city-care/user-login']);
+    });
   }
 
   login(user: any) {
@@ -118,21 +116,6 @@ export class AuthorizationService {
     }
   }
 
-  //Log a user out
-
-  get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('access-token');
-    return authToken !== null ? true : false;
-  }
-  //Register a user
-  registerUser(user: User) {
-    return this.http.post(`${this.api}/register`, user);
-  }
-  //Log a user in
-  login(user: any) {
-    return this.http.post(`${this.api}/login`, user);
-  }
-
   //Get a user/organization profile
   getProfile(userId: number): Observable<User> {
     let token = localStorage.getItem('access-token');
@@ -153,10 +136,7 @@ export class AuthorizationService {
       headers: header,
     });
   }
-  get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('access-token');
-    return authToken !== null ? true : false;
-  }
+
   //Logout method should remove everything from local storage
   logout() {}
 

@@ -20,10 +20,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {}
 
   registerUser() {
-    this.authService.registerUser(this.user).subscribe((result) => {
-      console.log(result);
-      this.router.navigate(['/city-care/user-login']);
-    });
+    this.authService.registerUser(this.user);
   }
 
   setIsOrg(e: boolean) {
