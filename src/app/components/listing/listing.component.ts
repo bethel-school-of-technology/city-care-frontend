@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ListingService } from '../../shared/services/listing.service';
 import { Listing } from '../../shared/models/listing.model';
 
 @Component({
@@ -8,7 +10,13 @@ import { Listing } from '../../shared/models/listing.model';
 })
 export class ListingComponent implements OnInit {
 
-  constructor() { }
+listing: Listing;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private listingService: ListingService
+  ) { }
 
   ngOnInit(): void {
   }
