@@ -1,19 +1,28 @@
-
-body {
-  margin-left: 25px;
-}
-.parent {
+/* mat-form-field {
   width: 100%;
-  height: 100%;
-
 }
-.form_login {
-  padding-left: 100px;
-  padding-top: 100px;
+
+mat-spinner {
   margin: auto;
-
 }
+
 .forgot {
   padding-right: 50px;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  border-bottom: 5px solid green;
+}
+
+.ng-invalid:not(form) {
+  border-bottom: 5px solid red;
+} */
+
+.login-div {
+  max-width: 500px;
+  padding: 35px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 
 }

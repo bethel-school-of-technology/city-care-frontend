@@ -1,7 +1,6 @@
+
 main {
-          width: auto;
-          height: 100%;
+          width: 90%;
+          margin: .5rem auto;
           margin-bottom: 130px;
-         /*  padding-left: 50px;
-          padding-right: 50px; */
 }

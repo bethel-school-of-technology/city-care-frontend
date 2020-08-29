@@ -1,42 +1,42 @@
-<body>
-          <div class="card" *ngIf="user">
-                    <h2>User Profile:</h2>
-                    <div class="details"><span>Id: {{user.id}}. </span>{{user.first_name}} {{user.last_name}}</div>
-                    <div class="details"><span>Username: {{user.username}} Organization: {{user.org_name}}</span></div>
-                    <div class="details"><span>Email: {{user.email}}</span></div>
-                    <div class="details"><span>Phone: {{user.phone}}</span> </div>
-                    <div class="details"><span>Mobile: {{user.mobile_phone}}</span></div>
-                    <div class="details"><span>Address 1: {{user.address1}}</span></div>
-                    <div class="details"><span>Address 2 {{user.address2}}</span></div>
-                    <div class="details"><span>City: {{user.city}} State: {{user.state}} </span></div>
-                    <div class="details"><span>County: {{user.county}}</span>&nbsp; {{user.zip}}</div>
-                    <br>
-                    <button class="back" routerLink="/city-care/home">Back</button>&nbsp;
-          </div>
-          <div class="card col">
-                    <h1 class="card-title">My Requests</h1>
-          <div class="card-body requests" *ngFor="let request of requests">
-                    <ul>
-                              <li>
-                                        <a routerLink="/city-care/update-request/{{request.id}}">
-                                        <span class="badge">{{request.id}} {{request.description}}</span>
-                                        </a>&nbsp;
-                                        <button class="btn btn-warn delete" (click)="onClickDeleteRequest(request)">X</button>
-                              </li>
-                    </ul>
-          </div>
-          </div>
-          <div class="card col">
-                    <h1 class="card-title">My Listings</h1>
-          <div class="card-body listings" *ngFor="let listing of listings">
-                    <ul>
-                              <li>
-                                        <a routerLink="/city-care/update-listing/{{listing.id}}">
-                                        <span class="badge">{{listing.id}} {{listing.description}}</span>
-                                        </a>&nbsp;
-                                        <button class="btn btn-warn delete" (click)="onClickDeleteListing(listing)">X</button>
-                              </li>
-                    </ul>
-          </div>
-          </div>
-</body>
+<div class='container-fluid'>
+  <div class="card" *ngIf="user">
+    <div class="display-4"> {{user.first_name}} {{user.last_name}}</div>
+    <div class="lead"><span>Username: {{user.username}} Organization: {{user.org_name}}</span></div>
+    <div class="my-4"><span>Email: {{user.email}}</span></div>
+    <div class="my-4"><span>Phone: {{user.phone}}</span> </div>
+    <div class="my-4"><span>Mobile: {{user.mobile_phone}}</span></div>
+    <div class="my-4"><span>Address 1: {{user.address1}}</span></div>
+    <div class="my-4"><span>Address 2: {{user.address2}}</span></div>
+    <div class="my-4"><span>City: {{user.city}} State: {{user.state}} </span></div>
+    <div class="my-4"><span>County: {{user.county}}</span>&nbsp; {{user.zip}}</div>
+    <br>
+    <button type="button" class="btn btn-primary" routerLink="/city-care/home">Back</button>&nbsp;
+    <button type="button" class="btn btn-warning" routerLink="/city-care/update-profile/{{user.id}}">Update</button>
+  </div>
+</div>
+<div class="card col">
+  <h1 class="card-title">My Requests</h1>
+  <div class="card-body requests" *ngFor="let request of requests">
+    <ul>
+      <li>
+        <a routerLink="/city-care/update-request/{{request.id}}">
+          <span class="badge">{{request.id}} {{request.description}}</span>
+        </a>&nbsp;
+        <button class="btn btn-warn delete" (click)="onClickDeleteRequest(request)">X</button>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="card col">
+  <h1 class="card-title">My Listings</h1>
+  <div class="card-body listings" *ngFor="let listing of listings">
+    <ul>
+      <li>
+        <a routerLink="/city-care/update-listing/{{listing.id}}">
+          <span class="badge">{{listing.id}} {{listing.description}}</span>
+        </a>&nbsp;
+        <button class="btn btn-warn delete" (click)="onClickDeleteListing(listing)">X</button>
+      </li>
+    </ul>
+  </div>
+</div>

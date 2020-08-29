@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthorizationService } from 'src/app/shared/services/authorization.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public isLoading = false;
+  public isAuthenticated = false;
+  private authStatusSub: Subscription;
+  private authStatusListenerSub: Subscription;
+  public userId: string;
+  public isOrg = false; //Determine the user status, organization or individual
 
-  ngOnInit(): void {
+  constructor(private authorizationService: AuthorizationService) { }
+
+  ngOnInit(){
+    this.isLoading = true;
+    this.isAuthenticated = this.authorizationService.getIsAuth();
+    this.authStatusListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
+      isAuthenticated => {
+        this.isAuthenticated = isAuthenticated
+      });
+      this.isLoading = false;
   }
-
+  
 } 

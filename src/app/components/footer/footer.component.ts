@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AuthorizationService } from '../../shared/services/authorization.service';
+import { ActivatedRoute } from '@angular/router';
+import { User } from '../../shared/models/user.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  public user: User;
+  public isLoading = false;
+  public isAuthenticated = false;
+  private authListenerSub: Subscription; //listen for authentication
 
-  ngOnInit(): void {
+  constructor(
+    private route: ActivatedRoute,
+    private authorizationService: AuthorizationService
+  ) { }
+
+  ngOnInit() {
+    this.isAuthenticated = this.authorizationService.getIsAuth();
+    this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
+      isAuthenticated => {
+        this.isAuthenticated = isAuthenticated
+      });
   }
+  ngOnDestroy() {
+    this.authListenerSub.unsubscribe();
+    }
 
 }

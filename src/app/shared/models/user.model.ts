@@ -17,4 +17,5 @@ export class User {
     county: string;
     zip: number;
     password: string;
+    isOrg: boolean;
 }
