@@ -1,59 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormControl,
-  Validators,
-} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { RequestService } from '../../shared/services/request.service';
 import { Router } from '@angular/router';
+import { Request } from '../../shared/models/request.model';
+
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
   styleUrls: ['./request.component.css'],
 })
 export class RequestComponent implements OnInit {
-  requested = false;
-  submitted = false;
-  userForm: FormGroup;
-  serviceErrors: any = {};
+  request: Request = new Request();
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private http: HttpClient,
-    private router: Router
-  ) {}
+  constructor(private requestService: RequestService, private router: Router) {}
 
-  invalidDescription() {
-    return (
-      this.submitted &&
-      (this.serviceErrors.description != null ||
-        this.userForm.controls.description.errors != null)
-    );
-  }
+  ngOnInit() {}
 
-  ngOnInit() {
-    this.userForm = this.formBuilder.group({
-      description: ['', Validators.required],
-    });
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    if (this.userForm.invalid == true) {
-      return;
-    } else {
-      let data: any = Object.assign(this.userForm.value);
-      this.http.post('/register', data).subscribe(
-        (data: any) => {
-          let path = '/city-care/users-profile' + data.user.id;
-          this.router.navigate(['path']);
-        },
-        (error) => {
-          this.serviceErrors = error.error.error;
-        }
-      );
-      this.requested = true;
-    }
+  createRequest() {
+    this.requestService.createRequest(this.request);
   }
 }

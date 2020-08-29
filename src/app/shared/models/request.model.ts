@@ -1,7 +1,10 @@
-export interface Request {
-          id: number;
-          description: string;
-          category: string;
-          sub_category: string;
-          user_id: number;
+export class Request {
+  id: number;
+  name: string;
+  description: string;
+  needByDate: Date;
+  user_id: number;
+  delete: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
