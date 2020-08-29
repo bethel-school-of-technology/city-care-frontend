@@ -8,7 +8,8 @@ import { User } from '../models/user.model';
   providedIn: 'root',
 })
 export class AuthorizationService {
-  api: string = 'http://localhost:3000/users';
+
+  api: string = 'http://localhost:3000/users';//Define the backend route
 
   public users: User[]; //Declare the users as an empty array
   private isAuthenticated = false; //Set the authentication status as false
@@ -39,25 +40,26 @@ export class AuthorizationService {
     //Get the individual status as organization or not
     return this.isOrg;
   }
-
+  
   getIsAdmin() {
     //Get the individual status as admin or not
     return this.isAdmin;
   }
 
   getAuthStatusListener() {
-    //Check the users status
+    //check the users status & return it as an observable
     return this.authStatusListener.asObservable();
   }
+  //Set the boolean value of isOrg
+  setIsOrg(e: boolean) {
+    return this.isOrg = e;
+   }
 
-  /* get isLoggedIn(): boolean { //This was for the authguard route protection 
-  let authToken = localStorage.getItem('access-token');
-  return(authToken !== null) ? true: false;
-} */
-
-  registerUser(user: any) {
-    //Register a user
-    return this.http.post(`${this.api}/register`, user);
+  registerUser(user: User) {
+    return this.http.post(`${this.api}/register`, user).subscribe((result) => {
+      console.log(result);
+      this.router.navigate(['/city-care/user-login']);
+    });
   }
 
   login(user: any) {
@@ -118,21 +120,6 @@ export class AuthorizationService {
     }
   }
 
-  //Log a user out
-
-  get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('access-token');
-    return authToken !== null ? true : false;
-  }
-  //Register a user
-  registerUser(user: User) {
-    return this.http.post(`${this.api}/register`, user);
-  }
-  //Log a user in
-  login(user: any) {
-    return this.http.post(`${this.api}/login`, user);
-  }
-
   //Get a user/organization profile
   getProfile(userId: number): Observable<User> {
     let token = localStorage.getItem('access-token');
@@ -153,29 +140,19 @@ export class AuthorizationService {
       headers: header,
     });
   }
-  get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('access-token');
-    return authToken !== null ? true : false;
-  }
+  
   //Logout method should remove everything from local storage
-  logout() {}
-
-  // //Get the user for the update profile page
-  // getUser(userId: any): Observable <User> {
-  //   let token = localStorage.getItem('access-token');
-  //   let header = new HttpHeaders().set('jwt', token);
-  //   return this.http.get<User>(`${this.api}/${userId}`, {headers: header});
-  // }
-
-  //Update the users profile
-  // updateUser(userId: number, user: any): Observable <User> {
-  //   let token = localStorage.getItem('access-token');
-  //   let header = new HttpHeaders().set('jwt', token);
-  //   return this.http.put<User>(`${this.api}/${userId}`, user, {headers: header})
-  // }
+logout() {
+  this.token = null;
+  this.isAuthenticated = false;
+  this.authStatusListener.next(false);
+  clearTimeout(this.tokenTimer); //Clears the token timer out when the logout method is called. 
+  this.clearAuthData();//clear the local storage
+  this.userId = null; //Ensures the user Id is reset correctly after a user logs out. 
+  this.router.navigate(['/city-care/user-login']);
+}
 
   //Create the authorization timer
-
   private setAuthTimer(duration: number) {
     console.log('Setting timer: ' + duration);
     this.tokenTimer = setTimeout(() => {

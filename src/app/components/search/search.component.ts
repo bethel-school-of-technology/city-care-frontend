@@ -11,9 +11,10 @@ import { AuthorizationService } from 'src/app/shared/services/authorization.serv
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
 
   public isAuthenticated = false;
+  public isLoading = false;
   public listings: string;
   public requests: string;
   public listing: Listing[] = [];
@@ -54,6 +55,7 @@ export class SearchComponent implements OnInit {
     private searchService: SearchService
   ) { }
   ngOnInit() {
+    this.isLoading = false;
     this.isAuthenticated = this.authorizationService.getIsAuth();
     this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
@@ -65,6 +67,7 @@ export class SearchComponent implements OnInit {
     this.searchService.getRequests().subscribe(requestData => {
       console.log(requestData);
     });
+    this.isLoading = true;
   }
   getRequests() {
     this.searchService.getRequests().subscribe((requestData: any) => {
@@ -78,5 +81,7 @@ export class SearchComponent implements OnInit {
       this.listingData = listingData;
     })
   }
- 
+ ngOnDestroy() {
+   this.authListenerSub.unsubscribe();
+ }
 }

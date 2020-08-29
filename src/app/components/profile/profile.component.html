@@ -1,42 +1,59 @@
+<div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+
+  <span class="sr-only">Loading...</span>
+
+</div>
+
+
 <div class='container-fluid'>
   <div class="card" *ngIf="user">
     <div class="display-4"> {{user.first_name}} {{user.last_name}}</div>
-    <div class="lead"><span>Username: {{user.username}} Organization: {{user.org_name}}</span></div>
-    <div class="my-4"><span>Email: {{user.email}}</span></div>
+    <div class="lead"><span>Username: {{user.username}} </span></div>
+    <div class="my-4"><span>Email: {{user.email}}  Contact: {{user.contact_method}}</span></div>
     <div class="my-4"><span>Phone: {{user.phone}}</span> </div>
     <div class="my-4"><span>Mobile: {{user.mobile_phone}}</span></div>
     <div class="my-4"><span>Address 1: {{user.address1}}</span></div>
-    <div class="my-4"><span>Address 2: {{user.address2}}</span></div>
+    <div *ngIf="isOrg" class="my-4"><span>Address 2: {{user.address2}}</span></div>
     <div class="my-4"><span>City: {{user.city}} State: {{user.state}} </span></div>
+    <div *ngIf="isOrg" class="my-4"><span>Org: {{user.org_name}} </span>Contact: {{ user.contact_name}}</div>
+    <div *ngIf="isOrg" class="my-4"><span>Fax: {{user.fax}}</span></div>
     <div class="my-4"><span>County: {{user.county}}</span>&nbsp; {{user.zip}}</div>
     <br>
     <button type="button" class="btn btn-primary" routerLink="/city-care/home">Back</button>&nbsp;
   <button type="button" class="btn btn-warning" routerLink="/city-care/update-profile/{{user.id}}">Update</button>
   </div>
 </div>
-<div class="card col">
-  <h1 class="card-title">My Requests</h1>
-  <div class="card-body requests" *ngFor="let request of requests">
-    <ul>
-      <li>
-        <a routerLink="/city-care/update-request/{{request.id}}">
-          <span class="badge">{{request.id}} {{request.description}}</span>
-        </a>&nbsp;
-        <button class="btn btn-warn delete" (click)="onClickDeleteRequest(request)">X</button>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="card col">
-  <h1 class="card-title">My Listings</h1>
-  <div class="card-body listings" *ngFor="let listing of listings">
-    <ul>
-      <li>
-        <a routerLink="/city-care/update-listing/{{listing.id}}">
-          <span class="badge">{{listing.id}} {{listing.description}}</span>
-        </a>&nbsp;
-        <button class="btn btn-warn delete" (click)="onClickDeleteListing(listing)">X</button>
-      </li>
-    </ul>
-  </div>
-</div>
+
+<mat-accordion multi="true" *ngIf="listings.length && !isOrg> 0 && !isLoading">
+                         <mat-expansion-panel *ngFor="let listing of listings">
+                                                  <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                      {{ listing.description }}
+                                                    </mat-panel-title>
+                                                  </mat-expansion-panel-header>
+                                                  <mat-panel-description>
+                                                    <p>{{ listing.availability }}</p>
+                                                  </mat-panel-description>
+                                                  <mat-action-row>
+                                                                           <a mat-button
+                                                                                                    color="primary" [routerLink]="['/edit', listing.id]">EDIT</a>
+                                                                           <button mat-button color="warn"
+                                                                                                    (click)="onClickDeleteListing(listing.id)">DELETE</button>
+                                                  </mat-action-row>
+                         </mat-expansion-panel>
+</mat-accordion>
+<hr>
+<mat-accordion multi="true" *ngIf="requests.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let request of requests">
+                           <mat-expansion-panel-header>
+                                                    {{ request.name }}
+                           </mat-expansion-panel-header>
+                           <p>{{ request.details }}</p>
+                           <mat-action-row>
+                                                    <a mat-button
+                                                                             color="primary" [routerLink]="['/edit', request.id]">EDIT</a>
+                                                    <button mat-button color="warn"
+                                                                             (click)="onClickDeleteRequest(request.id)">DELETE</button>
+                           </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>

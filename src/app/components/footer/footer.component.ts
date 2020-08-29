@@ -22,11 +22,13 @@ export class FooterComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.isAuthenticated = this.authorizationService.getIsAuth();
     this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
         this.isAuthenticated = isAuthenticated
       });
+      this.isLoading = false;
   }
   ngOnDestroy() {
     this.authListenerSub.unsubscribe();

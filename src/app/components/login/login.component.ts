@@ -18,11 +18,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   serviceErrors: any = {}; */
 
   public user: User = new User();
-
-  public isLoading = false;
-
-  private authStatusSub: Subscription;
+   isLoading = false;
   public isAuthenticated = false;
+  private authStatusSub: Subscription;
   
    
   constructor(
@@ -30,12 +28,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     public router: Router
   ) { }
 
-
-  ngOnInit() {
-    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
-      authStatus => {
-        this.isLoading = false;
-      });
+    ngOnInit() {
+      this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
+        authStatus => {
+          this.isLoading = false;
+        }
+      )
   }
 
   login() {
@@ -46,7 +44,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 onLogout() {
   this.authorizationService.logout();
 }
-
 ngOnDestroy() {
   this.authStatusSub.unsubscribe();
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthorizationService } from 'src/app/shared/services/authorization.service';
 import { Subscription } from 'rxjs';
 
@@ -8,11 +8,10 @@ import { Subscription } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   public isLoading = false;
   public isAuthenticated = false;
-  private authStatusSub: Subscription;
   private authStatusListenerSub: Subscription;
   public userId: string;
   public isOrg = false; //Determine the user status, organization or individual
@@ -28,5 +27,7 @@ export class HomeComponent implements OnInit {
       });
       this.isLoading = false;
   }
-  
+  ngOnDestroy() {
+    this.authStatusListenerSub.unsubscribe();
+  }
 } 

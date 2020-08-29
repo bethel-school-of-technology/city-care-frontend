@@ -4,3 +4,7 @@
 .ng-invalid:not(form) {
           border-bottom: 5px solid red;
 }
+:host {
+     display: block;
+     margin-top: 1rem;
+}
