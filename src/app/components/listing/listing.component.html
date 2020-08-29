@@ -1,1 +1,28 @@
-<p>listing works!</p>
+<h2>Listing</h2>
+
+<form (ngSubmit)="listing()" new="listing">
+    <div>
+        <label>
+            <input type="text" id="quantity" name="quantity" placeholder="Quantity of Items"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="text" id="availability" name="availability" placeholder="Days/Times services/goods are available"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="text" id="description" name="description" placeholder="Description of goods/services"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="text" id="requirements" name="requirements" placeholder="List an qualifying requirements to receive goods/services"/>
+        </label>
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>

@@ -45,7 +45,7 @@ import { UpdateListingComponent } from './components/update-listing/update-listi
 import { RequestComponent } from './components/request/request.component';
 import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ListingComponent } from './listing/listing.component';
+import { ListingComponent } from './components/listing/listing.component';
 
 
 

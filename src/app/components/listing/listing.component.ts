@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Listing } from '../../shared/models/listing.model';
 
 @Component({
   selector: 'app-listing',
