@@ -12,7 +12,7 @@ import { SearchComponent } from './components/search/search.component';
 import { UpdateRequestComponent } from './components/update-request/update-request.component';
 import { UpdateListingComponent } from './components/update-listing/update-listing.component';
 import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
-//import { ListingComponent } from './components/listing/listing.component';
+import { ListingComponent } from './components/listing/listing.component';
 
 //Protected all the routes with can activate route protection
 
@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'city-care/update-request/:id', component: UpdateRequestComponent  },
   { path: 'city-care/update-listing/:id', component: UpdateListingComponent  },
   { path: 'city-care/update-profile/:id', component: ProfileEditorComponent  },
-  //{ path: 'city-care/listing/', component: ListingComponent },
+  { path: 'city-care/listing', component: ListingComponent },
   { path: '* *', component: HomeComponent }, //If no matching route is found, go back to the home page
 ];
 

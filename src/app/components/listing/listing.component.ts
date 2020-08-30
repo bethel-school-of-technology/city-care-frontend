@@ -10,15 +10,24 @@ import { Listing } from '../../shared/models/listing.model';
 })
 export class ListingComponent implements OnInit {
 
-listing: Listing;
+public listing:Listing = new Listing();
 
   constructor(
-    private route: ActivatedRoute,
+    //private route: ActivatedRoute,
     private router: Router,
     private listingService: ListingService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getUserListing();
+  }
+
+  getUserListing() {
+    //let listingId = +this.route.snapshot.paramMap.get('id');
+    this.listingService.getUserListing(this.listing).subscribe(result => {
+      console.log(result);
+      this.router.navigate(['/city-care/listing']);
+    })
   }
 
 }

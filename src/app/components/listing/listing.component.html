@@ -1,6 +1,6 @@
 <h2>Listing</h2>
 
-<form (ngSubmit)="listing()" new="listing">
+<form (ngSubmit)="onListing()" name="addListing">
     <div>
         <label>
             <input type="text" id="quantity" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity"/>
