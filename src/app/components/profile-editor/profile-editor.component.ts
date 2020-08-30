@@ -10,12 +10,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './profile-editor.component.html',
   styleUrls: ['./profile-editor.component.css']
 })
-export class ProfileEditorComponent implements OnInit  {
+export class ProfileEditorComponent implements OnInit, OnDestroy  {
 
   public user: User;
   public isLoading = false;
   public isAuthenticated = false;
-  private authStatusSub: Subscription;
+  private authListenerSub: Subscription;
 
   constructor(
     private router: Router,
@@ -25,13 +25,22 @@ export class ProfileEditorComponent implements OnInit  {
 
   ngOnInit() {
     this.getUser();
+    this.isLoading = true;
+    this.isAuthenticated = this.authorizationService.getIsAuth();
+    this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
+      isAuthenticated => {
+        this.isAuthenticated = isAuthenticated
+      });
+      this.isLoading = false;
   }
+
   getUser() {
     const userId = +this.route.snapshot.paramMap.get('id');
     this.authorizationService.getUser(userId).subscribe((user: any) => {
       this.user = user;
-    })
+    });
   }
+
   updateUser() {
     const userId = +this.route.snapshot.paramMap.get('id');
     this.authorizationService.updateUser(userId, this.user).subscribe(result => {
@@ -39,4 +48,7 @@ export class ProfileEditorComponent implements OnInit  {
       this.router.navigate(['/city-care/users-profile']);
     })
   }
+ngOnDestroy() {
+  this.authListenerSub.unsubscribe();
+}
 }

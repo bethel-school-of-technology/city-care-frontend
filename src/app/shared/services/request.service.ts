@@ -4,37 +4,44 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Request } from '../models/request.model';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RequestService {
-
-  api: string = "http://localhost:3000/requests";
+  api: string = 'http://localhost:3000/requests';
 
   public requests: Request[];
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) { }
+  constructor(private http: HttpClient, private router: Router) {}
+
+  createRequest(request: any) {
+    //Create a new request
+    return this.http.post(`${this.api}/create`, request).subscribe((result) => {
+      console.log(result);
+      this.router.navigate(['/city-care/users-profile']);
+    });
+  }
 
   //Get all of a users requests for goods or services
-  getUserRequests(): Observable <Request[]> {
+  getUserRequests(): Observable<Request[]> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<Request[]>(`${this.api}/requests`, { headers: header});
+    return this.http.get<Request[]>(`${this.api}/requests`, {
+      headers: header,
+    });
   }
   //Get a single request made by an individual
-  getUserRequest(requestId): Observable <Request> {
+  getUserRequest(requestId): Observable<Request> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<Request>(`${this.api}/${requestId}`, {headers: header});
+    return this.http.get<Request>(`${this.api}/${requestId}`, {
+      headers: header,
+    });
   }
   //Delete a request from the UI and from the database
-  deleteRequest(id: number): Observable <Request> {
+  deleteRequest(id: number): Observable<Request> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.delete<Request>(`${this.api}/${id}`, {headers: header});
+    return this.http.delete<Request>(`${this.api}/${id}`, { headers: header });
   }
 }
