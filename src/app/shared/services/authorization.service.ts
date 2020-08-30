@@ -120,24 +120,6 @@ export class AuthorizationService {
     }
   }
 
-<<<<<<< HEAD
-  //Log a user out
-
-  /* get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('access-token');
-    return authToken !== null ? true : false;
-  } */
-  //Register a user
-  // registerUser(user: User) {
-  //   return this.http.post(`${this.api}/register`, user);
-  // }
-  // //Log a user in
-  // login(user: any) {
-  //   return this.http.post(`${this.api}/login`, user);
-  // }
-
-=======
->>>>>>> ce87cc2f5e650efd1cf201651695a391e3a62d3a
   //Get a user/organization profile
   getProfile(userId: number): Observable<User> {
     let token = localStorage.getItem('access-token');
