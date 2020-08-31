@@ -5,30 +5,30 @@
   </div>
 
 <h2>Enter your request details below</h2>
-<!-- <form (ngSubmit)="createRequest()" name="createRequest">
-    <div id="listingInfoContainer">
+<form *ngIf="userIsAuthenticated && !isLoading && !isOrg" (ngSubmit)="createRequest()" name="createRequest">
+    <div>
         <div>
-            <label for="name">Enter a name for the request:</label>
-            <input type="text" id="name" name="name" placeholder="Request name" [(ngModel)]="request.name" />
+            <label>Enter a name for the request:</label>
+            <input type="text" name="name" placeholder="Request name" [(ngModel)]="request.name" />
         </div>
         <div>
-            <label for="description">
+            <label>
                 <p>Please describe the goods and/or services you have need for. Consider including the following
                     information:</p>
                 <ul>
-                    <li>A brief description</li>
+                    <li>A brief details</li>
                     <li>Quantity</li>
                     <li>Urgency of the need</li>
                 </ul>
-            </label> <input type="text" id="description" name="description" [(ngModel)]="request.description" />
+            </label> <input type="text" name="details" [(ngModel)]="request.details" />
         </div>
         <div>
-            <label for="needByDate">Need By Date:</label>
-            <input type="text" id="needByDate" name="needByDate" placeholder="MM/DD/YYYY"
+            <label>Need By Date:</label>
+            <input type="date" name="needByDate" placeholder="MM/DD/YYYY"
                 [(ngModel)]="request.needByDate" />
         </div>
     </div>
     <div>
         <button type="submit" class="btn btn-primary">Submit Request</button>
     </div>
-</form> -->
+</form>

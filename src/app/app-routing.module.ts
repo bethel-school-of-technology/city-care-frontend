@@ -8,7 +8,6 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { SearchComponent } from './components/search/search.component';
 import { UpdateRequestComponent } from './components/update-request/update-request.component';
 import { UpdateListingComponent } from './components/update-listing/update-listing.component';
 import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
@@ -31,7 +30,6 @@ const routes: Routes = [
   { path: 'city-care/username-login', component: UsernameLoginComponent },
   { path: 'city-care/about-us', component: TeamBioComponent  },
   { path: 'city-care/users-profile', component: ProfileComponent },
-  { path: 'city-care/site-search', component: SearchComponent  },
   { path: 'city-care/create-request', component: RequestComponent },
   { path: 'city-care/create-listing', component: ListingComponent },
   { path: 'city-care/update-request/:id', component: UpdateRequestComponent  },

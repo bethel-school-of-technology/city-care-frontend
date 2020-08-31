@@ -15,29 +15,29 @@ export class UpdateRequestComponent implements OnInit, OnDestroy {
 public isOrg = false;
 public isLoading = false;
 public isAuthenticated = false;
+public userIsAuthenticated = false;
 public request: Request;
-private authListenerSub: Subscription
+private authStatusSub: Subscription
 
   constructor(
     private authorizationService: AuthorizationService,
     private route: ActivatedRoute,
-    private router: Router,
     private requestService: RequestService
   ) { }
 
   ngOnInit() {
     this.isLoading = true;
     this.isOrg = this.authorizationService.getIsOrg();
-    this.isAuthenticated = this.authorizationService.getIsAuth();
-    this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
+    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
-        this.isAuthenticated = isAuthenticated
+        this.userIsAuthenticated = isAuthenticated
       });
     const requestId = +this.route.snapshot.paramMap.get('id');
     this.requestService.getUserRequest(requestId).subscribe(request => this.request = request);
     this.isLoading = false;
   }
 ngOnDestroy() {
-  this.authListenerSub.unsubscribe();
+  this.authStatusSub.unsubscribe();
 }
 }

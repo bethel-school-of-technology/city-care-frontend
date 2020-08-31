@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
  // public isAdmin = false; //Stretch goal 
   public isLoading = false; //Determine if the page is still loading and set the value
   public isAuthenticated = false;
+  public userIsAuthenticated = false;
  // public userId: string;
   private authStatusSub: Subscription;
 
@@ -42,11 +43,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.getUserListings();//Get the listings
     this.getUserRequests(); //Get the requests
     this.isOrg = this.authorizationService.getIsAuth();
-    this.isAuthenticated = this.authorizationService.getIsAuth();
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService
     .getAuthStatusListener()
     .subscribe(isAuthenticated => {
-      this.isAuthenticated = isAuthenticated
+      this.userIsAuthenticated = isAuthenticated
     });
     this.isLoading = false;
   }
@@ -73,14 +74,14 @@ getUserRequests() {
   })
 }
 
-onClickDeleteRequest(request: Request) {
+onClickDeleteRequest(requestId: number) {
   this.requests = this.requests.filter(request => request.id !== request.id);
-  this.requestService.deleteRequest(request.id).subscribe();
+  this.requestService.deleteRequest(requestId).subscribe();
 }
 
-onClickDeleteListing(listing: Listing) {
+onClickDeleteListing(listingId: number) {
   this.listings = this.listings.filter(listing => listing.id !== listing.id);
-  this.listingService.deleteListing(listing.id).subscribe();
+  this.listingService.deleteListing(listingId).subscribe();
 }
 ngOnDestroy() {
   this.authStatusSub.unsubscribe();

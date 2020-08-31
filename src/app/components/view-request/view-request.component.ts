@@ -35,7 +35,7 @@ export class ViewRequestComponent implements OnInit, OnDestroy {
       });
       const requestId = +this.route.snapshot.paramMap.get('id');
       this.requestService.getUserRequest(requestId).subscribe(request => this.request = request)
-      this.isLoading = true;
+      this.isLoading = false;
   }
 
   ngOnDestroy() {

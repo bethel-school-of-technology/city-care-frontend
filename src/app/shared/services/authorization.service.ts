@@ -133,7 +133,7 @@ export class AuthorizationService {
     return this.http.get<User>(`${this.api}/${userId}`, { headers: header });
   }
 
-  updateUser(userId: number, user: any) {
+  updateUser(userId: number, user: any): Observable <User> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.put<User>(`${this.api}/${userId}`, user, {

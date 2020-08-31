@@ -11,11 +11,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./listing.component.css']
 })
 export class ListingComponent implements OnInit, OnDestroy {
+
+public listing: Listing = new Listing();
 public isLoading = false;
 public isAuthenticated = false;
+public userIsAuthenticated = false;
 public isOrg = false;
-public listing: Listing;
-private authStatusListenerSub: Subscription;
+private authStatusSub: Subscription;
 
   constructor(
     //private route: ActivatedRoute,
@@ -26,22 +28,21 @@ private authStatusListenerSub: Subscription;
   ) { }
 
   ngOnInit() {
-    this.isLoading = true;
     this.isOrg = this.authorizationService.getIsAuth();
-    this.isAuthenticated = this.authorizationService.getIsAuth();
-    this.authStatusListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
-      isAuthenticated => {
-        this.isAuthenticated = isAuthenticated
-      });
-      this.isLoading = false;
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
+    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(isAuthenticated => {
+      this.userIsAuthenticated = isAuthenticated
+    });
+    this.isLoading = false;
   }
   
 createListing() {
-
+  this.isAuthenticated = true;
+    this.listingService.createListing(this.listing);
 }
 
 ngOnDestroy() {
-  this.authStatusListenerSub.unsubscribe();
+  this.authStatusSub.unsubscribe();
 }
 }
 //test jared branch

@@ -14,8 +14,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public user: User;
   public isLoading = false;
   public isAuthenticated = false;
-  private authListenerSub: Subscription; //listen for authentication
   public userIsAuthenticated = false;
+  private authListenerSub: Subscription; //listen for authentication
 
   constructor(
     private route: ActivatedRoute,
@@ -25,10 +25,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.isLoading = true;
     this.isOrg = this.authorizationService.getIsAuth();
-    this.isAuthenticated = this.authorizationService.getIsAuth();
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
-        this.isAuthenticated = isAuthenticated
+        this.userIsAuthenticated = isAuthenticated
       });
       this.isLoading = false;
   }
