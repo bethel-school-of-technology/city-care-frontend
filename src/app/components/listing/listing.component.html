@@ -1,6 +1,12 @@
+<div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+
+    <span class="sr-only">Loading...</span>
+  
+  </div>
+
 <h2>Listing</h2>
 
-<form (ngSubmit)="listing()" new="listing">
+<form (ngSubmit)="createListing()" name="createListing">
     <div>
         <label>
             <input type="text" id="quantity" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity"/>

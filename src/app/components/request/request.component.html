@@ -1,5 +1,11 @@
+<div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+
+    <span class="sr-only">Loading...</span>
+  
+  </div>
+
 <h2>Enter your request details below</h2>
-<form (ngSubmit)="createRequest()" name="createRequest">
+<!-- <form (ngSubmit)="createRequest()" name="createRequest">
     <div id="listingInfoContainer">
         <div>
             <label for="name">Enter a name for the request:</label>
@@ -25,4 +31,4 @@
     <div>
         <button type="submit" class="btn btn-primary">Submit Request</button>
     </div>
-</form>
+</form> -->

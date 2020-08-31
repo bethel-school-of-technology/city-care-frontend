@@ -24,6 +24,12 @@ export class ListingService {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Listing[]>(`${this.api}/listings`, { headers: header });
   }
+  //get all of the listings in the county that the user is in
+  getUserListingsByCounty(): Observable<Listing[]> {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<Listing[]>(`${this.api}/county/listings`, {headers: header});
+  }
   // Delete an orgs listing
   deleteListing(id: number): Observable<Listing> {
     let token = localStorage.getItem('access-token');

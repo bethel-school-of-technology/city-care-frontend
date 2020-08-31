@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 export class FooterComponent implements OnInit, OnDestroy {
 
   public user: User;
+  public isOrg = false;
   public isLoading = false;
   public isAuthenticated = false;
   private authListenerSub: Subscription; //listen for authentication
@@ -23,6 +24,7 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
+    this.isOrg = this.authorizationService.getIsAuth();
     this.isAuthenticated = this.authorizationService.getIsAuth();
     this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {

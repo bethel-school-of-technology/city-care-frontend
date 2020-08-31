@@ -1,7 +1,7 @@
 export class Request {
   id: number;
   name: string;
-  description: string;
+  details: string;
   needByDate: Date;
   user_id: number;
   delete: boolean;

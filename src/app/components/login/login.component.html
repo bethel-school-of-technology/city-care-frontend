@@ -4,13 +4,11 @@
 
 </div>
 
-
-<mat-card>
     <form name='login' (ngSubmit)='login()'>
       <div class="container">
         <div class="login-div">
           <div class='row center-align'>
-            <h5>Sign in</h5>
+            <h3>Sign in</h3>
           </div>
           <div class="row">
             <div class="input-field col s12">
@@ -39,19 +37,14 @@
         </div>
       </div>
     </form>  
-</mat-card>
-<!-- <mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form #loginForm="ngForm" *ngIf="!isLoading">
-    <mat-form-field>
-      <input matInput type="email" name="email" ngModel placeholder="E-Mail" #emailInput="ngModel" required email>
-      Adding the required and email validators
-      <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
-      <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" *ngIf="!isLoading">Login</button>
-  </form>
-</mat-card> -->
+      
+    <form>
+      <select id="loginSelect">
+        <option value="">Choose a log in method</option>
+        <option value="http://city-care/username-login">Username</option>
+        <option value="http://city-care/email-login">Username</option>
+      </select>
+    </form>
+   
+
+    

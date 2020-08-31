@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm fiexed-top navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm fiexed-top navbar-dark bg-secondary">
   <a class="navbar-brand" href="/city-care/home">City Care</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -16,15 +16,18 @@
         <a class="nav-link" href="/city-care/user-login">Login</a>
       </li>
       <li *ngIf="isAuthenticated" class="nav-item">
+        <a class="nav-link" href="/city-care/site-postings">Postings</a>
+      </li>
+      <li *ngIf="isAuthenticated" class="nav-item">
         <a class="nav-link" (click)="onLogout()">Logout</a>
       </li>
     </ul>
   </div>
 </nav>
 
-<!--Check out the code below-->
+<!--Peyton, when you get time, uncomment and Check out the code below-->
 
-<mat-toolbar color="accent">
+<!-- <mat-toolbar color="accent">
 
   <span><a routerLink="/city-care/home">City Care</a></span>
   <span class="spacer"></span>
@@ -39,8 +42,8 @@
             <li *ngIf="!isAuthenticated">
                       <a mat-button routerLink="/city-care/user-login" routerLinkActive="mat-accent">Login</a>
             </li>
-            <li *ngIf="!isAuthenticated">
+            <li *ngIf="isAuthenticated">
                       <button mat-button (click)="onLogout()">Logout</button>
             </li>
   </ul>
-</mat-toolbar>
+</mat-toolbar> -->

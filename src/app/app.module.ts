@@ -46,7 +46,11 @@ import { RequestComponent } from './components/request/request.component';
 import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListingComponent } from './components/listing/listing.component';
-
+import { SiteTallyComponent } from './components/site-tally/site-tally.component';
+import { ViewListingComponent } from './components/view-listing/view-listing.component';
+import { ViewRequestComponent } from './components/view-request/view-request.component';
+import { EmailLoginComponent } from './components/email-login/email-login.component';
+import { UsernameLoginComponent } from './components/username-login/username-login.component';
 
 
 @NgModule({
@@ -65,6 +69,11 @@ import { ListingComponent } from './components/listing/listing.component';
     RequestComponent,
     ProfileEditorComponent,
     ListingComponent,
+    SiteTallyComponent,
+    ViewListingComponent,
+    ViewRequestComponent,
+    EmailLoginComponent,
+    UsernameLoginComponent
   ],
   imports: [
     BrowserModule,

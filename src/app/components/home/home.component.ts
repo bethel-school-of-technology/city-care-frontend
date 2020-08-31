@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(){
     this.isLoading = true;
+    this.isOrg = this.authorizationService.getIsAuth();
     this.isAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {

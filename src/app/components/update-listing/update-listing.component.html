@@ -1,3 +1,9 @@
+<div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+
+          <span class="sr-only">Loading...</span>
+        
+        </div>
+
 <div class="card" *ngIf="listing">
           {{listing.description}} <br>
           {{listing.requirements}}<br>
@@ -6,3 +12,4 @@
           {{listing.sub_category}}
           <button class="back" routerLink="/city-care/users-profile">Back</button>&nbsp;
 </div>
+

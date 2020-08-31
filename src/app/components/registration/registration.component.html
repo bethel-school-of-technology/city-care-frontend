@@ -1,4 +1,9 @@
-<mat-card>
+<div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+
+    <span class="sr-only">Loading...</span>
+  
+  </div>
+
     <h2>Please register below</h2>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <form (ngSubmit)="registerUser()" name="registerUser">
@@ -124,4 +129,3 @@
     </div>
     <div><button type="submit" class="btn btn-primary">Register</button></div>
 </form>
-</mat-card>

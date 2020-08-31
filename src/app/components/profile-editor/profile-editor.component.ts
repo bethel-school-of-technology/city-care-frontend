@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./profile-editor.component.css']
 })
 export class ProfileEditorComponent implements OnInit, OnDestroy  {
-
+  public isOrg = false;
   public user: User;
   public isLoading = false;
   public isAuthenticated = false;
@@ -26,6 +26,7 @@ export class ProfileEditorComponent implements OnInit, OnDestroy  {
   ngOnInit() {
     this.getUser();
     this.isLoading = true;
+    this.isOrg = this.authorizationService.getIsAuth();
     this.isAuthenticated = this.authorizationService.getIsAuth();
     this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {

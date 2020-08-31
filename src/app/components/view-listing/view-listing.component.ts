@@ -1,30 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Route, ActivatedRoute, Router } from '@angular/router';
+import { AuthorizationService } from '../../shared/services/authorization.service';
 import { ListingService } from '../../shared/services/listing.service';
 import { Listing } from '../../shared/models/listing.model';
-import { Subscription } from 'rxjs';
-import { AuthorizationService } from 'src/app/shared/services/authorization.service';
+
 
 @Component({
-  selector: 'app-update-listing',
-  templateUrl: './update-listing.component.html',
-  styleUrls: ['./update-listing.component.css']
+  selector: 'app-view-listing',
+  templateUrl: './view-listing.component.html',
+  styleUrls: ['./view-listing.component.css']
 })
-export class UpdateListingComponent implements OnInit {
+export class ViewListingComponent implements OnInit, OnDestroy {
 
-public isOrg = false;
-public isLoading = false;
-public isAuthenticated = false;
-public listing: Listing;
-private authListenerSub: Subscription
+  public listing: Listing;
+  public isLoading = false;
+  public isAuthenticated = false;
+  public isOrg = false;
+  private authListenerSub: Subscription;
 
   constructor(
     private authorizationService: AuthorizationService,
-    private route: ActivatedRoute,
-    private listingService: ListingService
+    private listingService: ListingService,
+    private route: ActivatedRoute
   ) { }
 
-  ngOnInit(){ 
+  ngOnInit() {
     this.isLoading = true;
     this.isOrg = this.authorizationService.getIsOrg();
     this.isAuthenticated = this.authorizationService.getIsAuth();
@@ -38,7 +39,8 @@ private authListenerSub: Subscription
   }
 
 
-ngOnDestroy() {
-  this.authListenerSub.unsubscribe();
-}
+
+  ngOnDestroy() {
+    this.authListenerSub.unsubscribe();
+  }
 }

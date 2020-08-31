@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class UpdateRequestComponent implements OnInit, OnDestroy {
 
+public isOrg = false;
 public isLoading = false;
 public isAuthenticated = false;
 public request: Request;
@@ -26,6 +27,7 @@ private authListenerSub: Subscription
 
   ngOnInit() {
     this.isLoading = true;
+    this.isOrg = this.authorizationService.getIsOrg();
     this.isAuthenticated = this.authorizationService.getIsAuth();
     this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
