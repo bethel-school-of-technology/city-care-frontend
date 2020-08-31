@@ -24,7 +24,7 @@
   </div>
 </div>
 
-<mat-accordion multi="true" *ngIf="listings.length && !isOrg> 0 && !isLoading">
+<mat-accordion multi="true" *ngIf="listings.length > 0 && !isOrg && !isLoading">
                          <mat-expansion-panel *ngFor="let listing of listings">
                                                   <mat-expansion-panel-header>
                                                     <mat-panel-title>

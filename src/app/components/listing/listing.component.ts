@@ -30,5 +30,9 @@ public listing:Listing = new Listing();
     })
   }
 
+  createListing(){
+    this.listingService.createListing(this.listing)
+    this.router.navigate(['/city-care/users-profile']);
+  }
 }
 //test jared branch
