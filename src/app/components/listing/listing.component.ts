@@ -18,7 +18,7 @@ public listing: Listing;
 private authStatusListenerSub: Subscription;
 
   constructor(
-    private route: ActivatedRoute,
+    //private route: ActivatedRoute,
     private router: Router,
     private listingService: ListingService,
     private authorizationService: AuthorizationService
@@ -44,3 +44,4 @@ ngOnDestroy() {
   this.authStatusListenerSub.unsubscribe();
 }
 }
+//test jared branch
