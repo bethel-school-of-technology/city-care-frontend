@@ -36,7 +36,6 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { SearchComponent } from './components/search/search.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
@@ -60,7 +59,6 @@ import { UsernameLoginComponent } from './components/username-login/username-log
     LoginComponent,
     RegistrationComponent,
     ProfileComponent,
-    SearchComponent,
     HeaderComponent,
     FooterComponent,
     TeamBioComponent,

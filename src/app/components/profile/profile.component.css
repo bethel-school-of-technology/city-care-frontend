@@ -65,11 +65,11 @@ li:hover {
  :host {
   display: block;
 }
- .card {
-   width: 280%;
-  height: 750px;
+/*  .card {
+ height: auto;
+ width: 180%
  }
  mat-expansion-panel {
-   width: 260%;
+   width: 170%;
    height: auto;
- }
+ } */

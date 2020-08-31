@@ -6,7 +6,7 @@
         
 <h2>Update your profile</h2>
 
-<div *ngIf="user">
+<div *ngIf="user && userIsAuthenticated">
           <h5>Details:</h5>
           <p><span>Name: {{user.first_name}} {{user.last_name}} Phone: {{user.phone}}</span></p>
           <p><span>Email: {{user.email}} Username: {{user.username}}</span></p>

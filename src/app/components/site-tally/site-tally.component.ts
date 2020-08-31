@@ -18,6 +18,7 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
   public isLoading = false;
   public isOrg = false;
   public isAuthenticated = false;
+  public userIsAuthenticated = false;
   private authStatusSub: Subscription;
 
   constructor(
@@ -33,11 +34,11 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
     this.getUserReqeuestsByCounty();
     this.getUserListingsByCounty();
     this.isOrg = this.authorizationService.getIsAuth();
-    this.isAuthenticated = this.authorizationService.getIsAuth();
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService
     .getAuthStatusListener()
     .subscribe(isAuthenticated => {
-      this.isAuthenticated = isAuthenticated
+      this.userIsAuthenticated = isAuthenticated
     });
     this.isLoading = false;
   }
