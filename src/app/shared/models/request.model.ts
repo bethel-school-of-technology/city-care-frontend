@@ -2,9 +2,9 @@ export class Request {
   id: number;
   name: string;
   details: string;
-  needByDate: Date;
+  needByDate: string;
   user_id: number;
-  delete: boolean;
+  deleted: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

@@ -43,6 +43,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.getUserListings();//Get the listings
     this.getUserRequests(); //Get the requests
     this.isOrg = this.authorizationService.getIsAuth();
+    this.isAuthenticated = this.authorizationService.getIsAuth();
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService
     .getAuthStatusListener()

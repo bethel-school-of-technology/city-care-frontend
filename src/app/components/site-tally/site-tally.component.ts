@@ -13,8 +13,8 @@ import { Subscription } from 'rxjs';
 })
 export class SiteTallyComponent implements OnInit, OnDestroy {
 
-  public listings: Listing[];
-  public requests: Request[];
+  public listings: Listing[] = [];
+  public requests: Request[] = [];
   public isLoading = false;
   public isOrg = false;
   public isAuthenticated = false;
@@ -29,10 +29,10 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    //this.getUserRequests();
-    //this.getUserListings();
-    this.getUserReqeuestsByCounty();
-    this.getUserListingsByCounty();
+    this.getUserRequests();
+    this.getUserListings(); 
+    /* this.getUserReqeuestsByCounty();
+    this.getUserListingsByCounty(); */
     this.isOrg = this.authorizationService.getIsAuth();
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService
@@ -42,30 +42,30 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
     });
     this.isLoading = false;
   }
-  // getUserListings() {
-  //   this.listingService.getUserListings().subscribe((listings: any) => {
-  //     console.log(listings);
-  //     this.listings = listings;
-  //   });
-  // }
-  getUserListingsByCounty() {
-    this.listingService.getUserListingsByCounty().subscribe((listings: any) => {
+  getUserListings() {
+    this.listingService.getUserListings().subscribe((listings: any) => {
       console.log(listings);
       this.listings = listings;
-    })
+    });
   }
- /*  getUserRequests() {
+  // getUserListingsByCounty() {
+  //   this.listingService.getUserListingsByCounty().subscribe((listings: any) => {
+  //     console.log(listings);
+  //     this.listings = listings;
+  //   })
+  // }
+  getUserRequests() {
     this.requestService.getUserRequests().subscribe((requests: any) => {
       console.log(requests);
       this.requests = requests;
     })
-  } */
-  getUserReqeuestsByCounty() {
-    this.requestService.getUserRequestsByCounty().subscribe((requests: any) => {
-      console.log(requests);
-      this.requests = requests;
-    })
   }
+  // getUserReqeuestsByCounty() {
+  //   this.requestService.getUserRequestsByCounty().subscribe((requests: any) => {
+  //     console.log(requests);
+  //     this.requests = requests;
+  //   })
+  // }
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
   }

@@ -6,29 +6,31 @@
 
 <h2>Create New Listing</h2>
 
-<form *ngIf="userIsAuthenticated && isAuthenticated && !isLoading && isOrg" (ngSubmit)="createListing()" name="createListing">
-    <div>
-        <label>
-            <input type="number" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity"/>
-        </label>
-    </div>
-    <div>
-        <label>
-            <input type="date" name="availability" placeholder="Days/Times services/goods are available" [(ngModel)]="listing.availability"/>
-        </label>
-    </div>
-    <div>
-        <label>
-            <input type="text" name="description" placeholder="Description of goods/services"[(ngModel)]="listing.description"/>
-        </label>
-    </div>
-    <div>
-        <label>
-            <input type="text" name="requirements" placeholder="List an qualifying requirements to receive goods/services" [(ngModel)]="listing.requirements"/>
-        </label>
-    </div>
-
-    <div>
-        <button type="submit">Submit</button>
-    </div>
-</form>
+<div  *ngIf="userIsAuthenticated && !isLoading && isOrg" >
+    <form (ngSubmit)="createListing()" name="createListing">
+        <div>
+            <label>
+                <input type="text" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity"/>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="text" name="availability" placeholder="Days/Times services/goods are available" [(ngModel)]="listing.availability"/>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="text" name="description" placeholder="Description of goods/services"[(ngModel)]="listing.description"/>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="text" name="requirements" placeholder="List an qualifying requirements to receive goods/services" [(ngModel)]="listing.requirements"/>
+            </label>
+        </div>
+    
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>    
+</div>

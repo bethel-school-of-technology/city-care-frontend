@@ -13,6 +13,7 @@ export class AuthorizationService {
 
   public users: User[]; //Declare the users as an empty array
   private isAuthenticated = false; //Set the authentication status as false
+  private userIsAuthenticated = false;
   private token: string; //Declare the token as a string
   private tokenTimer: any; //Declare the token timer
   private userId: string; //Declare the user id
@@ -72,6 +73,7 @@ export class AuthorizationService {
           const expiresInDuration = res.expiresIn; //Declare how long the token lasts variable and assign the token time to it
           this.setAuthTimer(expiresInDuration); //Set the authorization timer
           this.isAuthenticated = true; //Set the status of the user as authenticated or verified
+          this.userIsAuthenticated = true;
           this.userId = res.userId; //Store the user id from the response in a variable called userId
           this.isOrg = res.isOrg; //Store the status of the user in the isOrg variable
           this.isAdmin = res.isAdmin; //Stores the adminstrative status of the user in the is admin variable
@@ -111,6 +113,7 @@ export class AuthorizationService {
     if (expiresIn > 0) {
       // if the expiration time is greate than zero execute the following code
       this.token = authInformation.token; //set the token to the token in the local storage
+      this.userIsAuthenticated = true;
       this.isAuthenticated = true; //set the is authenticated variable to true
       this.userId = authInformation.userId; //Set the user Id to the user id fetched from local storage
       this.isOrg = authInformation.isOrg; //set the is org validator based on local storage

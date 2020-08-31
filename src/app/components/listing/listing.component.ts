@@ -28,17 +28,21 @@ private authStatusSub: Subscription;
   ) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.isOrg = this.authorizationService.getIsAuth();
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
-    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(isAuthenticated => {
-      this.userIsAuthenticated = isAuthenticated
-    });
-    this.isLoading = false;
+    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
+      isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated
+      });
+      this.isLoading = false;
   }
   
 createListing() {
-  this.isAuthenticated = true;
-    this.listingService.createListing(this.listing);
+    this.listingService.createListing(this.listing).subscribe(result => {
+      console.log(result);
+      this.router.navigate(['/city-care/users-profile']);
+    });
 }
 
 ngOnDestroy() {

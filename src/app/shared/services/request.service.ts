@@ -18,10 +18,7 @@ export class RequestService {
   let token = localStorage.getItem('access-token');
   let header = new HttpHeaders().set('jwt', token);
     //Create a new request
-    return this.http.post(`${this.api}/create`, request).subscribe((result) => {
-      console.log(result);
-      this.router.navigate(['/city-care/users-profile']);
-    });
+    return this.http.post(`${this.api}/create`, request, {headers: header});
   }
 
   //Get all of a users requests for goods or services

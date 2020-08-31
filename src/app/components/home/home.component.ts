@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
       this.isLoading = false;
   }
+  
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
   }
