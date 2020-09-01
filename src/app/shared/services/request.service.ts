@@ -18,6 +18,7 @@ export class RequestService {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     //Create a new request
+    return this.http.post(`${this.api}/create`, request, {headers: header});
     return this.http.post(`${this.api}/create`, request, { headers: header });
   }
 
@@ -30,9 +31,10 @@ export class RequestService {
     });
   }
   //Get all of the requests for a user by the county
-  getUserRequestsByCounty(): Observable<Request[]> {
+  getAllUserRequests(): Observable<Request[]> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<Request[]>(`${this.api}/all/requests`, {headers: header});
     return this.http.get<Request[]>(`${this.api}/county/requests`, {
       headers: header,
     });

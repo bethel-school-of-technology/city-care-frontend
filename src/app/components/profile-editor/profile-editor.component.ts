@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./profile-editor.component.css']
 })
 export class ProfileEditorComponent implements OnInit, OnDestroy  {
+  
   public isOrg = false;
   public user: User;
   public isLoading = false;

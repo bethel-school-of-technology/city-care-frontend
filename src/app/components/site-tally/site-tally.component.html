@@ -6,7 +6,7 @@
 
 
 <h1>Below is a list of all the listings and requests in the City-Care site database</h1>
-<mat-accordion multi="true" *ngIf="listings.length > 0 && !isLoading && userIsAuthenticated">
+<mat-accordion multi="true" *ngIf="listings.length > 0 && !isLoading">
           <h3>All Listings</h3>
                                    <mat-expansion-panel *ngFor="let listing of listings">
                                                             <mat-expansion-panel-header>

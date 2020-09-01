@@ -5,19 +5,19 @@
   </div>
 
     <h2>Please register below</h2>
+    
 <mat-spinner *ngIf="isLoading"></mat-spinner>
+
 <form (ngSubmit)="registerUser()" name="registerUser">
     <div>
         <div>
             <p>Type of User:</p>
             <label>
-                <input type="radio" value="1" id="organizationTrue" name="isOrg" (click)="setIsOrg(true)"
-                    [checked]="true" [(ngModel)]="user.isOrg" />
+                <input type="radio" id="orgainizationTrue" [checked]="true" [value]="true" name="isOrg" (click)="setIsOrg(true)" [(ngModel)]="user.isOrg" />
                 <span>Organization</span>
             </label>
             <label>
-                <input type="radio" value="0" id="organizationFalse" name="isOrg" (click)="setIsOrg(false)"
-                    [(ngModel)]="user.isOrg" />
+                <input type="radio" id="organizationFalse" [value]="false" name="isOrg" (click)="setIsOrg(false)" [(ngModel)]="user.isOrg" />
                 <span>Individual</span>
             </label>
         </div>
