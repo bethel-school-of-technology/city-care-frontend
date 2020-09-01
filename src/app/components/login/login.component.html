@@ -38,13 +38,19 @@
       </div>
     </form>  
       
-    <form>
-      <select id="loginSelect">
-        <option value="">Choose a log in method</option>
-        <option value="http://city-care/username-login">Username</option>
-        <option value="http://city-care/email-login">Username</option>
-      </select>
-    </form>
-   
-
-    
+<mat-card>
+  <h2 style="text-align: center;">    Choose a login method</h2>
+ <mat-card-subtitle style="text-align: center;" >
+   Login using email 
+   <mat-card-actions style="text-align: right;" >
+    <button routerLink="/city-care/email-login">Email</button>
+  </mat-card-actions>
+ </mat-card-subtitle>
+ <mat-card-subtitle style="text-align: center;" >
+  Login using email 
+  <mat-card-actions style="text-align: right;" >
+   <button routerLink="/city-care/username-login">Username</button>
+ </mat-card-actions>
+</mat-card-subtitle>
+</mat-card>
+  
