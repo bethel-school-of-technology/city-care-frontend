@@ -1,4 +1,10 @@
-<div class="team-info">
+<div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+
+          <span class="sr-only">Loading...</span>
+        
+        </div>
+
+<div *ngIf="!isLoading && userIsAuthenticated" class="team-info">
 
           <h2>About Thomas & Friends🚂</h2>
 
@@ -228,3 +234,4 @@
           </div>
 
 </div>
+<!--Git purposes for creating a new branch-->

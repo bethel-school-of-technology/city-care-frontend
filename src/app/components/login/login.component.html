@@ -1,51 +1,50 @@
-<body>
-  <form name='login' (ngSubmit)='login()'>
-    <div class="container">
-      <div class="login-div">
-        <div class='row center-align'>
-          <h5>Sign in</h5>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input #email='ngModel' [(ngModel)]='user.email' name='email' required id="email_input" type="email"
-              class="validate">
-            <label for="email_input">Email</label>
+<div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+
+  <span class="sr-only">Loading...</span>
+
+</div>
+
+    <form name='login' (ngSubmit)='login()'>
+      <div class="container">
+        <div class="login-div">
+          <div class='row center-align'>
+            <h3>Sign in</h3>
           </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input [(ngModel)]='user.password' name='password' required id="password_input" type="password"
-              class="validate">
-            <label for="password_input">Password</label>
-            <div><a href='/city-care/update-user'><b>Forgot Password?</b></a></div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input #email='ngModel' [(ngModel)]='user.email' name='email' required id="email_input" type="email"
+                class="validate">
+              <label for="email_input">Email</label>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-            We will never share your private information.
+          <div class="row">
+            <div class="input-field col s12">
+              <input [(ngModel)]='user.password' name='password' required id="password_input" type="password"
+                class="validate">
+              <label for="password_input">Password</label>
+              <div><a href='/city-care/update-user'><b>Forgot Password?</b></a></div>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col s6 right-align"><button type="submit" class="waves-effect waves-light btn">Submit</button>
+          <div class="row">
+            <div class="col s12">
+              We will never share your private information.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s6 right-align"><button type="submit" class="waves-effect waves-light btn">Submit</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </form>
-</body>
+    </form>  
+      
+    <form>
+      <select id="loginSelect">
+        <option value="">Choose a log in method</option>
+        <option value="http://city-care/username-login">Username</option>
+        <option value="http://city-care/email-login">Username</option>
+      </select>
+    </form>
+   
 
-<!-- <mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form #loginForm="ngForm" *ngIf="!isLoading">
-    <mat-form-field>
-      <input matInput type="email" name="email" ngModel placeholder="E-Mail" #emailInput="ngModel" required email>
-      Adding the required and email validators
-      <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
-      <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" *ngIf="!isLoading">Login</button>
-  </form>
-</mat-card> -->
+    

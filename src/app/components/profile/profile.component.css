@@ -1,4 +1,4 @@
-:host {
+/* :host {
   display: block;
 }
 .btn {
@@ -15,13 +15,13 @@ h2, h1 {
           list-style-type: none;
           padding: 0;
           width: 15em;
-        }
-        .delete {
+        } */
+       /*  .delete {
           background-color: red;
           font-weight: bolder;
           float: right;
-        }
-.badge, li {
+        } */
+/* .badge, li {
           display: flex;
           font-size: medium;
           color: white;
@@ -61,3 +61,15 @@ li:hover {
           background-color: #BBD8DC;
           color: white;
         }
+ */
+ :host {
+  display: block;
+}
+/*  .card {
+ height: auto;
+ width: 180%
+ }
+ mat-expansion-panel {
+   width: 170%;
+   height: auto;
+ } */

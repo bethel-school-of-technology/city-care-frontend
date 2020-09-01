@@ -10,10 +10,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-
+  public isOrg = false;
   public user: User;
   public isLoading = false;
   public isAuthenticated = false;
+  public userIsAuthenticated = false;
   private authListenerSub: Subscription; //listen for authentication
 
   constructor(
@@ -22,12 +23,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.getUser();
-    this.isAuthenticated = this.authorizationService.getIsAuth();
+    this.isLoading = true;
+    this.isOrg = this.authorizationService.getIsAuth();
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
-        this.isAuthenticated = isAuthenticated
+        this.userIsAuthenticated = isAuthenticated
       });
+      this.isLoading = false;
   }
   onLogout() {
     this.authorizationService.logout();

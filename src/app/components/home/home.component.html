@@ -4,7 +4,7 @@
 
 </div>
 
-<div class="jumbotron">
+<div *ngIf="userIsAuthenticated" class="jumbotron">
 
   <h1 class="display-3">City Care</h1>
   <p class="lead">Our goal is simple, connect every community with their local nonprofit organizations.</p>
@@ -27,7 +27,7 @@
 
 
 
-<div class="icon-container">
+<div *ngIf="userIsAuthenticated" class="icon-container">
   <section class="features-icons bg-light text-center">
     <div class="container">
       <div class="row">

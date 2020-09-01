@@ -1,8 +1,45 @@
+<div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+
+          <span class="sr-only">Loading...</span>
+        
+        </div>
+
 <div class="card" *ngIf="listing">
-          {{listing.description}} <br>
-          {{listing.requirements}}<br>
-          {{listing.availability}} <br>
-          {{listing.category}}<br>
-          {{listing.sub_category}}
+          {{ listing.id }} <br>
+          {{ listing.quantity }} <br>
+          {{ listing.description }} <br>
+          {{ listing.requirements }}<br>
+          {{ listing.availability }} <br>
+          {{ listing.org_id }}
+        
           <button class="back" routerLink="/city-care/users-profile">Back</button>&nbsp;
 </div>
+<h2>Update This Listing</h2>
+
+<form (ngSubmit)="updateListing()" name="updateListing">
+    <div>
+        <label>
+            <input type="number" name="quantity" placeholder="listing.quantity" [(ngModel)]="listing.quantity"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="date" name="availability" placeholder="listing.availability" [(ngModel)]="listing.availability"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="text" name="description" placeholder="listing.description"[(ngModel)]="listing.description"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="text" name="requirements" placeholder="listing.rqeuirements" [(ngModel)]="listing.requirements"/>
+        </label>
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+

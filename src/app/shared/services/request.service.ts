@@ -15,11 +15,10 @@ export class RequestService {
   constructor(private http: HttpClient, private router: Router) {}
 
   createRequest(request: any) {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
     //Create a new request
-    return this.http.post(`${this.api}/create`, request).subscribe((result) => {
-      console.log(result);
-      this.router.navigate(['/city-care/users-profile']);
-    });
+    return this.http.post(`${this.api}/create`, request, { headers: header });
   }
 
   //Get all of a users requests for goods or services
@@ -27,6 +26,14 @@ export class RequestService {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Request[]>(`${this.api}/requests`, {
+      headers: header,
+    });
+  }
+  //Get all of the requests for a user by the county
+  getUserRequestsByCounty(): Observable<Request[]> {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<Request[]>(`${this.api}/county/requests`, {
       headers: header,
     });
   }
@@ -39,9 +46,11 @@ export class RequestService {
     });
   }
   //Delete a request from the UI and from the database
-  deleteRequest(id: number): Observable<Request> {
+  deleteRequest(requestId: number): Observable<Request> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.delete<Request>(`${this.api}/${id}`, { headers: header });
+    return this.http.delete<Request>(`${this.api}/${requestId}`, {
+      headers: header,
+    });
   }
 }

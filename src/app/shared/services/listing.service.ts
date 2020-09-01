@@ -24,15 +24,37 @@ export class ListingService {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Listing[]>(`${this.api}/listings`, { headers: header });
   }
-  // Delete an orgs listing
-  deleteListing(id: number): Observable<Listing> {
+  //get all of the listings in the county that the user is in
+  getUserListingsByCounty(): Observable<Listing[]> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.delete<Listing>(`${this.api}/${id}`, { headers: header });
+    return this.http.get<Listing[]>(`${this.api}/county/listings`, {headers: header});
   }
+  // Delete an orgs listing
+  deleteListing(listingId: number): Observable<Listing> {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.delete<Listing>(`${this.api}/${listingId}`, { headers: header });
+  }
+  //Get a organizations listing by the listing id
   getUserListing(listingId): Observable <Listing> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Listing>(`${this.api}/${listingId}`, {headers: header});
+  }
+
+  //Create listing
+  createListing(listing: Listing): Observable <Listing> {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.post<Listing>(`${this.api}/create`, listing, {headers: header});
+  }
+  //Update listing
+  updateListing(listingId: number, listing: any): Observable <Listing> {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.put<Listing>(`${this.api}/${listingId}`, listing, {
+      headers: header,
+    });
   }
 }
