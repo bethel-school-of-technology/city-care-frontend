@@ -11,7 +11,8 @@ export class TeamBioComponent implements OnInit, OnDestroy {
 
   public isLoading = false;
   public isAuthenticated = false;
-  private authListenerSub: Subscription;
+  public userIsAuthenticated = false;
+  private autStatusSub: Subscription;
   
   constructor(
     private authorizationService: AuthorizationService
@@ -19,14 +20,14 @@ export class TeamBioComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    this.isAuthenticated = this.authorizationService.getIsAuth();
-    this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
+    this.autStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
-        this.isAuthenticated = isAuthenticated
+        this.userIsAuthenticated = isAuthenticated
       });
       this.isLoading = false;
   }
 ngOnDestroy() {
-  this.authListenerSub.unsubscribe();
+  this.autStatusSub.unsubscribe();
 }
 }

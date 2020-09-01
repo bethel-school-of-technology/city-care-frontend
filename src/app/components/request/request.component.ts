@@ -1,53 +1,50 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { AuthorizationService } from 'src/app/shared/services/authorization.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthorizationService } from 'src/app/shared/services/authorization.service';
+import { Request } from '../../shared/models/request.model';
+import { RequestService } from 'src/app/shared/services/request.service';
 
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
   styleUrls: ['./request.component.css'],
 })
-
 export class RequestComponent implements OnInit, OnDestroy {
-
-  public requested = false;
+  public request: Request = new Request();
+  public isOrg = false;
   public submitted = false;
-  public userForm: FormGroup;
-  public serviceErrors: any = {};
   public isLoading = false;
   public isAuthenticated = false;
-  private authListenerSub: Subscription;
+  public userIsAuthenticated = false;
+  private authStatusSub: Subscription;
 
   constructor(
+    private requestService: RequestService,
     private authorizationService: AuthorizationService,
-    private formBuilder: FormBuilder,
-    private http: HttpClient,
     private router: Router
   ) {}
 
-
   ngOnInit() {
     this.isLoading = true;
-    this.isAuthenticated = this.authorizationService.getIsAuth();
-    this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
-      isAuthenticated => {
-        this.isAuthenticated = isAuthenticated
+    this.isOrg = this.authorizationService.getIsOrg();
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
+    this.authStatusSub = this.authorizationService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
       });
-      this.isLoading = false;
-
-    this.userForm = this.formBuilder.group({
-      description: ['', Validators.required],
-    });
+    this.isLoading = false;
   }
 
   createRequest() {
-    //this.requestService.createRequest(this.request);
-  }
+    this.requestService.createRequest(this.request).subscribe(result => {
+      console.log(result);
+      this.router.navigate(['/city-care/users-profile']);
+    });
+}
 
   ngOnDestroy() {
-    this.authListenerSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 }

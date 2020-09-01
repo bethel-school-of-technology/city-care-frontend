@@ -12,41 +12,43 @@ import { Subscription } from 'rxjs';
 })
 export class ListingComponent implements OnInit, OnDestroy {
 
-  public listing: Listing = new Listing();
-  public isLoading = false;
-  public isAuthenticated = false;
-  public userIsAuthenticated = false;
-  public isOrg = false;
-  private authStatusSub: Subscription;
+  
 
-  
-    constructor(
-      //private route: ActivatedRoute,
-      private router: Router,
-      private listingService: ListingService,
-      private authorizationService: AuthorizationService
-      
-    ) { }
-  
-    ngOnInit() {
-      this.isLoading = true;
-      this.isOrg = this.authorizationService.getIsAuth();
-      this.userIsAuthenticated = this.authorizationService.getIsAuth();
-      this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
-        isAuthenticated => {
-          this.userIsAuthenticated = isAuthenticated
-        });
-        this.isLoading = false;
-    }
+public listing: Listing = new Listing();
+public isLoading = false;
+public isAuthenticated = false;
+public userIsAuthenticated = false;
+public isOrg = false;
+private authStatusSub: Subscription;
+
+
+  constructor(
+    //private route: ActivatedRoute,
+    private router: Router,
+    private listingService: ListingService,
+    private authorizationService: AuthorizationService
     
-  createListing() {
-      this.listingService.createListing(this.listing).subscribe(result => {
-        console.log(result);
-        this.router.navigate(['/city-care/users-profile']);
+  ) { }
+
+  ngOnInit() {
+    this.isLoading = true;
+    this.isOrg = this.authorizationService.getIsAuth();
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
+    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
+      isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated
       });
+      this.isLoading = false;
   }
   
-  ngOnDestroy() {
-    this.authStatusSub.unsubscribe();
-  }
-  }
+createListing() {
+    this.listingService.createListing(this.listing).subscribe(result => {
+      console.log(result);
+      this.router.navigate(['/city-care/users-profile']);
+    });
+}
+
+ngOnDestroy() {
+  this.authStatusSub.unsubscribe();
+}
+}

@@ -12,10 +12,12 @@ import { AuthorizationService } from 'src/app/shared/services/authorization.serv
 })
 export class UpdateListingComponent implements OnInit {
 
+public isOrg = false;
 public isLoading = false;
 public isAuthenticated = false;
+public userIsAuthenticated = false;
 public listing: Listing;
-private authListenerSub: Subscription
+private authStatusSub: Subscription;
 
   constructor(
     private authorizationService: AuthorizationService,
@@ -26,32 +28,25 @@ private authListenerSub: Subscription
 
   ngOnInit(){ 
     this.isLoading = true;
-    this.isAuthenticated = this.authorizationService.getIsAuth();
-    this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
+    this.isOrg = this.authorizationService.getIsOrg();
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
+    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
-        this.isAuthenticated = isAuthenticated
+        this.userIsAuthenticated = isAuthenticated
       });
-    const listingId = +this.route.snapshot.paramMap.get('id');
-    this.listingService.getUserListing(listingId).subscribe(listing => this.listing = listing)
-    this.isLoading = true;
+      const listingId = +this.route.snapshot.paramMap.get('id');
+      this.listingService.getUserListing(listingId).subscribe(listing => this.listing = listing)
+      this.isLoading = false;
   }
+updateListing() {
+  const listingId = +this.route.snapshot.paramMap.get('id');
+  this.listingService.updateListing(listingId, this.listing).subscribe(listing => {
+    console.log(listing);
+    this.router.navigate(['/city-care/users-profile'])
+  })
+}
 
-  getListing() {
-    const listingId = +this.route.snapshot.paramMap.get('id');
-    this.authorizationService.getUser(listingId).subscribe((listing: any) => {
-      this.listing = listing;
-    });
-  }
-
-  updateListing() {
-    const listingId = +this.route.snapshot.paramMap.get('id');
-    this.authorizationService.updateUser(listingId, this.listing).subscribe(result => {
-      console.log(result);
-      this.router.navigate(['/city-care/users-profile']);
-    })
-  }
-  
 ngOnDestroy() {
-  this.authListenerSub.unsubscribe();
+  this.authStatusSub.unsubscribe();
 }
 }

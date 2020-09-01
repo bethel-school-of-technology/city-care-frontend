@@ -1,15 +1,86 @@
-<h2>Listing</h2>
+<div *ngIf="isLoading" class="spinner-border text-primary" role="status">
 
+<<<<<<< HEAD
 <div  *ngIf="userIsAuthenticated && !isLoading && isOrg" ></div>
 <form (ngSubmit)="createListing()" name="createListing">
     <div>
         <label>
             <input type="text" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity"/>
+=======
+<<<<< peyton
+<form (ngSubmit)="listing()" new="listing">
+  <div>
+    <label>
+      <input type="text" id="quantity" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="text" id="availability" name="availability" placeholder="Days/Times services/goods are available"
+        [(ngModel)]="listing.availability" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="text" id="description" name="description" placeholder="Description of goods/services"
+        [(ngModel)]="listing.description" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="text" id="requirements" name="requirements"
+        placeholder="List an qualifying requirements to receive goods/services" [(ngModel)]="listing.requirements" />
+    </label>
+  </div>
+=======
+    <span class="sr-only">Loading...</span>
+  
+  </div>
+
+<h2>Create New Listing</h2>
+
+<div  *ngIf="userIsAuthenticated && !isLoading && isOrg" >
+    <form (ngSubmit)="createListing()" name="createListing">
+        <div>
+            <label>
+                <input type="text" id="quantity" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity"/>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="text" id="availability" name="availability" placeholder="Days/Times services/goods are available" [(ngModel)]="listing.availability"/>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="text" id="description" name="description" placeholder="Description of goods/services"[(ngModel)]="listing.description"/>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="text" id="requirements" name="requirements" placeholder="List an qualifying requirements to receive goods/services" [(ngModel)]="listing.requirements"/>
+            </label>
+        </div>
+    
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>    
+</div>
+<form *ngIf="userIsAuthenticated && isAuthenticated && !isLoading && isOrg" (ngSubmit)="createListing()" name="createListing">
+    <div>
+        <label>
+            <input type="number" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity"/>
+>>>>>>> 4e6d3f596b4150e036d28a6723573a37069093e6
         </label>
     </div>
     <div>
         <label>
+<<<<<<< HEAD
             <input type="text" name="availability" placeholder="Days/Times services/goods are available" [(ngModel)]="listing.availability"/>
+=======
+            <input type="date" name="availability" placeholder="Days/Times services/goods are available" [(ngModel)]="listing.availability"/>
+>>>>>>> 4e6d3f596b4150e036d28a6723573a37069093e6
         </label>
     </div>
     <div>
@@ -19,11 +90,15 @@
     </div>
     <div>
         <label>
+<<<<<<< HEAD
             <input type="text" name="requirements" placeholder="List any qualifying requirements to receive goods/services" [(ngModel)]="listing.requirements"/>
+=======
+            <input type="text" name="requirements" placeholder="List an qualifying requirements to receive goods/services" [(ngModel)]="listing.requirements"/>
+>>>>>>> 4e6d3f596b4150e036d28a6723573a37069093e6
         </label>
     </div>
 
-    <div>
-        <button type="submit">Submit</button>
-    </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
 </form>

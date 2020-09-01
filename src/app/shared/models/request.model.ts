@@ -1,10 +1,10 @@
 export class Request {
   id: number;
   name: string;
-  description: string;
-  needByDate: Date;
+  details: string;
+  needByDate: string;
   user_id: number;
-  delete: boolean;
+  deleted: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

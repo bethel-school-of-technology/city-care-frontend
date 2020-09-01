@@ -18,14 +18,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public user: User; //define the user
   public requests: Request[] = []; //Set the requests to an empty array 
   public listings: Listing[] = [];//Set the listings to an empty array
-  public listing: Listing;//Declare listing
-  public request: Request;//Declare request
+ 
   public isOrg = false; //Determine the user status, organization or individual
-  public isAdmin = false; //Stretch goal 
+ // public isAdmin = false; //Stretch goal 
   public isLoading = false; //Determine if the page is still loading and set the value
   public isAuthenticated = false;
-  public userId: string;
+  public userIsAuthenticated = false;
+ // public userId: string;
   private authStatusSub: Subscription;
+
 
   constructor(
     private route: ActivatedRoute, //Set the route as the Activated Route
@@ -41,13 +42,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.getProfile();//Get the profile 
     this.getUserListings();//Get the listings
     this.getUserRequests(); //Get the requests
-    this.isLoading = false;
     this.isOrg = this.authorizationService.getIsAuth();
     this.isAuthenticated = this.authorizationService.getIsAuth();
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService
     .getAuthStatusListener()
     .subscribe(isAuthenticated => {
-      this.isAuthenticated = isAuthenticated
+      this.userIsAuthenticated = isAuthenticated
     });
     this.isLoading = false;
   }
@@ -74,14 +75,14 @@ getUserRequests() {
   })
 }
 
-onClickDeleteRequest(request: Request) {
+onClickDeleteRequest(requestId: number) {
   this.requests = this.requests.filter(request => request.id !== request.id);
-  this.requestService.deleteRequest(request.id).subscribe();
+  this.requestService.deleteRequest(requestId).subscribe();
 }
 
-onClickDeleteListing(listing: Listing) {
+onClickDeleteListing(listingId: number) {
   this.listings = this.listings.filter(listing => listing.id !== listing.id);
-  this.listingService.deleteListing(listing.id).subscribe();
+  this.listingService.deleteListing(listingId).subscribe();
 }
 ngOnDestroy() {
   this.authStatusSub.unsubscribe();

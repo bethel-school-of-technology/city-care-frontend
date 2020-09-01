@@ -36,7 +36,6 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { SearchComponent } from './components/search/search.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TeamBioComponent } from './components/team-bio/team-bio.component';
@@ -46,7 +45,11 @@ import { RequestComponent } from './components/request/request.component';
 import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListingComponent } from './components/listing/listing.component';
-
+import { SiteTallyComponent } from './components/site-tally/site-tally.component';
+import { ViewListingComponent } from './components/view-listing/view-listing.component';
+import { ViewRequestComponent } from './components/view-request/view-request.component';
+import { EmailLoginComponent } from './components/email-login/email-login.component';
+import { UsernameLoginComponent } from './components/username-login/username-login.component';
 
 
 @NgModule({
@@ -56,7 +59,6 @@ import { ListingComponent } from './components/listing/listing.component';
     LoginComponent,
     RegistrationComponent,
     ProfileComponent,
-    SearchComponent,
     HeaderComponent,
     FooterComponent,
     TeamBioComponent,
@@ -65,6 +67,11 @@ import { ListingComponent } from './components/listing/listing.component';
     RequestComponent,
     ProfileEditorComponent,
     ListingComponent,
+    SiteTallyComponent,
+    ViewListingComponent,
+    ViewRequestComponent,
+    EmailLoginComponent,
+    UsernameLoginComponent
   ],
   imports: [
     BrowserModule,

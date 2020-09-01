@@ -1,0 +1,36 @@
+<div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+
+  <span class="sr-only">Loading...</span>
+
+</div>
+
+
+<h1>Below is a list of all the listings and requests in the City-Care site database</h1>
+<mat-accordion multi="true" *ngIf="listings.length > 0 && !isLoading">
+          <h3>All Listings</h3>
+                                   <mat-expansion-panel *ngFor="let listing of listings">
+                                                            <mat-expansion-panel-header>
+                                                                                     {{ listing.description }}
+                                                            </mat-expansion-panel-header>
+                                                            <p>{{ listing.availability }}</p>
+                                                            <mat-action-row>
+                                                                                     <a mat-button
+                                                                                                              color="primary" [routerLink]="['/city-care/view-listing', listing.id]">View Listing</a>
+                                                            </mat-action-row>
+                                   </mat-expansion-panel>
+          </mat-accordion>
+          <hr>
+          <mat-accordion  multi="true" *ngIf="requests.length > 0 && !isLoading">
+            <h3>All Requests</h3>
+            <mat-expansion-panel *ngFor="let request of requests">
+                                     <mat-expansion-panel-header>
+                                                              {{ request.name }}
+                                     </mat-expansion-panel-header>
+                                     <p>{{ request.details }}</p>
+                                     <mat-action-row>
+                                                              <a mat-button
+                                                                                       color="primary" [routerLink]="['/city-care/view-request', request.id]">View Request</a>
+                                     </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+          
