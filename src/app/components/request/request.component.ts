@@ -28,7 +28,6 @@ export class RequestComponent implements OnInit, OnDestroy {
     private router: Router
   ) {}
 
-  constructor(private requestService: RequestService, private router: Router) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -45,7 +44,7 @@ export class RequestComponent implements OnInit, OnDestroy {
   }
 
   createRequest() {
-    this.requestService.createRequest(this.request);
+    //this.requestService.createRequest(this.request);
   }
 
   ngOnDestroy() {

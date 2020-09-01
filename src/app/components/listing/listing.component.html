@@ -1,24 +1,25 @@
 <h2>Listing</h2>
 
-<form (ngSubmit)="onListing()" name="addListing">
+<div  *ngIf="userIsAuthenticated && !isLoading && isOrg" ></div>
+<form (ngSubmit)="createListing()" name="createListing">
     <div>
         <label>
-            <input type="text" id="quantity" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity"/>
+            <input type="text" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity"/>
         </label>
     </div>
     <div>
         <label>
-            <input type="text" id="availability" name="availability" placeholder="Days/Times services/goods are available" [(ngModel)]="listing.availability"/>
+            <input type="text" name="availability" placeholder="Days/Times services/goods are available" [(ngModel)]="listing.availability"/>
         </label>
     </div>
     <div>
         <label>
-            <input type="text" id="description" name="description" placeholder="Description of goods/services"[(ngModel)]="listing.description"/>
+            <input type="text" name="description" placeholder="Description of goods/services"[(ngModel)]="listing.description"/>
         </label>
     </div>
     <div>
         <label>
-            <input type="text" id="requirements" name="requirements" placeholder="List an qualifying requirements to receive goods/services" [(ngModel)]="listing.requirements"/>
+            <input type="text" name="requirements" placeholder="List any qualifying requirements to receive goods/services" [(ngModel)]="listing.requirements"/>
         </label>
     </div>
 
