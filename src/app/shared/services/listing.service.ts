@@ -42,4 +42,11 @@ export class ListingService {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.post<Listing>('${this.api}/create', listing,{headers:header});
   }
+
+  //Update Listing
+  updateListing(listingId: number): Observable<Listing>{
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.put<Listing>(`${this.api}/${listingId}`, { headers: header });
+  }
 }

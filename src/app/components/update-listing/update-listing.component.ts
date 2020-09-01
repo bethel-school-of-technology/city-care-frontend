@@ -35,6 +35,22 @@ private authListenerSub: Subscription
     this.listingService.getUserListing(listingId).subscribe(listing => this.listing = listing)
     this.isLoading = true;
   }
+
+  getListing() {
+    const listingId = +this.route.snapshot.paramMap.get('id');
+    this.authorizationService.getUser(listingId).subscribe((listing: any) => {
+      this.listing = listing;
+    });
+  }
+
+  updateListing() {
+    const listingId = +this.route.snapshot.paramMap.get('id');
+    this.authorizationService.updateUser(listingId, this.listing).subscribe(result => {
+      console.log(result);
+      this.router.navigate(['/city-care/users-profile']);
+    })
+  }
+  
 ngOnDestroy() {
   this.authListenerSub.unsubscribe();
 }
