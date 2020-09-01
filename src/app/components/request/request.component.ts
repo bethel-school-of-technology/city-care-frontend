@@ -37,10 +37,11 @@ export class RequestComponent implements OnInit, OnDestroy {
     this.isLoading = false;
   }
 
-  // Test change
   createRequest() {
-    this.requestService.createRequest(this.request);
-    this.router.navigate(['/city-care/users-profile']);
+    this.requestService.createRequest(this.request).subscribe((result) => {
+      console.log(result);
+      this.router.navigate(['/city-care/users-profile']);
+    });
   }
 
   ngOnDestroy() {
