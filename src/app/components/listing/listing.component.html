@@ -1,5 +1,31 @@
 <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
 
+<<<<< peyton
+<form (ngSubmit)="listing()" new="listing">
+  <div>
+    <label>
+      <input type="text" id="quantity" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="text" id="availability" name="availability" placeholder="Days/Times services/goods are available"
+        [(ngModel)]="listing.availability" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="text" id="description" name="description" placeholder="Description of goods/services"
+        [(ngModel)]="listing.description" />
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="text" id="requirements" name="requirements"
+        placeholder="List an qualifying requirements to receive goods/services" [(ngModel)]="listing.requirements" />
+    </label>
+  </div>
+=======
     <span class="sr-only">Loading...</span>
   
   </div>
@@ -34,3 +60,29 @@
         </div>
     </form>    
 </div>
+<form *ngIf="userIsAuthenticated && isAuthenticated && !isLoading && isOrg" (ngSubmit)="createListing()" name="createListing">
+    <div>
+        <label>
+            <input type="number" name="quantity" placeholder="Quantity of Items" [(ngModel)]="listing.quantity"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="date" name="availability" placeholder="Days/Times services/goods are available" [(ngModel)]="listing.availability"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="text" name="description" placeholder="Description of goods/services"[(ngModel)]="listing.description"/>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="text" name="requirements" placeholder="List an qualifying requirements to receive goods/services" [(ngModel)]="listing.requirements"/>
+        </label>
+    </div>
+
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
