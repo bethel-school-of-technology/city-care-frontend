@@ -10,12 +10,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  public isOrg = false;
+
   public user: User;
   public isLoading = false;
   public isAuthenticated = false;
   public userIsAuthenticated = false;
   private authListenerSub: Subscription; //listen for authentication
+  private orgListenerSub: Subscription;//Listen for whether a user is an organizatio or a user. 
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +25,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    this.isOrg = this.authorizationService.getIsAuth();
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
@@ -32,18 +32,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
       this.isLoading = false;
   }
+
+
   onLogout() {
     this.authorizationService.logout();
   }
-  getUser() {
-    const userId = +this.route.snapshot.paramMap.get('id');
-    this.authorizationService.getUser(userId).subscribe((user: any) => {
-      console.log(user);
-      this.user = user
-    })
-  }
+
   ngOnDestroy() {
     this.authListenerSub.unsubscribe();
+    this.orgListenerSub.unsubscribe();
   }
 }
 

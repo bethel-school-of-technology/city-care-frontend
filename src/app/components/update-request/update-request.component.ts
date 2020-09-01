@@ -22,6 +22,7 @@ private authStatusSub: Subscription
   constructor(
     private authorizationService: AuthorizationService,
     private route: ActivatedRoute,
+    private router: Router,
     private requestService: RequestService
   ) { }
 
@@ -37,6 +38,15 @@ private authStatusSub: Subscription
     this.requestService.getUserRequest(requestId).subscribe(request => this.request = request);
     this.isLoading = false;
   }
+
+  updateRequest() {
+    const requestId = +this.route.snapshot.paramMap.get('id');
+    this.requestService.updateRequest(requestId, this.request).subscribe(request => {
+      console.log(request);
+      this.router.navigate(['/city-care/users-profile'])
+    })
+  }
+
 ngOnDestroy() {
   this.authStatusSub.unsubscribe();
 }

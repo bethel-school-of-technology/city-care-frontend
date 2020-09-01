@@ -20,12 +20,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public listings: Listing[] = [];//Set the listings to an empty array
  
   public isOrg = false; //Determine the user status, organization or individual
+  public userIsOrg = false;
  // public isAdmin = false; //Stretch goal 
   public isLoading = false; //Determine if the page is still loading and set the value
   public isAuthenticated = false;
   public userIsAuthenticated = false;
  // public userId: string;
   private authStatusSub: Subscription;
+  private orgStatusSub: Subscription;
 
 
   constructor(
@@ -42,7 +44,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.getProfile();//Get the profile 
     this.getUserListings();//Get the listings
     this.getUserRequests(); //Get the requests
-    this.isOrg = this.authorizationService.getIsAuth();
+    this.isOrg = this.authorizationService.getIsOrg();
+    this.orgStatusSub = this.authorizationService.getOrgStatusListener().subscribe(isOrg => {
+      this.userIsOrg = isOrg
+    });
     this.isAuthenticated = this.authorizationService.getIsAuth();
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../models/user.model';
 import { Listing } from '../models/listing.model';
 
 @Injectable({
@@ -11,6 +12,7 @@ export class ListingService {
 
   api: string = 'http://localhost:3000/listings';
 
+  public users: User[];
   public listings: Listing[];
 
   constructor(
@@ -25,10 +27,10 @@ export class ListingService {
     return this.http.get<Listing[]>(`${this.api}/listings`, { headers: header });
   }
   //get all of the listings 
-  getAllUserListings(): Observable<Listing[]> {
+  getUsersMakingListings(): Observable<User[]> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<Listing[]>(`${this.api}/all/listings`, {headers: header});
+    return this.http.get<User[]>(`${this.api}/all/listings`, {headers: header});
   }
   // Delete an orgs listing
   deleteListing(listingId: number): Observable<Listing> {
@@ -56,12 +58,5 @@ export class ListingService {
     return this.http.put<Listing>(`${this.api}/${listingId}`, listing, {
       headers: header,
     });
-  }
-
-  //Update Listing
-  updateListing(listingId: number): Observable<Listing>{
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.put<Listing>(`${this.api}/${listingId}`, { headers: header });
   }
 }

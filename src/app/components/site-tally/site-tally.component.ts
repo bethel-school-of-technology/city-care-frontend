@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AuthorizationService } from '../../shared/services/authorization.service'
+import { Listing } from '../../shared/models/listing.model';
 import { ListingService } from '../../shared/services/listing.service';
 import { RequestService } from '../../shared/services/request.service';
-import { Listing } from '../../shared/models/listing.model';
 import { Request } from '../../shared/models/request.model';
-import { Subscription } from 'rxjs';
+import { User } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-site-tally',
@@ -12,14 +13,17 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./site-tally.component.css']
 })
 export class SiteTallyComponent implements OnInit, OnDestroy {
-
+  public user: User;
+  public users: User[] = [];
   public listings: Listing[] = [];
   public requests: Request[] = [];
   public isLoading = false;
   public isOrg = false;
+  public userIsOrg = false;
   public isAuthenticated = false;
   public userIsAuthenticated = false;
   private authStatusSub: Subscription;
+  private orgStatusSub: Subscription;
 
   constructor(
     private authorizationService: AuthorizationService,
@@ -31,9 +35,14 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.getUserRequests();
     this.getUserListings();
-    // this.getUserReqeuestsByCounty();
-    // this.getUserListingsByCounty();
-    this.isOrg = this.authorizationService.getIsAuth();
+    this.getUsersByZip();
+    /* this.getUsersMakingListings();
+    this.getUsersMakingRequests(); */
+    this.isOrg = this.authorizationService.getIsOrg();
+    this.orgStatusSub = this.authorizationService.getOrgStatusListener()
+    .subscribe(isOrg => {
+      this.userIsOrg = isOrg
+    });
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService
     .getAuthStatusListener()
@@ -43,29 +52,33 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
     this.isLoading = false;
   }
   getUserListings() {
-    this.listingService.getAllUserListings().subscribe((listings: any) => {
+    this.listingService.getUserListings().subscribe((listings: any) => {
       console.log(listings);
       this.listings = listings;
     });
   }
-  /* getUserListingsByCounty() {
-    this.listingService.getUserListingsByCounty().subscribe((listings: any) => {
-      console.log(listings);
-      this.listings = listings;
-    })
+ /*  getUsersMakingListings() {
+      this.listingService.getUsersMakingListings().subscribe((users: any) => {
+        this.users = users;
+      })
   } */
   getUserRequests() {
-    this.requestService.getAllUserRequests().subscribe((requests: any) => {
+    this.requestService.getUserRequests().subscribe((requests: any) => {
       console.log(requests);
       this.requests = requests;
     })
   }
- /*  getUserReqeuestsByCounty() {
-    this.requestService.getUserRequestsByCounty().subscribe((requests: any) => {
-      console.log(requests);
-      this.requests = requests;
+ /* getUsersMakingRequests() {
+    this.requestService.getUsersMakingRequests().subscribe((users: any) => {
+      this.users = users;
     })
-  } */
+ } */
+ getUsersByZip() {
+   this.authorizationService.getUsersByZip().subscribe((users: any) => {
+     console.log(users)
+     this.users = users;
+   })
+ }
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
   }

@@ -5,9 +5,24 @@
 </div>
 
 
+
 <h1>Below is a list of all the listings and requests in the City-Care site database</h1>
-<mat-accordion multi="true" *ngIf="listings.length > 0 && !isLoading">
+
+<div *ngFor="let user of users">
+  {{user.first_name}} {{ user.last_name }}
+</div>
+
+<mat-accordion multi="true" *ngIf="users.length > 0 && !isLoading">
           <h3>All Listings</h3>
+                                    <mat-expansion-panel *ngFor="let user of users">
+                                      <mat-expansion-panel-header>
+                                        {{user.first_name}} {{user.last_name}}
+                                        {{user.zip}}
+                                      </mat-expansion-panel-header>
+                                      <mat-action-row *ngFor="let listing of listings">
+                                            {{listing.description}}
+                                      </mat-action-row>
+                                    </mat-expansion-panel>
                                    <mat-expansion-panel *ngFor="let listing of listings">
                                                             <mat-expansion-panel-header>
                                                                                      {{ listing.description }}

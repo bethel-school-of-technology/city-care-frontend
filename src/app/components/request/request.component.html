@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<!-- <h2>Enter your request details below</h2>
-<form (ngSubmit)="createRequest()" name="createRequest">
-    <div id="listingInfoContainer">
-=======
 <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
 
     <span class="sr-only">Loading...</span>
@@ -10,9 +5,8 @@
 </div>
 
 <h2>Enter your request details below</h2>
-<form *ngIf="userIsAuthenticated && !isLoading && !isOrg" (ngSubmit)="createRequest()" name="createRequest">
+<form *ngIf="userIsAuthenticated && !isLoading" (ngSubmit)="createRequest()" name="createRequest">
     <div>
->>>>>>> 4e6d3f596b4150e036d28a6723573a37069093e6
         <div>
             <label>Enter a name for the request:</label>
             <input type="text" name="name" placeholder="Request name" [(ngModel)]="request.name" />
@@ -30,13 +24,10 @@
         </div>
         <div>
             <label>Need By Date:</label>
-            <input type="text" name="needByDate" placeholder="MM/DD/YYYY"
-                [(ngModel)]="request.needByDate" />
-
             <input type="date" name="needByDate" placeholder="MM/DD/YYYY" [(ngModel)]="request.needByDate" />
         </div>
     </div>
     <div>
         <button type="submit" class="btn btn-primary">Submit Request</button>
     </div>
-</form> -->
+</form>

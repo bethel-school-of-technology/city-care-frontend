@@ -5,33 +5,41 @@
 </div>
 
 
-<div class='container-fluid'>
-  <a *ngIf="isAuthenticated && !isLoading && isOrg" routerLink="/city-care/create-listing">Create</a>
-  <a *ngIf="isAuthenticated && !isLoading && !isOrg" routerLink="/city-care/create-request">Create</a>
-  <div class="card" *ngIf="user">
-
+<div>
+  
+  <br>
+  <div class="card" *ngIf="user && isAuthenticated && !isOrg">
+<a *ngIf="isAuthenticated && !isLoading && !isOrg" routerLink="/city-care/create-request">New Request</a>
+    <hr>
     <div class="display-4"> {{user.first_name}} {{user.last_name}}</div>
-    <div class="lead"><span>Username: {{user.username}} Organization: {{user.org_name}}</span></div>
-    <div class="my-4"><span>Email: {{user.email}}</span></div>
-    <div class="my-4"><span>Phone: {{user.phone}}</span> </div>
-    <div class="my-4"><span>Mobile: {{user.mobile_phone}}</span></div>
-    <div class="my-4"><span>Address 1: {{user.address1}}</span></div>
-    <div class="my-4"><span>Address 2: {{user.address2}}</span></div>
-    <div class="my-4"><span>City: {{user.city}} State: {{user.state}} </span></div>
-    <div class="my-4"><span>County: {{user.county}}</span>&nbsp; {{user.zip}}</div>
+    <hr>
+    <div class="lead"><span>Email: {{user.email}}</span> &nbsp;Username: {{user.username}}</div>
+    <div class="my-4"><span>Phone: {{user.phone}} </span>&nbsp; Mobile: {{user.mobile_phone}}</div>
+    <div class="my-4"><span>Address: {{user.address1}}</span>&nbsp; City: {{user.city}}</div>
+    <div class="my-4"><span>State: {{user.state}} </span>&nbsp; County: {{user.county}}, &nbsp;Zip {{user.zip}}</div>
     <br>
     <button type="button" class="btn btn-primary" routerLink="/city-care/home">Back</button>&nbsp;
   <button type="button" class="btn btn-warning" routerLink="/city-care/update-profile/{{user.id}}">Update</button>
   </div>
 </div>
-
-<<<<<<< HEAD
-<mat-accordion multi="true" *ngIf="listings.length > 0 && !isOrg && !isLoading">
-=======
-<mat-accordion multi="true" *ngIf="listings.length > 0 && !isLoading && isAuthenticated && isOrg">
-<h3>My Listings</h3>
->>>>>>> 4e6d3f596b4150e036d28a6723573a37069093e6
-                         <mat-expansion-panel *ngFor="let listing of listings">
+<div *ngIf="user && userIsAuthenticated && isOrg">
+  <a *ngIf="isAuthenticated && !isLoading && isOrg" routerLink="/city-care/create-listing">New Listing</a>
+    
+  <div class="display-4"> {{user.first_name}} {{user.last_name}}</div>
+  <hr>
+  <div class="lead"><span>Username: {{user.email}}</span> &nbsp;Username: {{user.username}}</div>
+  <div class="my-4"><span>Contact: {{user.contact_name}}</span>&nbsp; Org. Name: {{user.org_name}}</div>
+  <div class="my-4"><span>Phone: {{user.phone}} </span>&nbsp; Mobile: {{user.mobile_phone}}</div>
+  <div class="my-4"><span>Address: {{user.address1}}</span>&nbsp; City: {{user.city}}</div>
+  <div class="my-4"><span>Address: {{user.address2}}</span>&nbsp; Fax: {{user.fax}}</div>
+  <div class="my-4"><span>State: {{user.state}} </span>&nbsp; County: {{user.county}}, &nbsp;Zip {{user.zip}}</div>
+  <br>
+  <button type="button" class="btn btn-primary" routerLink="/city-care/home">Back</button>&nbsp;
+<button type="button" class="btn btn-warning" routerLink="/city-care/update-profile/{{user.id}}">Update</button>
+</div>
+<mat-accordion multi="true" *ngIf="listings.length > 0 && !isLoading &&  userIsAuthenticated && isOrg">
+  <h3>My Listings</h3>
+                      <mat-expansion-panel *ngFor="let listing of listings">
                                                   <mat-expansion-panel-header>
                                                                            {{ listing.description }}
                                                   </mat-expansion-panel-header>
@@ -46,7 +54,7 @@
                          </mat-expansion-panel>
 </mat-accordion>
 <hr>
-<mat-accordion  multi="true" *ngIf="requests.length > 0 && !isLoading && userIsAuthenticated">
+<mat-accordion  multi="true" *ngIf="requests.length > 0 && !isLoading && userIsAuthenticated && !isOrg">
   <h3>My Requests</h3>
   <mat-expansion-panel *ngFor="let request of requests">
                            <mat-expansion-panel-header>
