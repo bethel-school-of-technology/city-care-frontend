@@ -10,7 +10,7 @@ import { Listing } from '../../shared/models/listing.model';
 })
 export class ListingComponent implements OnInit {
 
-listing: Listing;
+  listing: Listing;
 
   constructor(
     private route: ActivatedRoute,

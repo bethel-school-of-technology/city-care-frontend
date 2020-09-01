@@ -2,3 +2,17 @@
   display: flex;
   margin-left: 80%;
 }
+
+.nav-wrapper {
+  background-color: rgb(29, 34, 59);
+  height: 85px;
+}
+
+.waves-effect {
+  padding-top: 15px;
+}
+
+
+a {
+  text-decoration: none;
+}
