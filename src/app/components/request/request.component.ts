@@ -10,9 +10,7 @@ import { RequestService } from 'src/app/shared/services/request.service';
   templateUrl: './request.component.html',
   styleUrls: ['./request.component.css'],
 })
-
 export class RequestComponent implements OnInit, OnDestroy {
-  
   public request: Request = new Request();
   public isOrg = false;
   public submitted = false;
@@ -27,21 +25,22 @@ export class RequestComponent implements OnInit, OnDestroy {
     private router: Router
   ) {}
 
-
   ngOnInit() {
     this.isLoading = true;
     this.isOrg = this.authorizationService.getIsOrg();
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
-    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
-      isAuthenticated => {
-        this.userIsAuthenticated = isAuthenticated
+    this.authStatusSub = this.authorizationService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
       });
-      this.isLoading = false;
+    this.isLoading = false;
   }
 
+  // Test change
   createRequest() {
-   this.requestService.createRequest(this.request);
-   this.router.navigate(['/city-care/users-profile']);
+    this.requestService.createRequest(this.request);
+    this.router.navigate(['/city-care/users-profile']);
   }
 
   ngOnDestroy() {
