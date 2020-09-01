@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs';
 })
 export class ListingComponent implements OnInit, OnDestroy {
 
-  listing: Listing;
 
 public listing: Listing = new Listing();
 public isLoading = false;
@@ -20,7 +19,6 @@ public isAuthenticated = false;
 public userIsAuthenticated = false;
 public isOrg = false;
 private authStatusSub: Subscription;
->>>>>> dev
 
   constructor(
     //private route: ActivatedRoute,
