@@ -4,7 +4,7 @@
 
 </div>
 
-    <form name='login' (ngSubmit)='login()'>
+   <!--  <form name='login' (ngSubmit)='login()'>
       <div class="container">
         <div class="login-div">
           <div class='row center-align'>
@@ -36,20 +36,20 @@
           </div>
         </div>
       </div>
-    </form>  
+    </form>   -->
       
-<mat-card>
+<mat-card style="width: 160%; background-color: rgb(29, 34, 59);">
   <h2 style="text-align: center;">    Choose a login method</h2>
- <mat-card-subtitle style="text-align: center;" >
+ <mat-card-subtitle style="text-align: center; font-size: 18px; color: white" >
    Login using email 
    <mat-card-actions style="text-align: right;" >
-    <button routerLink="/city-care/email-login">Email</button>
+    <button mat-raised-button class="mat-button-rounded" style="width: 100px; background-color: slategrey; border: 3px outset darkslategrey; margin-right: 10px;" routerLink="/city-care/email-login">Email</button>
   </mat-card-actions>
  </mat-card-subtitle>
- <mat-card-subtitle style="text-align: center;" >
+ <mat-card-subtitle style="text-align: center; font-size: 18px; color: white">
   Login using email 
   <mat-card-actions style="text-align: right;" >
-   <button routerLink="/city-care/username-login">Username</button>
+   <button style="width: 100px; background-color: slategrey; border: 3px outset darkslategrey; margin-right: 10px;" routerLink="/city-care/email-login" mat-raised-button routerLink="/city-care/username-login">Username</button>
  </mat-card-actions>
 </mat-card-subtitle>
 </mat-card>

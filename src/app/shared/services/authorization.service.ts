@@ -20,6 +20,8 @@ export class AuthorizationService {
   private isOrg: any; //Declare the isOrg validator
   private isAdmin: any; //Declare the is admin validator
   private authStatusListener = new Subject<boolean>(); //Set the authStatusListener as a subject boolean value
+  private orgStatusListener = new Subject<boolean>();
+
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -51,6 +53,9 @@ export class AuthorizationService {
     //check the users status & return it as an observable
     return this.authStatusListener.asObservable();
   }
+  getOrgStatusListener() {
+    return this.orgStatusListener.asObservable();
+  }
   //Set the boolean value of isOrg
   setIsOrg(e: boolean) {
     return this.isOrg = e;
@@ -62,10 +67,46 @@ export class AuthorizationService {
       this.router.navigate(['/city-care/user-login']);
     });
   }
-
-  login(user: any) {
+usernameLogin(user:any) {
+  return this.http.post(`${this.api}/usernameLogin`, user).subscribe(
+    (res: any) => {
+      const token = res.token;
+      this.token = token;
+      if (token) {
+        const expiresInDuration = res.expiresIn; //Declare how long the token lasts variable and assign the token time to it
+        this.setAuthTimer(expiresInDuration); //Set the authorization timer
+        this.isAuthenticated = true; //Set the status of the user as authenticated or verified
+        this.userIsAuthenticated = true;
+        this.userId = res.userId; //Store the user id from the response in a variable called userId
+        this.isOrg = res.isOrg; //Store the status of the user in the isOrg variable
+        this.isAdmin = res.isAdmin; //Stores the adminstrative status of the user in the is admin variable
+        this.authStatusListener.next(true); //Turn the authorization status subject on to listen for the users activities
+        this.orgStatusListener.next(true);
+        const now = new Date(); //get the current time stamp
+        const expirationDate = new Date(
+          now.getTime() + expiresInDuration * 1000
+        ); //create the expiration date
+        this.saveAuthData(
+          token,
+          expirationDate,
+          this.userId,
+          this.isOrg,
+          this.isAdmin
+        ); // executes the method saveAuthData
+      }
+      localStorage.setItem('access-token', res.token); //Set the access token to the token recieved in the response header
+      this.router.navigate(['/city-care/users-profile']); //Navigate the user to their profile page
+    },
+    (error) => {
+      //if the user is not logged in or authenticated turn the authorization status listener off
+      this.authStatusListener.next(false);
+      this.orgStatusListener.next(false);
+    }
+  );
+}
+  emailLogin(user: any) {
     //Log a user in
-    return this.http.post(`${this.api}/login`, user).subscribe(
+    return this.http.post(`${this.api}/emailLogin`, user).subscribe(
       (res: any) => {
         const token = res.token;
         this.token = token;
@@ -78,6 +119,7 @@ export class AuthorizationService {
           this.isOrg = res.isOrg; //Store the status of the user in the isOrg variable
           this.isAdmin = res.isAdmin; //Stores the adminstrative status of the user in the is admin variable
           this.authStatusListener.next(true); //Turn the authorization status subject on to listen for the users activities
+          this.orgStatusListener.next(true);
           const now = new Date(); //get the current time stamp
           const expirationDate = new Date(
             now.getTime() + expiresInDuration * 1000
@@ -96,6 +138,7 @@ export class AuthorizationService {
       (error) => {
         //if the user is not logged in or authenticated turn the authorization status listener off
         this.authStatusListener.next(false);
+        this.orgStatusListener.next(false);
       }
     );
   }
@@ -120,9 +163,15 @@ export class AuthorizationService {
       this.isAdmin = authInformation.isAdmin; //set the is admin validator to the one in local storage
       this.setAuthTimer(expiresIn / 1000); //Divide here because this is in milliseconds
       this.authStatusListener.next(true);
+      this.orgStatusListener.next(true);
     }
   }
-
+//Get all of the users by the zip code
+getUsersByZip(): Observable <User[]> {
+  let token = localStorage.getItem('access-token');
+  let header = new HttpHeaders().set('jwt', token);
+  return this.http.get<User[]>(`${this.api}/zip`, { headers: header });
+}
   //Get a user/organization profile
   getProfile(userId: number): Observable<User> {
     let token = localStorage.getItem('access-token');
@@ -148,7 +197,9 @@ export class AuthorizationService {
 logout() {
   this.token = null;
   this.isAuthenticated = false;
+  this.isOrg = false;
   this.authStatusListener.next(false);
+  this.orgStatusListener.next(false);
   clearTimeout(this.tokenTimer); //Clears the token timer out when the logout method is called. 
   this.clearAuthData();//clear the local storage
   this.userId = null; //Ensures the user Id is reset correctly after a user logs out. 

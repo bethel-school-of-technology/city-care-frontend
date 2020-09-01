@@ -13,11 +13,9 @@ import { Subscription } from 'rxjs';
 })
 
 export class LoginComponent implements OnInit, OnDestroy {
- 
-
 
   public user: User = new User();
-   isLoading = false;
+  public isLoading = false;
   public isAuthenticated = false;
   private authStatusSub: Subscription;
 
@@ -37,9 +35,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         
   }
  
-  login() {
-      this.authorizationService.login(this.user);
-  }
+  // login() {
+  //     this.authorizationService.login(this.user);
+  // }
   
 
 onLogout() {
