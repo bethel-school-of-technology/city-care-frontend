@@ -15,10 +15,11 @@ export class RequestService {
   constructor(private http: HttpClient, private router: Router) {}
 
   createRequest(request: any) {
-  let token = localStorage.getItem('access-token');
-  let header = new HttpHeaders().set('jwt', token);
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
     //Create a new request
     return this.http.post(`${this.api}/create`, request, {headers: header});
+    return this.http.post(`${this.api}/create`, request, { headers: header });
   }
 
   //Get all of a users requests for goods or services
@@ -34,6 +35,9 @@ export class RequestService {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Request[]>(`${this.api}/all/requests`, {headers: header});
+    return this.http.get<Request[]>(`${this.api}/county/requests`, {
+      headers: header,
+    });
   }
   //Get a single request made by an individual
   getUserRequest(requestId): Observable<Request> {
@@ -47,6 +51,8 @@ export class RequestService {
   deleteRequest(requestId: number): Observable<Request> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.delete<Request>(`${this.api}/${requestId}`, { headers: header });
+    return this.http.delete<Request>(`${this.api}/${requestId}`, {
+      headers: header,
+    });
   }
 }

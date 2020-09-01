@@ -1,8 +1,8 @@
 <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
 
     <span class="sr-only">Loading...</span>
-  
-  </div>
+
+</div>
 
 <h2>Enter your request details below</h2>
 <form *ngIf="userIsAuthenticated && !isLoading && !isOrg" (ngSubmit)="createRequest()" name="createRequest">
@@ -26,6 +26,8 @@
             <label>Need By Date:</label>
             <input type="text" name="needByDate" placeholder="MM/DD/YYYY"
                 [(ngModel)]="request.needByDate" />
+
+            <input type="date" name="needByDate" placeholder="MM/DD/YYYY" [(ngModel)]="request.needByDate" />
         </div>
     </div>
     <div>
