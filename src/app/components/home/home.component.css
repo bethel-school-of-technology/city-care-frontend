@@ -33,6 +33,8 @@
  }
 
 
+
+
  body {
    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
  }
@@ -45,4 +47,17 @@
  h6 {
    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
    font-weight: 700;
+   font-size: 30px;
+ }
+
+
+
+ .waves-effect {
+   background-color: rgb(29, 34, 59);
+
+ }
+
+
+ .waves-ripple {
+   background-color: white;
  }

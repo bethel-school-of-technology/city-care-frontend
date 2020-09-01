@@ -32,9 +32,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
       this.isLoading = false;
   }
-onLogout() {
-  this.authorizationService.logout();
-}
+  onLogout() {
+    this.authorizationService.logout();
+  }
   getUser() {
     const userId = +this.route.snapshot.paramMap.get('id');
     this.authorizationService.getUser(userId).subscribe((user: any) => {
@@ -42,7 +42,8 @@ onLogout() {
       this.user = user
     })
   }
-ngOnDestroy() {
-this.authListenerSub.unsubscribe();
+  ngOnDestroy() {
+    this.authListenerSub.unsubscribe();
+  }
 }
-}
+
