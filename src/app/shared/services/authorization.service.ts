@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
+import { Org } from '../models/org.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class AuthorizationService {
   api: string = 'http://localhost:3000/users';//Define the backend route
 
   public users: User[]; //Declare the users as an empty array
+  public orgs: Org[];
   private isAuthenticated = false; //Set the authentication status as false
   private userIsAuthenticated = false;
   private token: string; //Declare the token as a string
@@ -95,7 +97,7 @@ usernameLogin(user:any) {
         ); // executes the method saveAuthData
       }
       localStorage.setItem('access-token', res.token); //Set the access token to the token recieved in the response header
-      this.router.navigate(['/city-care/users-profile']); //Navigate the user to their profile page
+      this.router.navigate(['/city-care/site-postings']); //Navigate the user to their profile page
     },
     (error) => {
       //if the user is not logged in or authenticated turn the authorization status listener off
@@ -133,7 +135,7 @@ usernameLogin(user:any) {
           ); // executes the method saveAuthData
         }
         localStorage.setItem('access-token', res.token); //Set the access token to the token recieved in the response header
-        this.router.navigate(['/city-care/users-profile']); //Navigate the user to their profile page
+        this.router.navigate(['/city-care/site-postings']); //Navigate the user to their profile page
       },
       (error) => {
         //if the user is not logged in or authenticated turn the authorization status listener off
@@ -166,11 +168,22 @@ usernameLogin(user:any) {
       this.orgStatusListener.next(true);
     }
   }
+//Get the users information from the backend for the site tally page
+getUsersInformation(userId: number): Observable <User> {
+  let token = localStorage.getItem('access-token');
+  let header = new HttpHeaders().set('jwt', token);
+  return this.http.get<User>(`${this.api}/information`, {headers: header});
+}
 //Get all of the users by the zip code
+getOrgsByZip(): Observable <Org[]> {
+  let token = localStorage.getItem('access-token');
+  let header = new HttpHeaders().set('jwt', token);
+  return this.http.get<Org[]>(`${this.api}/orgsZip`, { headers: header });
+}
 getUsersByZip(): Observable <User[]> {
   let token = localStorage.getItem('access-token');
   let header = new HttpHeaders().set('jwt', token);
-  return this.http.get<User[]>(`${this.api}/zip`, { headers: header });
+  return this.http.get<User[]>(`${this.api}/usersZip`, { headers: header });
 }
   //Get a user/organization profile
   getProfile(userId: number): Observable<User> {

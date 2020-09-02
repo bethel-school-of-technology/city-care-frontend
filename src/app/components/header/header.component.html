@@ -1,3 +1,11 @@
+
+
+<ul id="dropdown1" class="waves-effect dropdown-content">
+<li><a class="waves-effect" value="email" routerLink="/city-care/email-login" routerLinkActive="activebutton">Email</a></li>
+<li class="divider"></li>
+<li><a class="waves-link" value="username"  routerLink="/city-care/username-login" routerLinkActive="activebutton">Username</a></li>
+</ul>
+
 <nav>
   <div class="nav-wrapper">
     <a routerLink="/city-care/home" class="brand-logo"><img class='brand-logo'
@@ -6,62 +14,24 @@
     <ul class="right hide-on-med-and-down">
       <li *ngIf="!userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/user-registration">Register</a>
       </li>
+      <li *ngIf="userIsAuthenticated"><a class="waves-effect" routerLink="/city-care/users-profile">Profile</a></li>
       <li *ngIf="userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/site-postings">Postings</a></li>
-      <li *ngIf="!userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/user-login">Login</a></li>
-      <li *ngIf="userIsAuthenticated"><a class='waves-effect' (click)="onLogout()">Logout</a></li>
+      <li><a class="waves-effect dropdown-trigger" routerLink="#!" data-target="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li>
+<li *ngIf="userIsAuthenticated"><a class='waves-effect' (click)="onLogout()">Logout</a></li>
       <li *ngIf="userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/about-us">About Us</a></li>
     </ul>
   </div>
 </nav>
 
 
- <nav>
-   <div class="nav-wrapper">
-     <a routerLink="/city-care/home" class="brand-logo"><img class='brand-logo'
-         src='../../../assets/images/CityCare.png'><span class="sr-only">(current)</span></a>
-     <a routerLink="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-     <ul class="right hide-on-med-and-down">
-       <li *ngIf="!userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/user-registration">Register</a></li>
-       <li *ngIf="userIsAuthenticated"><a class="waves-effect" routerLink="/city-care/site-postings">Postings</a></li>
-       <li *ngIf="userIsAuthenticated"><a class="waves-effect" routerLink="/city-care/users-profile">Profile</a></li>
-       <li *ngIf="!userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/user-login">Login</a></li>
-       <li *ngIf="userIsAuthenticated"><a class='waves-effect' (click)="onLogout()">Logout</a></li>
-       <li *ngIf="userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/about-us">About Us</a></li>
-     </ul>
-   </div>
- </nav>
+<ul class="sidenav" id="mobile-demo">
+  <li *ngIf="!userIsAuthenticated"><a routerLink="/city-care/user-registration">Register</a></li>
+  <li *ngIf="!userIsAuthenticated"><a routerLink="/city-care/user-login">Login</a></li>
+  <li *ngIf="userIsAuthenticated"><a routerLink="/city-care/site-postings">Postings</a></li>
+  <li *ngIf="userIsAuthenticated"><a (click)="onLogout()">Logout</a></li>
+  <li *ngIf="userIsAuthenticated"><a routerLink="/city-care/about-us">About Us</a></li>
+</ul>
 
 
-<!-- <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm fixed-top navbar-dark bg-secondary">
-  <a *ngIf="userIsAuthenticated" class="navbar-brand" routerLink="/city-care/home">City Care</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="navbar-collapse collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
-      <li *ngIf="userIsAuthenticated"  class="nav-item active">
-        <a class="nav-link" routerLink="/city-care/home">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li *ngIf="!userIsAuthenticated"  class="nav-item">
-        <a class="nav-link" routerLink="/city-care/user-registration">Register</a>
-      </li>
-      <li *ngIf="!userIsAuthenticated" class="nav-item">
-        <a class="nav-link" routerLink="/city-care/user-login">Login</a>
-      </li>
-      <li *ngIf="userIsAuthenticated" class="nav-item">
-        <a class="nav-link" routerLink="/city-care/site-postings">Postings</a>
-      </li>
-      <li *ngIf="userIsAuthenticated && isOrg" class="nav-item">
-        <a class="nav-link" routerLink="/city-care/create-listing">Create</a>
-      </li>
-      <li *ngIf="userIsAuthenticated && !isOrg" class="nav-item">
-        <a class="nav-link" routerLink="/city-care/create-request">Create</a>
-      </li>
-      <li *ngIf="userIsAuthenticated" class="nav-item">
-        <a class="nav-link" (click)="onLogout()">Logout</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+        
 
- -->

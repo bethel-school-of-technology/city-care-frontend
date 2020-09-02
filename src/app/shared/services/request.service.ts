@@ -36,12 +36,13 @@ updateRequest(requestId: number, request: any): Observable <Request> {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Request[]>(`${this.api}/requests`, { headers: header });
   }
-  //Get all of the requests for a user by the county
-  getUsersMakingRequests() {
+  //get all of the requests in the database based on the zip code
+  getAllUserRequests(): Observable<Request[]> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-   return this.http.get<User[]>(`${this.api}/all/requests`, {headers: header});
+    return this.http.get<Request[]>(`${this.api}/`, { headers: header });
   }
+
   //Get a single request made by an individual
   getUserRequest(requestId): Observable<Request> {
     let token = localStorage.getItem('access-token');
