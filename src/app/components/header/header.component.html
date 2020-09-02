@@ -1,27 +1,28 @@
+<nav>
+  <div class="nav-wrapper">
+    <a routerLink="/city-care/home" class="brand-logo"><img class='brand-logo'
+        src='../../../assets/images/CityCare.png'><span class="sr-only">(current)</span></a>
+    <a routerLink="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li *ngIf="!userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/user-registration">Register</a>
+      </li>
+      <li *ngIf="userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/site-postings">Postings</a></li>
+      <li *ngIf="!userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/user-login">Login</a></li>
+      <li *ngIf="userIsAuthenticated"><a class='waves-effect' (click)="onLogout()">Logout</a></li>
+      <li *ngIf="userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/about-us">About Us</a></li>
+    </ul>
+  </div>
+</nav>
 
 
- <nav>
-   <div class="nav-wrapper">
-     <a routerLink="/city-care/home" class="brand-logo"><img class='brand-logo'
-         src='../../../assets/images/CityCare.png'><span class="sr-only">(current)</span></a>
-     <a routerLink="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-     <ul class="right hide-on-med-and-down">
-       <li *ngIf="!userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/user-registration">Register</a></li>
-       <li *ngIf="userIsAuthenticated"><a class="waves-effect" routerLink="/city-care/site-postings">Postings</a></li>
-       <li *ngIf="!userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/user-login">Login</a></li>
-       <li *ngIf="userIsAuthenticated"><a class='waves-effect' (click)="onLogout()">Logout</a></li>
-       <li *ngIf="userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/about-us">About Us</a></li>
-     </ul>
-   </div>
- </nav>
+<ul class="sidenav" id="mobile-demo">
+  <li *ngIf="!userIsAuthenticated"><a routerLink="/city-care/user-registration">Register</a></li>
+  <li *ngIf="!userIsAuthenticated"><a routerLink="/city-care/user-login">Login</a></li>
+  <li *ngIf="userIsAuthenticated"><a routerLink="/city-care/site-postings">Postings</a></li>
+  <li *ngIf="userIsAuthenticated"><a (click)="onLogout()">Logout</a></li>
+  <li *ngIf="userIsAuthenticated"><a routerLink="/city-care/about-us">About Us</a></li>
+</ul>
 
- <ul class="sidenav" id="mobile-demo">
-   <li  *ngIf="!userIsAuthenticated"><a routerLink="/city-care/user-registration">Register</a></li>
-   <li *ngIf="!userIsAuthenticated"><a routerLink="/city-care/user-login">Login</a></li>
-   <li  *ngIf="userIsAuthenticated"><a routerLink="/city-care/site-postings">Postings</a></li>
-   <li  *ngIf="userIsAuthenticated"><a (click)="onLogout()">Logout</a></li>
-   <li  *ngIf="userIsAuthenticated"><a routerLink="/city-care/about-us">About Us</a></li>
- </ul>
 
 <!-- <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm fixed-top navbar-dark bg-secondary">
   <a *ngIf="userIsAuthenticated" class="navbar-brand" routerLink="/city-care/home">City Care</a>

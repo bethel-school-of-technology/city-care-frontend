@@ -24,12 +24,21 @@ mat-spinner {
   padding: 35px;
   border: 1px solid #ddd;
   border-radius: 8px;
-} */
-:host {
-  display: block;
-  margin: 1rem auto;
-}
- /* .container {
+} 
+
+  .container {
    width: 100%;
   height: auto;
  } */
+:host {
+  display: block;
+  margin: 1rem auto;
+  padding-top: 15%;
+
+
+}
+
+.indeterminate {
+  background-color: slategray;
+
+}

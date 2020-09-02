@@ -19,31 +19,31 @@ export class LoginComponent implements OnInit, OnDestroy {
   public isAuthenticated = false;
   private authStatusSub: Subscription;
 
-  
-  
-   
+
+
+
   constructor(
     private authorizationService: AuthorizationService,
     public router: Router
   ) { }
 
-    ngOnInit() {
-      this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
-        authStatus => {
-          this.isLoading = false;
-        })
-        
-  }
- 
-  // login() {
-  //     this.authorizationService.login(this.user);
-  // }
-  
+  ngOnInit() {
+    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
+      authStatus => {
+        this.isLoading = false;
+      })
 
-onLogout() {
-  this.authorizationService.logout();
-}
-ngOnDestroy() {
-  this.authStatusSub.unsubscribe();
-}
+  }
+
+  // login() {
+  //   this.authorizationService.login(this.user);
+  // }
+
+
+  onLogout() {
+    this.authorizationService.logout();
+  }
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
+  }
 }
