@@ -13,6 +13,7 @@ import { User } from '../../shared/models/user.model';
   styleUrls: ['./site-tally.component.css']
 })
 export class SiteTallyComponent implements OnInit, OnDestroy {
+
   public user: User;
   public users: User[] = [];
   public listings: Listing[] = [];
@@ -36,8 +37,6 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
     this.getUserRequests();
     this.getUserListings();
     this.getUsersByZip();
-    /* this.getUsersMakingListings();
-    this.getUsersMakingRequests(); */
     this.isOrg = this.authorizationService.getIsOrg();
     this.orgStatusSub = this.authorizationService.getOrgStatusListener()
     .subscribe(isOrg => {
@@ -57,22 +56,14 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
       this.listings = listings;
     });
   }
- /*  getUsersMakingListings() {
-      this.listingService.getUsersMakingListings().subscribe((users: any) => {
-        this.users = users;
-      })
-  } */
+ 
   getUserRequests() {
     this.requestService.getUserRequests().subscribe((requests: any) => {
       console.log(requests);
       this.requests = requests;
     })
   }
- /* getUsersMakingRequests() {
-    this.requestService.getUsersMakingRequests().subscribe((users: any) => {
-      this.users = users;
-    })
- } */
+ 
  getUsersByZip() {
    this.authorizationService.getUsersByZip().subscribe((users: any) => {
      console.log(users)
@@ -81,6 +72,7 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
  }
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
+    this.orgStatusSub.unsubscribe();
   }
 
 }

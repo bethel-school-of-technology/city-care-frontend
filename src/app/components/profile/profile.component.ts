@@ -21,17 +21,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
  
   public isOrg = false; //Determine the user status, organization or individual
   public userIsOrg = false;
- // public isAdmin = false; //Stretch goal 
   public isLoading = false; //Determine if the page is still loading and set the value
   public isAuthenticated = false;
   public userIsAuthenticated = false;
- // public userId: string;
+  
   private authStatusSub: Subscription;
   private orgStatusSub: Subscription;
 
 
   constructor(
     private route: ActivatedRoute, //Set the route as the Activated Route
+    private router: Router,
     private authorizationService: AuthorizationService, //Declare and bring in the authorization service for use in the component
     private requestService: RequestService, //Declare and bring in the request service for use in the component
     private listingService: ListingService//Declare and bring in the listing service for use in the component
@@ -83,13 +83,17 @@ getUserRequests() {
 onClickDeleteRequest(requestId: number) {
   this.requests = this.requests.filter(request => request.id !== request.id);
   this.requestService.deleteRequest(requestId).subscribe();
+  this.router.navigate(['/city-care/users-profile']);
 }
 
 onClickDeleteListing(listingId: number) {
   this.listings = this.listings.filter(listing => listing.id !== listing.id);
   this.listingService.deleteListing(listingId).subscribe();
+  this.router.navigate(['/city-care/users-profile']);
 }
+
 ngOnDestroy() {
   this.authStatusSub.unsubscribe();
+  this.orgStatusSub.unsubscribe();
 }
 }

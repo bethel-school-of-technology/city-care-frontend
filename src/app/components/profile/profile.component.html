@@ -8,7 +8,7 @@
 <div>
   
   <br>
-  <div class="card" *ngIf="user && isAuthenticated && !isOrg">
+  <div class="card" *ngIf="user && userIsAuthenticated && !isOrg">
 <a *ngIf="isAuthenticated && !isLoading && !isOrg" routerLink="/city-care/create-request">New Request</a>
     <hr>
     <div class="display-4"> {{user.first_name}} {{user.last_name}}</div>

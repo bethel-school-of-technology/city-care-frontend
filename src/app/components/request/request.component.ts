@@ -11,13 +11,18 @@ import { RequestService } from 'src/app/shared/services/request.service';
   styleUrls: ['./request.component.css'],
 })
 export class RequestComponent implements OnInit, OnDestroy {
+
   public request: Request = new Request();
+
   public isOrg = false;
+  public userIsOrg = false;
   public submitted = false;
   public isLoading = false;
   public isAuthenticated = false;
   public userIsAuthenticated = false;
+
   private authStatusSub: Subscription;
+  private orgStatusSub: Subscription;
 
   constructor(
     private requestService: RequestService,
@@ -28,6 +33,9 @@ export class RequestComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.isLoading = true;
     this.isOrg = this.authorizationService.getIsOrg();
+    this.orgStatusSub = this.authorizationService.getOrgStatusListener().subscribe(isOrg => {
+    this.userIsOrg = isOrg
+    });
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService
       .getAuthStatusListener()
@@ -46,5 +54,6 @@ export class RequestComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
+    this.orgStatusSub.unsubscribe();
   }
 }

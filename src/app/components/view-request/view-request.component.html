@@ -4,7 +4,7 @@
         
         </div>
 
-<div class="card" *ngIf="request">
+<div class="card" *ngIf="request && userIsAuthenticated && !isOrg">
           {{request.name}} <br>
           {{request.details}}<br>
           {{request.needByDate}} <br>

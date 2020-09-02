@@ -4,8 +4,9 @@
 
 </div>
 
-<h2>Enter your request details below</h2>
-<form *ngIf="userIsAuthenticated && !isLoading" (ngSubmit)="createRequest()" name="createRequest">
+<div *ngIf="userIsAuthenticated && !isOrg">
+    <h2>Enter your request details below</h2>
+<form (ngSubmit)="createRequest()" name="createRequest">
     <div>
         <div>
             <label>Enter a name for the request:</label>
@@ -31,3 +32,4 @@
         <button type="submit" class="btn btn-primary">Submit Request</button>
     </div>
 </form>
+</div>

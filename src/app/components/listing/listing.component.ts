@@ -19,7 +19,9 @@ public isLoading = false;
 public isAuthenticated = false;
 public userIsAuthenticated = false;
 public isOrg = false;
+public userIsOrg = false; 
 private authStatusSub: Subscription;
+private orgStatusSub: Subscription;
 
 
   constructor(
@@ -32,7 +34,10 @@ private authStatusSub: Subscription;
 
   ngOnInit() {
     this.isLoading = true;
-    this.isOrg = this.authorizationService.getIsAuth();
+    this.isOrg = this.authorizationService.getIsOrg();
+    this.orgStatusSub = this.authorizationService.getOrgStatusListener().subscribe(isOrg => {
+      this.userIsOrg = isOrg;
+    });
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
@@ -50,5 +55,6 @@ createListing() {
 
 ngOnDestroy() {
   this.authStatusSub.unsubscribe();
+  this.orgStatusSub.unsubscribe();
 }
 }

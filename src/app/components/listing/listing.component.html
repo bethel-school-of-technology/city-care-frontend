@@ -4,9 +4,11 @@
 
 </div>
 
-<h2>Create New Listing</h2>
 
 <div *ngIf="userIsAuthenticated && isOrg">
+    
+    <h2>Create New Listing</h2>
+
     <form (ngSubmit)="createListing()" name="createListing">
         <div>
             <label>
