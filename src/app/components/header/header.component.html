@@ -8,6 +8,7 @@
      <ul class="right hide-on-med-and-down">
        <li *ngIf="!userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/user-registration">Register</a></li>
        <li *ngIf="userIsAuthenticated"><a class="waves-effect" routerLink="/city-care/site-postings">Postings</a></li>
+       <li *ngIf="userIsAuthenticated"><a class="waves-effect" routerLink="/city-care/users-profile">Profile</a></li>
        <li *ngIf="!userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/user-login">Login</a></li>
        <li *ngIf="userIsAuthenticated"><a class='waves-effect' (click)="onLogout()">Logout</a></li>
        <li *ngIf="userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/about-us">About Us</a></li>
