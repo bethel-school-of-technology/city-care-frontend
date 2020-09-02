@@ -8,10 +8,6 @@
 
 <h1>Below is a list of all the listings and requests in the City-Care site database</h1>
 
-<div *ngFor="let user of users">
-  {{user.first_name}} {{ user.last_name }}
-</div>
-
 <mat-accordion multi="true" *ngIf="users.length > 0 && !isLoading">
           <h3>All Listings</h3>
                                     <mat-expansion-panel *ngFor="let user of users">
