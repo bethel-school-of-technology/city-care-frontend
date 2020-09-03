@@ -169,13 +169,13 @@ usernameLogin(user:any) {
     }
   }
 //Get the users information from the backend for the site tally page
-getUsersInformation(userId: number): Observable <User> {
+getUsersInformation(users: any, requests: any, listings: any){
   let token = localStorage.getItem('access-token');
   let header = new HttpHeaders().set('jwt', token);
-  return this.http.get<User>(`${this.api}/information`, {headers: header});
+  return this.http.get<{ users, listings, requests }>(`${this.api}/information`, {headers: header});
 }
 //Get all of the users by the zip code
-getOrgsByZip(): Observable <Org[]> {
+/* getOrgsByZip(): Observable <Org[]> {
   let token = localStorage.getItem('access-token');
   let header = new HttpHeaders().set('jwt', token);
   return this.http.get<Org[]>(`${this.api}/orgsZip`, { headers: header });
@@ -184,7 +184,7 @@ getUsersByZip(): Observable <User[]> {
   let token = localStorage.getItem('access-token');
   let header = new HttpHeaders().set('jwt', token);
   return this.http.get<User[]>(`${this.api}/usersZip`, { headers: header });
-}
+} */
   //Get a user/organization profile
   getProfile(userId: number): Observable<User> {
     let token = localStorage.getItem('access-token');
@@ -197,7 +197,11 @@ getUsersByZip(): Observable <User[]> {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<User>(`${this.api}/${userId}`, { headers: header });
   }
-
+  getUserWhoMadeRequest(user_id): Observable <User> {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<User>(`${this.api}/userRequest/${user_id}`, { headers: header })
+  }
   updateUser(userId: number, user: any): Observable <User> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);

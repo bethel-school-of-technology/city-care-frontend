@@ -46,11 +46,6 @@ export class ListingService {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Listing>(`${this.api}/${listingId}`, {headers: header});
   }
-  getOrg(orgId): Observable <Org> {
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<Org>(`${this.api}/org/${orgId}`, {headers: header})
-  }
   //Create listing
   createListing(listing: Listing): Observable <Listing> {
     let token = localStorage.getItem('access-token');

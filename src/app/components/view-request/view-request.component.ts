@@ -3,6 +3,7 @@ import { Route, ActivatedRoute } from '@angular/router';
 import { AuthorizationService } from '../../shared/services/authorization.service';
 import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../shared/models/request.model';
+import { User } from '../../shared/models/user.model';
 import { Subscription } from 'rxjs';
 
 
@@ -13,6 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class ViewRequestComponent implements OnInit, OnDestroy {
 
+  public user: User;
   public request: Request;
   public isLoading = false;
   public isAuthenticated = false;
@@ -43,7 +45,7 @@ export class ViewRequestComponent implements OnInit, OnDestroy {
       this.requestService.getUserRequest(requestId).subscribe(request => this.request = request)
       this.isLoading = false;
   }
-
+  
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
     this.orgStatusSub.unsubscribe();

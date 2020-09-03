@@ -17,8 +17,7 @@
                                                         QTY:    <p>{{listing.quantity}} </p>
                                                         Need:  <p>{{listing.requirements}}</p>
                                                  When:<p>{{ listing.availability }}</p>
-                                                 <mat-action-row *ngIf="org">
-                                                    {{user.first_name}}
+                                                 <mat-action-row>
                                                  </mat-action-row>
                                                  <mat-action-row>
                                                   <a mat-button color="primary" [routerLink]="['/city-care/view-listing/', listing.id]">View</a>
