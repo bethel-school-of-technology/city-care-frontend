@@ -12,12 +12,11 @@
   <h3>All Listings</h3>
                       <mat-expansion-panel *ngFor="let listing of listings">
                                                   <mat-expansion-panel-header>
-                                                                           {{ listing.description }}
+                                                                           {{listing.first_name}}
+                                                                           {{listing.last_name}} 
                                                   </mat-expansion-panel-header>
-                                                        QTY:    <p>{{listing.quantity}} </p>
-                                                        Need:  <p>{{listing.requirements}}</p>
-                                                 When:<p>{{ listing.availability }}</p>
-                                                 <mat-action-row>
+                                                 <mat-action-row >
+                                                   {{listing.description}}
                                                  </mat-action-row>
                                                  <mat-action-row>
                                                   <a mat-button color="primary" [routerLink]="['/city-care/view-listing/', listing.id]">View</a>

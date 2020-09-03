@@ -14,8 +14,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./site-tally.component.css']
 })
 export class SiteTallyComponent implements OnInit, OnDestroy {
-
+  
   public user: User;
+  public users: User[];
   public listings: Listing[] = [];
   public listing: Listing;
   public request: Request;
@@ -54,12 +55,11 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
   }
 
   getAllUserListings() {
-    this.listingService.getAllUserListings().subscribe((listings: any) => {
+    this.listingService.getListingUsers().subscribe((listings: any) => {
       console.log(listings);
       this.listings = listings;
     });
-  }
- 
+    }
   getAllUserRequests() {
     this.requestService.getAllUserRequests().subscribe((requests: any) => {
       console.log(requests);
@@ -67,7 +67,7 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
         });
   }
 
- 
+
 
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
