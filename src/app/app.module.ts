@@ -33,7 +33,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -50,13 +49,13 @@ import { ViewListingComponent } from './components/view-listing/view-listing.com
 import { ViewRequestComponent } from './components/view-request/view-request.component';
 import { EmailLoginComponent } from './components/email-login/email-login.component';
 import { UsernameLoginComponent } from './components/username-login/username-login.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
     RegistrationComponent,
     ProfileComponent,
     HeaderComponent,
@@ -71,7 +70,9 @@ import { UsernameLoginComponent } from './components/username-login/username-log
     ViewListingComponent,
     ViewRequestComponent,
     EmailLoginComponent,
-    UsernameLoginComponent
+    UsernameLoginComponent,
+    PageNotFoundComponent,
+    
   ],
   imports: [
     BrowserModule,

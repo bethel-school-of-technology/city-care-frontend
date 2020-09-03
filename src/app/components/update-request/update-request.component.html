@@ -4,7 +4,7 @@
   
   </div>
 
-<div *ngIf="request && !isLoading ">
+<div *ngIf="request && !isLoading && userIsAuthenticated && !isOrg">
           {{ request.id}}
           {{request.name}} <br>
           {{request.details}}<br>
@@ -12,13 +12,9 @@
           {{request.user_id}} <br>
     <button class="back" routerLink="/city-care/users-profile">Back</button>&nbsp;
 </div>
-<div *ngIf="isLoading" class="spinner-border text-primary" role="status">
 
-  <span class="sr-only">Loading...</span>
-
-</div>
-
-<h2>Enter your request details below</h2>
+<div *ngIf="request && !isLoading && userIsAuthenticated && !isOrg">
+    <h2>Enter your request details below</h2>
 <form *ngIf="request !isLoading" (ngSubmit)="updateRequest()" name="updateRequest">
   <div>
       <div>
@@ -46,3 +42,5 @@
       <button type="submit" class="btn btn-primary">Submit Request</button>
   </div>
 </form>
+</div>
+

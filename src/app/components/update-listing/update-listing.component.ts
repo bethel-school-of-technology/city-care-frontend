@@ -13,11 +13,13 @@ import { AuthorizationService } from 'src/app/shared/services/authorization.serv
 export class UpdateListingComponent implements OnInit {
 
 public isOrg = false;
+public userIsOrg = false;
 public isLoading = false;
 public isAuthenticated = false;
 public userIsAuthenticated = false;
 public listing: Listing;
 private authStatusSub: Subscription;
+private orgStatusSub: Subscription;
 
   constructor(
     private authorizationService: AuthorizationService,
@@ -29,6 +31,9 @@ private authStatusSub: Subscription;
   ngOnInit(){ 
     this.isLoading = true;
     this.isOrg = this.authorizationService.getIsOrg();
+    this.orgStatusSub = this.authorizationService.getAuthStatusListener().subscribe(isOrg => {
+      this.userIsOrg = isOrg;
+    })
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
@@ -38,6 +43,8 @@ private authStatusSub: Subscription;
       this.listingService.getUserListing(listingId).subscribe(listing => this.listing = listing)
       this.isLoading = false;
   }
+
+  
 updateListing() {
   const listingId = +this.route.snapshot.paramMap.get('id');
   this.listingService.updateListing(listingId, this.listing).subscribe(listing => {
@@ -48,5 +55,6 @@ updateListing() {
 
 ngOnDestroy() {
   this.authStatusSub.unsubscribe();
+  this.orgStatusSub.unsubscribe();
 }
 }

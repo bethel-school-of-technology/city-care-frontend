@@ -4,7 +4,7 @@
         
         </div>
 
-<div class="card" *ngIf="listing">
+<div class="card" *ngIf="listing && !isLoading && userIsAuthenticated && isOrg">
           {{ listing.id }} <br>
           {{ listing.quantity }} <br>
           {{ listing.description }} <br>
@@ -14,7 +14,8 @@
         
           <button class="back" routerLink="/city-care/users-profile">Back</button>&nbsp;
 </div>
-<h2>Update This Listing</h2>
+<div *ngIf="listing && !isLoading && userIsAuthenticated && isOrg">
+    <h2>Update This Listing</h2>
 
 <form (ngSubmit)="updateListing()" name="updateListing">
     <div>
@@ -43,3 +44,5 @@
     </div>
 </form>
 
+
+</div>

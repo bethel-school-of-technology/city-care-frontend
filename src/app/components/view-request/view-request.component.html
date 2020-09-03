@@ -3,7 +3,10 @@
           <span class="sr-only">Loading...</span>
         
         </div>
+<div *ngIf="user">
+  {{user.first_name}}
 
+</div>
 <div class="card" *ngIf="request">
           {{request.name}} <br>
           {{request.details}}<br>

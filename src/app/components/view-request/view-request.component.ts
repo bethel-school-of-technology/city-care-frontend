@@ -3,6 +3,7 @@ import { Route, ActivatedRoute } from '@angular/router';
 import { AuthorizationService } from '../../shared/services/authorization.service';
 import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../shared/models/request.model';
+import { User } from '../../shared/models/user.model';
 import { Subscription } from 'rxjs';
 
 
@@ -13,11 +14,15 @@ import { Subscription } from 'rxjs';
 })
 export class ViewRequestComponent implements OnInit, OnDestroy {
 
+  public user: User;
   public request: Request;
   public isLoading = false;
   public isAuthenticated = false;
+  public userIsAuthenticated = false;
   public isOrg = false;
-  private authListenerSub: Subscription;
+  public userIsOrg = false;
+  private authStatusSub: Subscription;
+  private orgStatusSub: Subscription;
 
   constructor(
     private authorizationService: AuthorizationService,
@@ -28,17 +33,21 @@ export class ViewRequestComponent implements OnInit, OnDestroy {
   ngOnInit(){
     this.isLoading = true;
     this.isOrg = this.authorizationService.getIsOrg();
-    this.isAuthenticated = this.authorizationService.getIsAuth();
-    this.authListenerSub = this.authorizationService.getAuthStatusListener().subscribe(
+    this.orgStatusSub = this.authorizationService.getAuthStatusListener().subscribe(isOrg => {
+      this.userIsOrg = isOrg;
+    })
+    this.userIsAuthenticated = this.authorizationService.getIsAuth();
+    this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
-        this.isAuthenticated = isAuthenticated
+        this.userIsAuthenticated = isAuthenticated
       });
       const requestId = +this.route.snapshot.paramMap.get('id');
       this.requestService.getUserRequest(requestId).subscribe(request => this.request = request)
       this.isLoading = false;
   }
-
+  
   ngOnDestroy() {
-    this.authListenerSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
+    this.orgStatusSub.unsubscribe();
   }
 }
