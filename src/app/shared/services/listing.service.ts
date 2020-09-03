@@ -22,29 +22,29 @@ export class ListingService {
     private router: Router
   ) { }
 
-  //Get all of  the listings made by an organization
+  //Get all of  the listings made by an organization for the profile page
   getUserListings(): Observable<Listing[]> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Listing[]>(`${this.api}/listings`, { headers: header });
   }
- //Get all of the organization listings in the database
+ //Get all of the organization listings in the database for the site tally page
  getAllUserListings(): Observable<Listing[]> {
   let token = localStorage.getItem('access-token');
   let header = new HttpHeaders().set('jwt', token);
   return this.http.get<Listing[]>(`${this.api}/`, { headers: header });
 }
-  // Delete an orgs listing
+  // Delete an organizations listing
   deleteListing(listingId: number): Observable<Listing> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.delete<Listing>(`${this.api}/${listingId}`, { headers: header });
+    return this.http.delete<Listing>(`${this.api}/delete/${listingId}`, { headers: header });
   }
   //Get a organizations listing by the listing id
   getUserListing(listingId): Observable <Listing> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<Listing>(`${this.api}/${listingId}`, {headers: header});
+    return this.http.get<Listing>(`${this.api}/listing/${listingId}`, {headers: header});
   }
   //Create listing
   createListing(listing: Listing): Observable <Listing> {
@@ -56,8 +56,14 @@ export class ListingService {
   updateListing(listingId: number, listing: any): Observable <Listing> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.put<Listing>(`${this.api}/${listingId}`, listing, {
+    return this.http.put<Listing>(`${this.api}/update/${listingId}`, listing, {
       headers: header,
     });
   }
+  getListingUsers(): Observable <Listing> {
+    let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<Listing>(`${this.api}/find`, {headers: header});
+  }
+  
 }
