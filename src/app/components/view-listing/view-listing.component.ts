@@ -42,7 +42,10 @@ export class ViewListingComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated
       });
       const listingId = +this.route.snapshot.paramMap.get('id');
-      this.listingService.getUserListing(listingId).subscribe(listing => this.listing = listing)
+      this.listingService.getUserListing(listingId).subscribe(listing => 
+        this.listing = listing
+    );
+
      
 
     this.isLoading = false;

@@ -8,6 +8,8 @@
 
 <h1>Listings & Requests In The City-Care Site Database</h1>
 
+
+
 <mat-accordion multi="true" *ngIf="listings.length > 0 && !isLoading &&  userIsAuthenticated">
   <h3>All Listings</h3>
                       <mat-expansion-panel *ngFor="let listing of listings">
@@ -17,7 +19,10 @@
                                                     {{listing.last_name}}                                  
                                                   </mat-expansion-panel-header>
                                                  <mat-action-row >
-                                                 
+                                                 {{listing.description}}
+                                                 </mat-action-row>
+                                                 <mat-action-row>
+                                                  {{listing.requirements}}
                                                  </mat-action-row>
                                                  <mat-action-row>
                                                   <a mat-button color="primary" [routerLink]="['/city-care/view-listing/', listing.id]">View</a>
