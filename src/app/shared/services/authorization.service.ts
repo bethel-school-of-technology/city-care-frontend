@@ -177,15 +177,22 @@ usernameLogin(user:any) {
   }
   
   //Get the user by the user id for the update profile page
-  getUser(org_id): Observable<User> {
+  getUser(userId): Observable<User> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<User>(`${this.api}/${org_id}`, { headers: header });
+    return this.http.get<User>(`${this.api}/${userId}`, { headers: header });
   }
- getAllUsers(): Observable <User[]> {
+  //get all users who isOrg is set to true
+ getAllOrgUsers(): Observable <User[]> {
   let token = localStorage.getItem('access-token');
   let header = new HttpHeaders().set('jwt', token);
-  return this.http.get<User[]>(`${this.api}/`, { headers: header});
+  return this.http.get<User[]>(`${this.api}/orgs`, { headers: header});
+ }
+ //get all the other users for the site tally page
+ getAllOtherUsers(): Observable <User[]> {
+  let token = localStorage.getItem('access-token');
+  let header = new HttpHeaders().set('jwt', token);
+  return this.http.get<User[]>(`${this.api}/others`, { headers: header});
  }
   updateUser(userId: number, user: any): Observable <User> {
     let token = localStorage.getItem('access-token');

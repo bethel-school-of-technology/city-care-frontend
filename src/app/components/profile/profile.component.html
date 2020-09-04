@@ -54,7 +54,7 @@
   </mat-expansion-panel>
 </mat-accordion>
 <hr>
-<!-- <mat-accordion multi="true" *ngIf="requests.length > 0 && !isLoading && userIsAuthenticated && !isOrg">
+<mat-accordion multi="true" *ngIf="requests.length > 0 && !isLoading && userIsAuthenticated && !isOrg">
   <h3>My Requests</h3>
   <mat-expansion-panel *ngFor="let request of requests">
     <mat-expansion-panel-header>
@@ -66,13 +66,13 @@
       <button mat-button color="warn" (click)="onClickDeleteRequest(request.id)">DELETE</button>
     </mat-action-row>
   </mat-expansion-panel>
-</mat-accordion> -->
+</mat-accordion>
 
 
 <div class='container'>
-  <h2>My Requests</h2>
   <div class='row'>
     <div class='card-box' multi="true" *ngIf="requests.length > 0 && !isLoading && userIsAuthenticated && !isOrg">
+      <h2>My Requests</h2>
       <div *ngFor="let request of requests" class='card align-center col 12 m12 l3'>
         <div class='card-content'>
           <span class='card-title'>{{request.name}}</span>
