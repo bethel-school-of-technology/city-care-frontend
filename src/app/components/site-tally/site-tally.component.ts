@@ -7,6 +7,7 @@ import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../shared/models/request.model';
 import { User } from '../../shared/models/user.model';
 import { ActivatedRoute } from '@angular/router';
+import { Orgs } from 'src/app/shared/models/orgs.model';
 
 @Component({
   selector: 'app-site-tally',
@@ -16,12 +17,9 @@ import { ActivatedRoute } from '@angular/router';
 export class SiteTallyComponent implements OnInit, OnDestroy {
   
 
-  // public responses: any = [];
-  public user: User;
-  public users: User[];
+  public orgs: Orgs[] = [];
+  public users: User[] = [];
   public listings: Listing[] = [];
-  public listing: Listing;
-  public request: Request;
   public requests: Request[] = [];
   public isLoading = false;
   public isOrg = false;
@@ -40,11 +38,8 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    /*this.getAllUserListings();
-    this.getAllUserRequests();
-    this.getEverything(); */
-    this.getAllOrgUsers();
-    // this.getAllOtherUsers();
+    this.getEverythingOrgs(); 
+   this.getEverythingUsers();
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService
     .getAuthStatusListener()
@@ -59,51 +54,20 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
     this.isLoading = false;
   }
 
- /* getAllUserListings() {
-   this.listingService.getAllUserListings().subscribe((listings: any) => {
-    console.log(listings);
-    this.listings = listings
-  })
- } */
- /* getAllUserRequests() {
-   this.requestService.getAllUserRequests().subscribe((requests: any) => {
-     console.log(requests);
-     this.requests = requests
+ 
+getEverythingOrgs() {
+  this.listingService.getEverythingOrgs().subscribe((responses: any ) => {
+    // console.log(responses.listings[1].listings);
+     this.orgs = responses.listings
    })
-  //  const userId = +this.route.snapshot.paramMap.get('id');
-  //  this.authorizationService.getUser(userId).subscribe(user => {
-  //    console.log(user)
-  //    this.user = user;
-  //  })
- } */
-/* getEverything() {
-  this.listingService.getEverything().subscribe((responses: any ) => {
-    console.log(responses);
-    responses = responses.data
+} 
+ getEverythingUsers() {
+   this.requestService.getEverythingUsers().subscribe((results: any) => {
+    //  console.log(results.requests[2].requests);
+     this.users = results.requests
    })
-} */
+ }
 
-//get all users for the listings & requests
-getAllOrgUsers() {
-  this.authorizationService.getAllOrgUsers().subscribe(users => {
-    console.log(users)
-    this.users = users;
-    const userId = +this.route.snapshot.paramMap.get('id');
-    this.listingService.getUsersListing().subscribe((listings: any) => {
-      this.listings = listings
-    })
-  })
-}
-/* getAllOtherUsers() {
-  this.authorizationService.getAllOtherUsers().subscribe(users => {
-    console.log(users)
-    this.users = users;
-    const userId = +this.route.snapshot.paramMap.get('id');
-    this.requestService.getUsersRequests().subscribe((requests: any) => {
-      this.requests = requests
-    })
-  })
-} */
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
     this.orgStatusSub.unsubscribe();

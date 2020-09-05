@@ -28,7 +28,7 @@
       <li *ngIf="userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/site-postings">Postings</a></li>
       <li *ngIf="userIsAuthenticated"><a class='waves-effect' routerLink="/city-care/about-us">About Us</a></li>
       <li *ngIf="userIsAuthenticated"><a class='waves-effect' (click)="onLogout()">Logout</a></li>
-      <li><a class="dropdown-trigger" routerLink="#!" data-target="dropdown1">Login<i
+      <li *ngIf="!userIsAuthenticated"><a class="dropdown-trigger" routerLink="#!" data-target="dropdown1">Login<i
             class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
   </div>
@@ -42,6 +42,6 @@
   <li *ngIf="userIsAuthenticated"><a routerLink="/city-care/about-us">About Us</a></li>
 
   <li *ngIf="userIsAuthenticated"><a (click)="onLogout()">Logout</a></li>
-  <li><a class="dropdown-trigger" routerLink="#!" data-target="dropdown2">Login<i
+  <li *ngIf="!userIsAuthenticated"><a class="dropdown-trigger" routerLink="#!" data-target="dropdown2">Login<i
         class="material-icons right">arrow_drop_down</i></a></li>
 </ul>

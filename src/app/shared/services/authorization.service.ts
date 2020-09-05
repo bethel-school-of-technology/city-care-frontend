@@ -182,18 +182,7 @@ usernameLogin(user:any) {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<User>(`${this.api}/${userId}`, { headers: header });
   }
-  //get all users who isOrg is set to true
- getAllOrgUsers(): Observable <User[]> {
-  let token = localStorage.getItem('access-token');
-  let header = new HttpHeaders().set('jwt', token);
-  return this.http.get<User[]>(`${this.api}/orgs`, { headers: header});
- }
- //get all the other users for the site tally page
- getAllOtherUsers(): Observable <User[]> {
-  let token = localStorage.getItem('access-token');
-  let header = new HttpHeaders().set('jwt', token);
-  return this.http.get<User[]>(`${this.api}/others`, { headers: header});
- }
+
   updateUser(userId: number, user: any): Observable <User> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
@@ -201,7 +190,6 @@ usernameLogin(user:any) {
       headers: header,
     });
   }
-  
   //Logout method should remove everything from local storage
 logout() {
   this.token = null;

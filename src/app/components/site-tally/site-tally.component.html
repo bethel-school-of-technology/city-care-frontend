@@ -7,63 +7,46 @@
 
 
 <h1>Listings & Requests In The City-Care Site Database</h1>
-<mat-accordion multi="true" *ngIf="!isLoading && userIsAuthenticated && isOrg">
-  <h3>All Listings</h3>
-  <mat-expansion-panel *ngFor="let user of users">
-    <mat-expansion-panel-header>
-      Id:{{user.id}} &nbsp; Org name: {{user.org_name}} <br>
-      Contact {{ user.contact_name }} nbsp; Phone {{user.phone}} <br>
-    </mat-expansion-panel-header>
 
-    <mat-action-row *ngFor="let listing of listings">
-      <br>
-      Id: {{ listing.id }} &nbsp; Quantity: {{listing.quantity}} Details {{listing.description}} <br>
-      Available {{listing.availability}} &nbsp;Requirements: {{listing.requirements }}
+<mat-accordion  multi="true" *ngIf="!isLoading && userIsAuthenticated">
+  <h3>All Organization Listings</h3>
 
-    </mat-action-row>
-    <mat-action-row>
-      <!-- <a mat-button color="primary" [routerLink]="['/city-care/view-listing/', listing.id]">View</a>                      -->
-    </mat-action-row>
-  </mat-expansion-panel>
-</mat-accordion>
+  <mat-expansion-panel *ngFor="let org of orgs">
 
+                           <mat-expansion-panel-header>
+                                                 Org name: {{org.org_name}} &nbsp; {{ org.contact_name }}              
+                           </mat-expansion-panel-header>
 
-<mat-accordion multi="true" *ngIf="!isLoading &&  userIsAuthenticated && !isOrg">
-  <h3>All Requests</h3>
-  <mat-expansion-panel *ngFor="let user of users">
-    <mat-expansion-panel-header>
-      {{user.first_name}}
-      {{user.last_name}}
-      {{user.email}}
-      {{user.phone}}
-    </mat-expansion-panel-header>
-    <mat-action-row *ngFor="let request of requests">
+                           <mat-action-row *ngFor="let listing of org.listings">
+                            
+                           Qty: {{listing.quantity}} Details {{listing.description}} <br>
 
-    </mat-action-row>
+                            <a mat-button color="primary" [routerLink]="['/city-care/view-listing/', listing.id]">View</a>
 
-    <mat-action-row>
-      <!-- <a mat-button color="primary" [routerLink]="['/city-care/view-request/', request.id]">View</a> -->
-    </mat-action-row>
+                           </mat-action-row>
 
   </mat-expansion-panel>
+
 </mat-accordion>
 
 <hr>
+<mat-accordion  multi="true" *ngIf="!isLoading && userIsAuthenticated">
 
-<!-- <mat-accordion  multi="true" *ngIf="requests.length > 0 && !isLoading && userIsAuthenticated">
-  <h3>All Requests</h3>
-  <mat-expansion-panel *ngFor="let request of requests">
+  <h3>All User Requests</h3>
+
+  <mat-expansion-panel *ngFor="let user of users">
+
                            <mat-expansion-panel-header>
-                             {{request.id}}
-                                                    {{ request.name }}
-                                                    {{request.needByDate}}
+                                                 Name: {{user.first_name}} &nbsp; {{ user.last_name }}              
                            </mat-expansion-panel-header>
-                           <p>{{ request.details }}</p>
-                           <mat-action-row *ngIf="user">
-                                  {{user.first_name}}
-                           </mat-action-row>
-                           <mat-action-row>
-                                                    <a mat-button color="primary" [routerLink]="['/city-care/view-request/', request.id]">View</a>
+
+                           <mat-action-row *ngFor="let request of user.requests">
+                            
+                           Details {{request.name}} <br>
+                          
+                            <a mat-button color="primary" [routerLink]="['/city-care/view-request/', request.id]">View</a>
                            </mat-action-row>
   </mat-expansion-panel>
-</mat-accordion> -->
+</mat-accordion>
+
+

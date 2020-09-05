@@ -4,7 +4,7 @@
         
         </div>
 
-        <div *ngIf="listing &&  user && !isLoading && userIsAuthenticated && isOrg">
+        <div *ngIf="listing && !isLoading && userIsAuthenticated">
         {{ listing.org_id }} <br>
         {{ listing.quantity }} <br>
         {{ listing.description }} <br>

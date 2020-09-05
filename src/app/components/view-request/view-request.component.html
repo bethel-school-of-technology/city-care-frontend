@@ -7,7 +7,7 @@
   {{user.first_name}}
 
 </div>
-<div class="card" *ngIf="request">
+<div class="card" *ngIf="request && !isLoading && userIsAuthenticated">
           {{request.name}} <br>
           {{request.details}}<br>
           {{request.needByDate}} <br>
