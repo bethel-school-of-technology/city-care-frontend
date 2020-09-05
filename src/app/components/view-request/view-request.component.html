@@ -3,14 +3,17 @@
           <span class="sr-only">Loading...</span>
         
         </div>
-<div *ngIf="user">
-  {{user.first_name}}
 
-</div>
-<div class="card" *ngIf="request && !isLoading && userIsAuthenticated">
-          {{request.name}} <br>
-          {{request.details}}<br>
-          {{request.needByDate}} <br>
-          {{request.user_id}}
+<div class="card" *ngIf="request && user && !isLoading && userIsAuthenticated">
+
+          Contact Person: {{user.first_name}} {{user.last_name}} <br>
+          Email: &nbsp;{{ user.email }} <br>
+          Phone: &nbsp;{{ user.phone }} <br>
+          Mobile: &nbsp;{{ user.mobile_phone }} <br>
+          <hr>
+          Need: &nbsp; {{ request.name }} <br>
+          Details: &nbsp; {{ request.details }}<br>
+          Date Needed: &nbsp; {{ request.needByDate | date }} <br>
+
           <button class="back" routerLink="/city-care/site-postings">Back</button>&nbsp;
       </div>

@@ -4,12 +4,15 @@
         
         </div>
 
-        <div *ngIf="listing && !isLoading && userIsAuthenticated">
-        {{ listing.org_id }} <br>
-        {{ listing.quantity }} <br>
-        {{ listing.description }} <br>
-        {{ listing.requirements }}<br>
-        {{ listing.availability }} <br>
+        <div *ngIf="listing && user && !isLoading && userIsAuthenticated">
+         Contact Person: {{user.first_name}} {{user.last_name}} <br>
+          {{ user.email }} <br>
+          {{ user.phone }} <br><br>
+
+        Qty: {{ listing.quantity }} <br>
+        Details: {{ listing.description }} <br>
+        Info:  {{ listing.requirements }}<br>
+         Available: {{ listing.availability | date }} <br>
      
 
         </div>

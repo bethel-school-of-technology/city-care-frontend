@@ -6,8 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//Bring in the ng2searchpipemodule
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 //Start of the material imports 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -71,8 +70,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ViewRequestComponent,
     EmailLoginComponent,
     UsernameLoginComponent,
-    PageNotFoundComponent,
-    
+    PageNotFoundComponent    
   ],
   imports: [
     BrowserModule,
@@ -100,7 +98,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],

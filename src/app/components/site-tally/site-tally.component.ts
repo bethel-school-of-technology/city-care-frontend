@@ -3,11 +3,10 @@ import { Subscription, throwError } from 'rxjs';
 import { AuthorizationService } from '../../shared/services/authorization.service'
 import { Listing } from '../../shared/models/listing.model';
 import { ListingService } from '../../shared/services/listing.service';
+import { Orgs } from 'src/app/shared/models/orgs.model';
 import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../shared/models/request.model';
 import { User } from '../../shared/models/user.model';
-import { ActivatedRoute } from '@angular/router';
-import { Orgs } from 'src/app/shared/models/orgs.model';
 
 @Component({
   selector: 'app-site-tally',
@@ -15,7 +14,6 @@ import { Orgs } from 'src/app/shared/models/orgs.model';
   styleUrls: ['./site-tally.component.css']
 })
 export class SiteTallyComponent implements OnInit, OnDestroy {
-  
 
   public orgs: Orgs[] = [];
   public users: User[] = [];
@@ -26,11 +24,11 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
   public userIsOrg = false;
   public isAuthenticated = false;
   public userIsAuthenticated = false;
+
   private authStatusSub: Subscription;
   private orgStatusSub: Subscription;
 
   constructor(
-    private route: ActivatedRoute,
     private authorizationService: AuthorizationService,
     private listingService: ListingService,
     private requestService: RequestService
@@ -38,35 +36,35 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    this.getEverythingOrgs(); 
-   this.getEverythingUsers();
+    this.getEverythingOrgs();
+    this.getEverythingUsers();
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService
-    .getAuthStatusListener()
-    .subscribe(isAuthenticated => {
-      this.userIsAuthenticated = isAuthenticated
-    });
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated
+      });
     this.isOrg = this.authorizationService.getIsOrg();
     this.orgStatusSub = this.authorizationService.getOrgStatusListener()
-    .subscribe(isOrg => {
-      this.userIsOrg = isOrg
-    });
+      .subscribe(isOrg => {
+        this.userIsOrg = isOrg
+      });
     this.isLoading = false;
   }
 
- 
-getEverythingOrgs() {
-  this.listingService.getEverythingOrgs().subscribe((responses: any ) => {
-    // console.log(responses.listings[1].listings);
-     this.orgs = responses.listings
-   })
-} 
- getEverythingUsers() {
-   this.requestService.getEverythingUsers().subscribe((results: any) => {
-    //  console.log(results.requests[2].requests);
-     this.users = results.requests
-   })
- }
+
+  getEverythingOrgs() {
+    this.listingService.getEverythingOrgs().subscribe((responses: any) => {
+      // console.log(responses.listings[1].listings);
+      this.orgs = responses.listings
+    })
+  }
+  getEverythingUsers() {
+    this.requestService.getEverythingUsers().subscribe((results: any) => {
+      //  console.log(results.requests[2].requests);
+      this.users = results.requests
+    })
+  }
 
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();

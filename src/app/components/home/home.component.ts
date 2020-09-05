@@ -11,16 +11,16 @@ import { Subscription } from 'rxjs';
 export class HomeComponent implements OnInit, OnDestroy {
 
   public isLoading = false;
-  public userId: string;
   public isOrg = false; //Determine the user status, organization or individual
   public isAuthenticated = false;
   public userIsAuthenticated = false;
+
   private authStatusSub: Subscription;
- 
+
 
   constructor(private authorizationService: AuthorizationService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.isLoading = true;
     this.isOrg = this.authorizationService.getIsAuth();
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
@@ -28,9 +28,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated
       });
-      this.isLoading = false;
+    this.isLoading = false;
   }
-  
+
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
   }

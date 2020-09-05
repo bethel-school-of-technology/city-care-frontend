@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthorizationService } from 'src/app/shared/services/authorization.service';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { Request } from '../../shared/models/request.model';
 import { RequestService } from 'src/app/shared/services/request.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-request',
@@ -12,8 +12,6 @@ import { RequestService } from 'src/app/shared/services/request.service';
 })
 export class RequestComponent implements OnInit, OnDestroy {
 
-  public request: Request = new Request();
-
   public isOrg = false;
   public userIsOrg = false;
   public submitted = false;
@@ -21,12 +19,14 @@ export class RequestComponent implements OnInit, OnDestroy {
   public isAuthenticated = false;
   public userIsAuthenticated = false;
 
+  public request: Request = new Request();
+
   private authStatusSub: Subscription;
   private orgStatusSub: Subscription;
 
   constructor(
-    private requestService: RequestService,
     private authorizationService: AuthorizationService,
+    private requestService: RequestService,
     private router: Router
   ) {}
 
@@ -39,7 +39,7 @@ export class RequestComponent implements OnInit, OnDestroy {
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService
       .getAuthStatusListener()
-      .subscribe((isAuthenticated) => {
+      .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
       });
     this.isLoading = false;
@@ -47,7 +47,6 @@ export class RequestComponent implements OnInit, OnDestroy {
 
   createRequest() {
     this.requestService.createRequest(this.request).subscribe(result => {
-      console.log(result);
       this.router.navigate(['/city-care/users-profile']);
     });
 }

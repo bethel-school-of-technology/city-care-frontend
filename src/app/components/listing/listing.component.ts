@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ListingService } from '../../shared/services/listing.service';
 import { Listing } from '../../shared/models/listing.model';
 import { AuthorizationService } from 'src/app/shared/services/authorization.service';
@@ -12,16 +12,15 @@ import { Subscription } from 'rxjs';
 })
 export class ListingComponent implements OnInit, OnDestroy {
 
-  
+  public listing: Listing = new Listing();
+  public isLoading = false;
+  public isAuthenticated = false;
+  public userIsAuthenticated = false;
+  public isOrg = false;
+  public userIsOrg = false;
 
-public listing: Listing = new Listing();
-public isLoading = false;
-public isAuthenticated = false;
-public userIsAuthenticated = false;
-public isOrg = false;
-public userIsOrg = false; 
-private authStatusSub: Subscription;
-private orgStatusSub: Subscription;
+  private authStatusSub: Subscription;
+  private orgStatusSub: Subscription;
 
 
   constructor(
@@ -29,7 +28,7 @@ private orgStatusSub: Subscription;
     private router: Router,
     private listingService: ListingService,
     private authorizationService: AuthorizationService
-    
+
   ) { }
 
   ngOnInit() {
@@ -43,18 +42,17 @@ private orgStatusSub: Subscription;
       isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated
       });
-      this.isLoading = false;
+    this.isLoading = false;
   }
-  
-createListing() {
+
+  createListing() {
     this.listingService.createListing(this.listing).subscribe(result => {
-      console.log(result);
       this.router.navigate(['/city-care/users-profile']);
     });
-}
+  }
 
-ngOnDestroy() {
-  this.authStatusSub.unsubscribe();
-  this.orgStatusSub.unsubscribe();
-}
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
+    this.orgStatusSub.unsubscribe();
+  }
 }

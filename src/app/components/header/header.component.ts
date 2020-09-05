@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthorizationService } from '../../shared/services/authorization.service';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/shared/models/user.model';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,11 +14,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isLoading = false;
   public isAuthenticated = false;
   public userIsAuthenticated = false;
+  
   private authListenerSub: Subscription; //listen for authentication
   private orgListenerSub: Subscription;//Listen for whether a user is an organizatio or a user. 
 
   constructor(
-    private route: ActivatedRoute,
     private authorizationService: AuthorizationService
   ) { }
 
@@ -30,7 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated
       });
-      this.isLoading = false;
+    this.isLoading = false;
   }
 
 

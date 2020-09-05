@@ -10,13 +10,17 @@ import { Subscription } from 'rxjs';
   templateUrl: './profile-editor.component.html',
   styleUrls: ['./profile-editor.component.css']
 })
-export class ProfileEditorComponent implements OnInit, OnDestroy  {
-  
+export class ProfileEditorComponent implements OnInit, OnDestroy {
+
+  public isAuthenticated = false;
   public isOrg = false;
   public user: User;
   public isLoading = false;
   public userIsAuthenticated = false;
+  public userIsOrg = false;
+
   private authStatusSub: Subscription;
+  private orgStatusSub: Subscription;
 
   constructor(
     private router: Router,
@@ -27,13 +31,16 @@ export class ProfileEditorComponent implements OnInit, OnDestroy  {
   ngOnInit() {
     this.getUser();
     this.isLoading = true;
-    this.isOrg = this.authorizationService.getIsAuth();
+    this.isOrg = this.authorizationService.getIsOrg();
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
+    this.orgStatusSub = this.authorizationService.getOrgStatusListener().subscribe(isOrg => {
+      this.userIsOrg = isOrg;
+    })
     this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated
       });
-      this.isLoading = false;
+    this.isLoading = false;
   }
 
   getUser() {
@@ -46,11 +53,11 @@ export class ProfileEditorComponent implements OnInit, OnDestroy  {
   updateUser() {
     const userId = +this.route.snapshot.paramMap.get('id');
     this.authorizationService.updateUser(userId, this.user).subscribe(result => {
-      console.log(result);
       this.router.navigate(['/city-care/users-profile']);
     })
   }
-ngOnDestroy() {
-  this.authStatusSub.unsubscribe();
-}
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
+    this.orgStatusSub.unsubscribe();
+  }
 }

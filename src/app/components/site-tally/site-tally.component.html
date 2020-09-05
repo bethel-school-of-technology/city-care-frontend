@@ -14,12 +14,11 @@
   <mat-expansion-panel *ngFor="let org of orgs">
 
                            <mat-expansion-panel-header>
-                                                 Org name: {{org.org_name}} &nbsp; {{ org.contact_name }}              
+                             <p>Organization:&nbsp; {{org.org_name}} <br>Contact Person:&nbsp;{{ org.contact_name }}</p>
                            </mat-expansion-panel-header>
 
                            <mat-action-row *ngFor="let listing of org.listings">
-                            
-                           Qty: {{listing.quantity}} Details {{listing.description}} <br>
+                            <p>Qty:&nbsp; {{ listing.quantity }}<br> Listing: {{ listing.description }}</p>
 
                             <a mat-button color="primary" [routerLink]="['/city-care/view-listing/', listing.id]">View</a>
 
@@ -37,13 +36,10 @@
   <mat-expansion-panel *ngFor="let user of users">
 
                            <mat-expansion-panel-header>
-                                                 Name: {{user.first_name}} &nbsp; {{ user.last_name }}              
+                             <p>Name:&nbsp; {{ user.first_name }}&nbsp;{{ user.last_name }}</p>
                            </mat-expansion-panel-header>
-
                            <mat-action-row *ngFor="let request of user.requests">
-                            
-                           Details {{request.name}} <br>
-                          
+                            <p>Request:&nbsp;{{ request.name }}</p>        
                             <a mat-button color="primary" [routerLink]="['/city-care/view-request/', request.id]">View</a>
                            </mat-action-row>
   </mat-expansion-panel>
