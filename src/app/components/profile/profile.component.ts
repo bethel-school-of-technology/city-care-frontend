@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorizationService } from '../../shared/services/authorization.service';
-import { RequestService } from '../../shared/services/request.service';
-import { ListingService } from '../../shared/services/listing.service'; 
-import { User } from '../../shared/models/user.model';
-import { Request } from '../../shared/models/request.model';
+import { ListingService } from '../../shared/services/listing.service';
 import { Listing } from '../../shared/models/listing.model';
+import { RequestService } from '../../shared/services/request.service';
+import { Request } from '../../shared/models/request.model';
 import { Subscription } from 'rxjs';
+import { User } from '../../shared/models/user.model';
+
 
 @Component({
   selector: 'app-profile',
@@ -15,29 +16,28 @@ import { Subscription } from 'rxjs';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
 
-  public user: User; //define the user
-  public requests: Request[] = []; //Set the requests to an empty array 
-  public listings: Listing[] = [];//Set the listings to an empty array
- 
-  public isOrg = false; //Determine the user status, organization or individual
-  public userIsOrg = false;
   public isLoading = false; //Determine if the page is still loading and set the value
   public isAuthenticated = false;
+  public isOrg = false; //Determine the user status, organization or individual
+  public listings: Listing[] = [];//Set the listings to an empty array
+  public requests: Request[] = []; //Set the requests to an empty array 
+  public user: User; //define the user
+  public userIsOrg = false;
   public userIsAuthenticated = false;
-  
+
   private authStatusSub: Subscription;
   private orgStatusSub: Subscription;
 
 
   constructor(
     private route: ActivatedRoute, //Set the route as the Activated Route
-    private router: Router,
     private authorizationService: AuthorizationService, //Declare and bring in the authorization service for use in the component
+    private listingService: ListingService,//Declare and bring in the listing service for use in the component
     private requestService: RequestService, //Declare and bring in the request service for use in the component
-    private listingService: ListingService//Declare and bring in the listing service for use in the component
-  
-  
-    ) { }
+    private router: Router
+
+
+  ) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -51,49 +51,48 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.isAuthenticated = this.authorizationService.getIsAuth();
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService
-    .getAuthStatusListener()
-    .subscribe(isAuthenticated => {
-      this.userIsAuthenticated = isAuthenticated
-    });
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated
+      });
     this.isLoading = false;
   }
 
-getProfile() {
-  const userId = +this.route.snapshot.paramMap.get('user_id');
-  this.authorizationService.getProfile(userId).subscribe(user => {
-    this.user = user//,
-    //this.isOrg = user.isOrg;
-  });
-}
+  getProfile() {
+    const userId = +this.route.snapshot.paramMap.get('user_id');
+    this.authorizationService.getProfile(userId).subscribe(user => {
+      this.user = user
+    });
+  }
 
-getUserListings() {
-  this.listingService.getUserListings().subscribe((listings: any) => {
-    console.log(listings);
-    this.listings = listings;
-  });
-}
+  getUserListings() {
+    this.listingService.getUserListings().subscribe((listings: any) => {
+      this.listings = listings;
+    });
+  }
 
-getUserRequests() {
-  this.requestService.getUserRequests().subscribe((requests: any) => {
-    console.log(requests);
-    this.requests = requests;
-  })
-}
+  getUserRequests() {
+    this.requestService.getUserRequests().subscribe((requests: any) => {
+      this.requests = requests;
+    })
+  }
 
-onClickDeleteRequest(requestId: number) {
-  this.requests = this.requests.filter(request => request.id !== request.id);
-  this.requestService.deleteRequest(requestId).subscribe();
-  this.router.navigate(['/city-care/users-profile']);
-}
+  onClickDeleteRequest(requestId: number) {
+    this.requests = this.requests.filter(request => request.id !== request.id);
+    this.requestService.deleteRequest(requestId).subscribe(result => {
+      this.router.navigate(['/city-care/users-profile']);
+    });
+  }
 
-onClickDeleteListing(listingId: number) {
-  this.listings = this.listings.filter(listing => listing.id !== listing.id);
-  this.listingService.deleteListing(listingId).subscribe();
-  this.router.navigate(['/city-care/users-profile']);
-}
+  onClickDeleteListing(listingId: number) {
+    this.listings = this.listings.filter(listing => listing.id !== listing.id);
+    this.listingService.deleteListing(listingId).subscribe(result => {
+      this.router.navigate(['/city-care/users-profile']);
+    });
+  }
 
-ngOnDestroy() {
-  this.authStatusSub.unsubscribe();
-  this.orgStatusSub.unsubscribe();
-}
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
+    this.orgStatusSub.unsubscribe();
+  }
 }

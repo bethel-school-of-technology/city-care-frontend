@@ -4,14 +4,16 @@
         
         </div>
 
-        <div *ngIf="!isLoading && userIsAuthenticated && isOrg">
-        {{ listing.id }} <br>
-        {{ listing.quantity }} <br>
-        {{ listing.description }} <br>
-        {{ listing.requirements }}<br>
-        {{ listing.availability }} <br>
-        {{ listing.org_id }}
-        {{user.first_name}}
+        <div *ngIf="listing && user && !isLoading && userIsAuthenticated">
+         Contact Person: {{user.first_name}} {{user.last_name}} <br>
+          {{ user.email }} <br>
+          {{ user.phone }} <br><br>
+
+        Qty: {{ listing.quantity }} <br>
+        Details: {{ listing.description }} <br>
+        Info:  {{ listing.requirements }}<br>
+         Available: {{ listing.availability | date }} <br>
+     
 
         </div>
 <button class="back" routerLink="/city-care/site-postings">Back</button>&nbsp;

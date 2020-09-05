@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuard } from './shared/services/auth.guard';
+import {  AuthGuard  } from './shared/services/auth.guard';
 
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HomeComponent } from './components/home/home.component';
@@ -27,17 +27,18 @@ const routes: Routes = [
   { path: 'city-care/user-registration', component: RegistrationComponent },
   { path: 'city-care/email-login', component: EmailLoginComponent }, 
   { path: 'city-care/username-login', component: UsernameLoginComponent },
-  { path: 'city-care/about-us', component: TeamBioComponent, canActivate: [AuthGuard] },
-  { path: 'city-care/users-profile', component: ProfileComponent,  canActivate: [AuthGuard] },
-  { path: 'city-care/create-request', component: RequestComponent,  canActivate: [AuthGuard] },
-  { path: 'city-care/create-listing', component: ListingComponent,  canActivate: [AuthGuard] },
-  { path: 'city-care/update-request/:id', component: UpdateRequestComponent, canActivate: [AuthGuard] },
-  { path: 'city-care/update-listing/:id', component: UpdateListingComponent, canActivate: [AuthGuard] },
-  { path: 'city-care/view-listing/:id', component: ViewListingComponent, canActivate: [AuthGuard] },
-  { path: 'city-care/view-request/:id', component: ViewRequestComponent, canActivate: [AuthGuard] },
-  { path: 'city-care/update-profile/:id', component: ProfileEditorComponent, canActivate: [AuthGuard] },
-  { path: 'city-care/site-postings', component: SiteTallyComponent,canActivate: [AuthGuard] },
-  { path: '**', component: PageNotFoundComponent }, //If no matching route is found, go back to the home page
+  { path: 'city-care/about-us', component: TeamBioComponent, canActivate: [ AuthGuard ] },
+  { path: 'city-care/users-profile', component: ProfileComponent,  canActivate:  [ AuthGuard ] },
+  { path: 'city-care/create-request', component: RequestComponent,  canActivate: [ AuthGuard ] },
+  { path: 'city-care/create-listing', component: ListingComponent,  canActivate: [ AuthGuard ] },
+  { path: 'city-care/update-request/:id', component: UpdateRequestComponent, canActivate: [ AuthGuard ] },
+  { path: 'city-care/update-listing/:id', component: UpdateListingComponent, canActivate: [ AuthGuard ] },
+  { path: 'city-care/view-listing/:id', component: ViewListingComponent, canActivate: [ AuthGuard ] },
+  { path: 'city-care/view-request/:id', component: ViewRequestComponent, canActivate: [ AuthGuard ] },
+  { path: 'city-care/update-profile/:id', component: ProfileEditorComponent, canActivate: [ AuthGuard ] },
+  { path: 'city-care/site-postings', component: SiteTallyComponent, canActivate: [ AuthGuard ] },
+  { path: '404', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

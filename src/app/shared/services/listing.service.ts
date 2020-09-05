@@ -28,12 +28,7 @@ export class ListingService {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Listing[]>(`${this.api}/listings`, { headers: header });
   }
- //Get all of the organization listings in the database for the site tally page
- getAllUserListings(): Observable<Listing[]> {
-  let token = localStorage.getItem('access-token');
-  let header = new HttpHeaders().set('jwt', token);
-  return this.http.get<Listing[]>(`${this.api}/`, { headers: header });
-}
+ 
   // Delete an organizations listing
   deleteListing(listingId: number): Observable<Listing> {
     let token = localStorage.getItem('access-token');
@@ -60,10 +55,10 @@ export class ListingService {
       headers: header,
     });
   }
-  getListingUsers(): Observable <Listing> {
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<Listing>(`${this.api}/find`, {headers: header});
-  }
-  
+   //get all the users for the site tally page
+ getEverythingOrgs(): Observable <User[]> {
+  let token = localStorage.getItem('access-token');
+  let header = new HttpHeaders().set('jwt', token);
+  return this.http.get<User[]>(`${this.api}/findOrgs`, { headers: header});
+ } 
 }

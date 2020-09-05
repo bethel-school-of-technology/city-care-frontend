@@ -6,10 +6,10 @@
 
 
 <div>
-  
+
   <br>
-  <div class="card" *ngIf="user && userIsAuthenticated && !isOrg">
-<a *ngIf="isAuthenticated && !isLoading && !isOrg" routerLink="/city-care/create-request">New Request</a>
+  <section class="section" *ngIf="user && userIsAuthenticated && !isOrg">
+    <a *ngIf="isAuthenticated && !isLoading && !isOrg" routerLink="/city-care/create-request">New Request</a>
     <hr>
     <div class="display-4"> {{user.first_name}} {{user.last_name}}</div>
     <hr>
@@ -19,12 +19,12 @@
     <div class="my-4"><span>State: {{user.state}} </span>&nbsp; County: {{user.county}}, &nbsp;Zip {{user.zip}}</div>
     <br>
     <button type="button" class="btn btn-primary" routerLink="/city-care/home">Back</button>&nbsp;
-  <button type="button" class="btn btn-warning" routerLink="/city-care/update-profile/{{user.id}}">Update</button>
-  </div>
+    <button type="button" class="btn btn-warning" routerLink="/city-care/update-profile/{{user.id}}">Update</button>
+  </section>
 </div>
 <div *ngIf="user && userIsAuthenticated && isOrg">
   <a *ngIf="isAuthenticated && !isLoading && isOrg" routerLink="/city-care/create-listing">New Listing</a>
-    
+
   <div class="display-4"> {{user.first_name}} {{user.last_name}}</div>
   <hr>
   <div class="lead"><span>Username: {{user.email}}</span> &nbsp;Username: {{user.username}}</div>
@@ -35,35 +35,57 @@
   <div class="my-4"><span>State: {{user.state}} </span>&nbsp; County: {{user.county}}, &nbsp;Zip {{user.zip}}</div>
   <br>
   <button type="button" class="btn btn-primary" routerLink="/city-care/home">Back</button>&nbsp;
-<button type="button" class="btn btn-warning" routerLink="/city-care/update-profile/{{user.id}}">Update</button>
+  <button type="button" class="btn btn-warning" routerLink="/city-care/update-profile/{{user.id}}">Update</button>
 </div>
 <mat-accordion multi="true" *ngIf="listings.length > 0 && !isLoading &&  userIsAuthenticated && isOrg">
   <h3>My Listings</h3>
-                      <mat-expansion-panel *ngFor="let listing of listings">
-                                                  <mat-expansion-panel-header>
-                                                                           {{ listing.description }}
-                                                  </mat-expansion-panel-header>
-                                                        QTY:    <p>{{listing.quantity}} </p>
-                                                        Need:  <p>{{listing.requirements}}</p>
-                                                 When:<p>{{ listing.availability }}</p>
-                                                 <mat-action-row>
-                                                  <a mat-button color="primary" [routerLink]="['/city-care/update-listing', listing.id]">EDIT</a>
-                                                  <button mat-button color="warn" (click)="onClickDeleteListing(listing.id)">DELETE</button>
-                                                 </mat-action-row>
-                                                                           
-                         </mat-expansion-panel>
-</mat-accordion>
-<hr>
-<mat-accordion  multi="true" *ngIf="requests.length > 0 && !isLoading && userIsAuthenticated && !isOrg">
-  <h3>My Requests</h3>
-  <mat-expansion-panel *ngFor="let request of requests">
-                           <mat-expansion-panel-header>
-                                                    {{ request.name }}
-                           </mat-expansion-panel-header>
-                           <p>{{ request.details }}</p>
-                           <mat-action-row>
-                                                    <a mat-button color="primary" [routerLink]="['/city-care/update-request', request.id]">EDIT</a>
-                                                    <button mat-button color="warn" (click)="onClickDeleteRequest(request.id)">DELETE</button>
-                           </mat-action-row>
+  <mat-expansion-panel *ngFor="let listing of listings">
+    <mat-expansion-panel-header>
+      <p>Listing:&nbsp;{{ listing.description }}</p>
+    </mat-expansion-panel-header>
+    <p>Qty: &nbsp;{{listing.quantity}}</p>
+    <p>Need: &nbsp;{{listing.requirements}}</p>
+    <p>Date:&nbsp;{{ listing.availability | date }}</p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/city-care/update-listing', listing.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onClickDeleteListing(listing.id)">DELETE</button>
+    </mat-action-row>
+
   </mat-expansion-panel>
 </mat-accordion>
+<hr>
+<mat-accordion multi="true" *ngIf="requests.length > 0 && !isLoading && userIsAuthenticated && !isOrg">
+  <h3>My Requests</h3>
+  <mat-expansion-panel *ngFor="let request of requests">
+    <mat-expansion-panel-header>
+      <p>Request:&nbsp;{{ request.name }}</p>
+    </mat-expansion-panel-header>
+    <p>&nbsp;Details: &nbsp;{{ request.details }}</p>
+    <p>Date Needed:&nbsp; {{ request.needByDate | date}}</p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/city-care/update-request', request.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onClickDeleteRequest(request.id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+<div class='container'>
+  <div class='row'>
+    <div class='card-box' multi="true" *ngIf="requests.length > 0 && !isLoading && userIsAuthenticated && !isOrg">
+      <h2>My Requests</h2>
+      <div *ngFor="let request of requests" class='card align-center col 12 m12 l3'>
+        <div class='card-content'>
+          <span class='card-title'>{{request.name}}</span>
+          <p>&nbsp;{{request.details}}</p>
+          <p>Date Needed:&nbsp; {{ request.needByDate | date}}</p>
+
+        </div>
+        <div class='card-action'>
+          <a [routerLink]="['/city-care/update-request', request.id]">Edit</a>
+          <a (click)="onClickDeleteRequest(request.id)">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

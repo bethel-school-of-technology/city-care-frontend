@@ -9,7 +9,7 @@
 <footer class="page-footer font-medium black">
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3" style="margin-left: 50px; margin-right: 50px;">© 2020 Copyright
+  <div *ngIf="userIsAuthenticated" class="footer-copyright text-center py-3" style="margin-left: 50px; margin-right: 50px;">© 2020 Copyright
     <a routerLink="/city-care/about-us"> Thomas & Friends 🚂</a> A Community That Works Together, Grows Together
   </div>
   <!-- Copyright -->

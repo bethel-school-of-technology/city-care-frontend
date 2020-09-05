@@ -21,6 +21,7 @@ export class ViewRequestComponent implements OnInit, OnDestroy {
   public userIsAuthenticated = false;
   public isOrg = false;
   public userIsOrg = false;
+
   private authStatusSub: Subscription;
   private orgStatusSub: Subscription;
 
@@ -30,22 +31,28 @@ export class ViewRequestComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.isLoading = true;
-    this.isOrg = this.authorizationService.getIsOrg();
-    this.orgStatusSub = this.authorizationService.getAuthStatusListener().subscribe(isOrg => {
-      this.userIsOrg = isOrg;
-    })
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
       isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated
       });
-      const requestId = +this.route.snapshot.paramMap.get('id');
-      this.requestService.getUserRequest(requestId).subscribe(request => this.request = request)
-      this.isLoading = false;
+    this.isOrg = this.authorizationService.getIsOrg();
+    this.orgStatusSub = this.authorizationService.getAuthStatusListener().subscribe(isOrg => {
+      this.userIsOrg = isOrg;
+    });
+    const requestId = +this.route.snapshot.paramMap.get('id');
+    this.requestService.getUserRequest(requestId).subscribe(request => {
+      this.request = request
+    })
+    const userId = +this.route.snapshot.paramMap.get('id');
+    this.authorizationService.getUser(userId).subscribe(user => {
+      this.user = user;
+    });
+    this.isLoading = false;
   }
-  
+
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
     this.orgStatusSub.unsubscribe();

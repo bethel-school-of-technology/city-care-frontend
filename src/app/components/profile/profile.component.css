@@ -16,7 +16,7 @@ h2, h1 {
           padding: 0;
           width: 15em;
         } */
-       /*  .delete {
+/*  .delete {
           background-color: red;
           font-weight: bolder;
           float: right;
@@ -62,9 +62,24 @@ li:hover {
           color: white;
         }
  */
- :host {
+:host {
   display: block;
+  margin: 1rem auto;
 }
+
+.card {
+  min-height: 250px;
+  max-height: 250px;
+  margin-left: 80px;
+  margin-right: 80px;
+
+}
+
+
+
+
+
+
 /*  .card {
  height: auto;
  width: 180%

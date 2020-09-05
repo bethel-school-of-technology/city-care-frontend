@@ -64,9 +64,8 @@ export class AuthorizationService {
    }
 
   registerUser(user: User) {
-    return this.http.post(`${this.api}/register`, user).subscribe((result) => {
-      console.log(result);
-      this.router.navigate(['/city-care/user-login']);
+    return this.http.post(`${this.api}/register`, user).subscribe(result => {
+      this.router.navigate(['/city-care/home']);
     });
   }
 usernameLogin(user:any) {
@@ -97,7 +96,7 @@ usernameLogin(user:any) {
         ); // executes the method saveAuthData
       }
       localStorage.setItem('access-token', res.token); //Set the access token to the token recieved in the response header
-      this.router.navigate(['/city-care/site-postings']); //Navigate the user to their profile page
+      this.router.navigate(['/city-care/users-profile']); //Navigate the user to their profile page
     },
     (error) => {
       //if the user is not logged in or authenticated turn the authorization status listener off
@@ -135,7 +134,7 @@ usernameLogin(user:any) {
           ); // executes the method saveAuthData
         }
         localStorage.setItem('access-token', res.token); //Set the access token to the token recieved in the response header
-        this.router.navigate(['/city-care/site-postings']); //Navigate the user to their profile page
+        this.router.navigate(['/city-care/users-profile']); //Navigate the user to their profile page
       },
       (error) => {
         //if the user is not logged in or authenticated turn the authorization status listener off
@@ -182,15 +181,13 @@ usernameLogin(user:any) {
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<User>(`${this.api}/${userId}`, { headers: header });
   }
- 
+
   updateUser(userId: number, user: any): Observable <User> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.put<User>(`${this.api}/${userId}`, user, {
-      headers: header,
-    });
+      headers: header});
   }
-  
   //Logout method should remove everything from local storage
 logout() {
   this.token = null;
