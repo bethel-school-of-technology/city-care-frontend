@@ -1,46 +1,45 @@
 <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
 
-    <span class="sr-only">Loading...</span>
-  
-  </div>
+  <span class="sr-only">Loading...</span>
 
-<div *ngIf="request && !isLoading && userIsAuthenticated && !isOrg">
-          {{ request.id}}
-          {{request.name}} <br>
-          {{request.details}}<br>
-          {{request.needByDate}} <br>
-          {{request.user_id}} <br>
-    <button class="back" routerLink="/city-care/users-profile">Back</button>&nbsp;
 </div>
 
+<!-- <div *ngIf="request && !isLoading && userIsAuthenticated && !isOrg">
+  {{ request.id}}
+  {{request.name}} <br>
+  {{request.details}}<br>
+  {{request.needByDate}} <br>
+  {{request.user_id}} <br>
+
+  <button type="back" class="btn btn-primary" routerLink="/city-care/users-profile">Back</button>
+</div> -->
+
 <div *ngIf="request && !isLoading && userIsAuthenticated && !isOrg">
-    <h2>Enter your request details below</h2>
-<form *ngIf="request !isLoading" (ngSubmit)="updateRequest()" name="updateRequest">
-  <div>
+  <h2>Enter your request details below</h2>
+  <form *ngIf="request !isLoading" (ngSubmit)="updateRequest()" name="updateRequest">
+    <div>
       <div>
-          <label>Enter a name for the request:</label>
-          <input type="text" name="name" placeholder="request.name" [(ngModel)]="request.name" />
+        <label>Enter a name for the request:</label>
+        <input type="text" name="name" placeholder="request.name" [(ngModel)]="request.name" />
       </div>
       <div>
-          <label>
-              <p>Please describe the goods and/or services you have need for. Consider including the following
-                  information:</p>
-              <ul>
-                  <li>A brief details</li>
-                  <li>Quantity</li>
-                  <li>Urgency of the need</li>
-              </ul>
-          </label> <input type="text" name="request.details" [(ngModel)]="request.details" />
+        <label>
+          <p>Please describe the goods and/or services you have need for. Consider including the following
+            information:</p>
+          <ul>
+            <li>A brief details</li>
+            <li>Quantity</li>
+            <li>Urgency of the need</li>
+          </ul>
+        </label> <input type="text" name="request.details" [(ngModel)]="request.details" />
       </div>
       <div>
-          <label>Need By Date:</label>
-          <input type="text" name="needByDate" placeholder="request.needByDate"
-              [(ngModel)]="request.needByDate" />
+        <label>Need By Date:</label>
+        <input type="text" name="needByDate" placeholder="request.needByDate" [(ngModel)]="request.needByDate" />
       </div>
-  </div>
-  <div>
+    </div>
+    <div>
       <button type="submit" class="btn btn-primary">Submit Request</button>
-  </div>
-</form>
+    </div>
+  </form>
 </div>
-
