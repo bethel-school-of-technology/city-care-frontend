@@ -8,41 +8,39 @@
 
 <h1>Listings & Requests In The City-Care Site Database</h1>
 
-<mat-accordion  multi="true" *ngIf="!isLoading && userIsAuthenticated">
+<mat-accordion multi="true" *ngIf="!isLoading && userIsAuthenticated">
   <h3>All Organization Listings</h3>
 
-  <mat-expansion-panel *ngFor="let org of orgs">
+  <mat-expansion-panel class='panel' *ngFor="let org of orgs">
 
-                           <mat-expansion-panel-header>
-                             <p>Organization:&nbsp; {{org.org_name}} <br>Contact Person:&nbsp;{{ org.contact_name }}</p>
-                           </mat-expansion-panel-header>
+    <mat-expansion-panel-header>
+      <p>Organization:&nbsp; {{org.org_name}} <br>Contact Person:&nbsp;{{ org.contact_name }}</p>
+    </mat-expansion-panel-header>
 
-                           <mat-action-row *ngFor="let listing of org.listings">
-                            <p>Qty:&nbsp; {{ listing.quantity }}<br> Listing: {{ listing.description }}</p>
+    <mat-action-row *ngFor="let listing of org.listings">
+      <p>Qty:&nbsp; {{ listing.quantity }}<br> Listing: {{ listing.description }}</p>
 
-                            <a mat-button color="primary" [routerLink]="['/city-care/view-listing/', listing.id]">View</a>
+      <a mat-button [routerLink]="['/city-care/view-listing/', listing.id]">View</a>
 
-                           </mat-action-row>
+    </mat-action-row>
 
   </mat-expansion-panel>
 
 </mat-accordion>
 
 <hr>
-<mat-accordion  multi="true" *ngIf="!isLoading && userIsAuthenticated">
+<mat-accordion multi="true" *ngIf="!isLoading && userIsAuthenticated">
 
   <h3>All User Requests</h3>
 
-  <mat-expansion-panel *ngFor="let user of users">
+  <mat-expansion-panel class='panel' *ngFor="let user of users">
 
-                           <mat-expansion-panel-header>
-                             <p>Name:&nbsp; {{ user.first_name }}&nbsp;{{ user.last_name }}</p>
-                           </mat-expansion-panel-header>
-                           <mat-action-row *ngFor="let request of user.requests">
-                            <p>Request:&nbsp;{{ request.name }}</p>        
-                            <a mat-button color="primary" [routerLink]="['/city-care/view-request/', request.id]">View</a>
-                           </mat-action-row>
+    <mat-expansion-panel-header>
+      <p>Name:&nbsp; {{ user.first_name }}&nbsp;{{ user.last_name }}</p>
+    </mat-expansion-panel-header>
+    <mat-action-row *ngFor="let request of user.requests">
+      <p class='left-align'>Request:&nbsp;{{ request.name }}</p>
+      <a mat-button [routerLink]="['/city-care/view-request/', request.id]">View</a>
+    </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-
-

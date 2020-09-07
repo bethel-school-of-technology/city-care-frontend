@@ -1,19 +1,19 @@
 <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
 
-          <span class="sr-only">Loading...</span>
-        
-        </div>
+  <span class="sr-only">Loading...</span>
 
-        <div *ngIf="listing && user && !isLoading && userIsAuthenticated">
-         Contact Person: {{user.first_name}} {{user.last_name}} <br>
-          {{ user.email }} <br>
-          {{ user.phone }} <br><br>
+</div>
 
-        Qty: {{ listing.quantity }} <br>
-        Details: {{ listing.description }} <br>
-        Info:  {{ listing.requirements }}<br>
-         Available: {{ listing.availability | date }} <br>
-     
+<div *ngIf="listing && user && !isLoading && userIsAuthenticated">
+  Contact Person: {{user.first_name}} {{user.last_name}} <br>
+  {{ user.email }} <br>
+  {{ user.phone }} <br><br>
 
-        </div>
+  Qty: {{ listing.quantity }} <br>
+  Details: {{ listing.description }} <br>
+  Info: {{ listing.requirements }}<br>
+  Available: {{ listing.availability | date }} <br>
+
+
+</div>
 <button class="back" routerLink="/city-care/site-postings">Back</button>&nbsp;

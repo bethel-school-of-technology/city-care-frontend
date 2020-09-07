@@ -1,48 +1,65 @@
-
-
 .about {
-          text-align: center;
-}
-img {
-          height: 50px;
-          width: 50px;
-}
-.card, h2 {
-          margin: 1 auto;
-          text-align: center;
-}
-.card {
-          border: 3px inset darkslateblue;
-          margin: 7.5px 10px 5px 10px;
-}
-h2 {
-          margin: 10px 0 10px 0;
-          color: darkslateblue;
-}
-h3 {
-          color: darkslateblue;
-}
-:host {
-          display: block;
-          margin-top: 1rem;
-}
-p {
-          color: darkslategrey;
-          font-weight: bold;
-          font-size: 18px;
-}
-.red {
-          color: red;
-          font-weight: bolder;
-}
-.team-info {
-          margin: 7.5px 15px 0 15px;
-          text-align: center;
-}
-.thomas, .jonathan, .peyton, .jared { 
-          width: 150px;
-          height: auto;
-          border: 4px inset lightslategrey;
-          border-radius: 15%;
+  text-align: center;
 }
 
+img {
+  height: 50px;
+  width: 50px;
+}
+
+.card,
+h2 {
+  margin: 1 auto;
+  text-align: center;
+
+}
+
+.card {
+  border: 1px rgb(233, 233, 233);
+  margin: 7.5px 10px 5px 10px;
+}
+
+h2 {
+  margin: 10px 0 10px 0;
+  color: rgb(0, 0, 0);
+  ;
+}
+
+h3 {
+  color: rgb(0, 0, 0);
+  ;
+}
+
+:host {
+  display: block;
+  margin-top: 1rem;
+}
+
+p {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 18px;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+
+.team-info {
+  margin: 7.5px 15px 0 15px;
+  text-align: center;
+}
+
+.thomas,
+.jonathan,
+.peyton,
+.jared {
+  width: 150px;
+  height: auto;
+  border: 2px inset rgb(0, 0, 0);
+
+}
+
+.card-text {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
