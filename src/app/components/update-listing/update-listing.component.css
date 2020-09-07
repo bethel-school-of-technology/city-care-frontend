@@ -1,0 +1,31 @@
+:host {
+          display: block;
+          margin: 1rem auto;
+        }
+#availability {
+          width: 150px;
+}
+button {
+          margin-top: 15px;
+          border: 3px inset lightslategrey;
+}
+.card {
+          width: 100%;
+          height: auto;
+          padding: 10px 20px;
+          background-color: rgb(241, 241, 241);
+          border: 3px inset lightslategrey;
+}
+h2 {
+          text-align: center;
+}
+hr {
+          border: 3px inset lightslategrey;
+}
+p {
+          font-size: 18px;
+          padding: 10px 10px 10px 10px;
+}
+#quantity {
+          width: 75px;
+}

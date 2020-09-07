@@ -24,6 +24,7 @@ input {
 }
 .card {
           padding: 20px 20px;
+          background-color: rgb(241, 241, 241);
           border: 3px outset lightslategrey;
 }
 form {
