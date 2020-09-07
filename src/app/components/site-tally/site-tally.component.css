@@ -1,3 +1,15 @@
 :host {
-          display: block;
-        }
+  display: block;
+  margin: 1rem auto;
+}
+
+
+.panel {
+  background-color: rgb(29, 34, 59);
+
+  color: white;
+}
+
+p {
+  text-align: left;
+}
