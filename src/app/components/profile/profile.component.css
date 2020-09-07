@@ -68,11 +68,27 @@ li:hover {
 }
 
 .card {
-  min-height: 250px;
-  max-height: 250px;
-  margin-left: 80px;
-  margin-right: 80px;
+  width: 100%;
+  height: auto;
+}
 
+.container {
+  width: 100%;
+  height: auto;
+}
+
+.section {
+  width: 100%;
+}
+
+font {
+  font-size: 20px;
+}
+
+.panel {
+  background-color: rgb(223, 223, 223);
+
+  color: black;
 }
 
 
