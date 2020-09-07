@@ -6,8 +6,17 @@
 .card {
   width: 100%;
   height: auto;
+  background-color: lightgrey;
+  border: 4px outset darkslateblue;
+  border-radius: 25px;
 }
-
+h1 {
+  text-align: center;
+  margin: 15px 15px;
+}
+hr {
+  border: 3px inset darkslategrey;
+}
 .container {
   width: 100%;
   height: auto;
