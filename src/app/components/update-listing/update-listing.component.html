@@ -5,43 +5,44 @@
         </div>
 
 <div class="card" *ngIf="listing && !isLoading && userIsAuthenticated && isOrg">
-          {{ listing.id }} <br>
-          {{ listing.quantity }} <br>
-          {{ listing.description }} <br>
-          {{ listing.requirements }}<br>
-          {{ listing.availability }} <br>
-          {{ listing.org_id }}
-        
-          <button class="back" routerLink="/city-care/users-profile">Back</button>&nbsp;
+         <div>
+             <p> Qty:&nbsp; {{ listing.quantity }} <br>
+             Listing: &nbsp; {{ listing.description }} <br>
+            Requirements:&nbsp; {{ listing.requirements }}<br>
+            Date Available:&nbsp; {{ listing.availability }} <br>
+            </p>
+            <div class="row">
+                <div class="col s6 right-align"> <button mat-raised-button color="accent" class="waves-effect waves-light btn back" routerLink="/city-care/users-profile">Back</button>&nbsp;
+                </div>
+            </div>
+         </div>
+       
 </div>
-<div *ngIf="listing && !isLoading && userIsAuthenticated && isOrg">
+
+<hr>
+
+<div *ngIf="listing && !isLoading && userIsAuthenticated && isOrg" class="card">
     <h2>Update This Listing</h2>
 
 <form (ngSubmit)="updateListing()" name="updateListing">
     <div>
-        <label>
-            <input type="number" name="quantity" placeholder="listing.quantity" [(ngModel)]="listing.quantity"/>
-        </label>
+            <input type="number" id="quantity" name="quantity" placeholder="listing.quantity" [(ngModel)]="listing.quantity"/>
     </div>
     <div>
-        <label>
-            <input type="date" name="availability" placeholder="listing.availability" [(ngModel)]="listing.availability"/>
-        </label>
+            <input type="date" id="availability" name="availability" placeholder="listing.availability" [(ngModel)]="listing.availability"/>
     </div>
     <div>
-        <label>
             <input type="text" name="description" placeholder="listing.description"[(ngModel)]="listing.description"/>
-        </label>
     </div>
     <div>
-        <label>
-            <input type="text" name="requirements" placeholder="listing.rqeuirements" [(ngModel)]="listing.requirements"/>
-        </label>
-    </div>
+        <input type="text" name="requirements" placeholder="listing.rqeuirements" [(ngModel)]="listing.requirements"/>
+</div>
 
-    <div>
-        <button type="submit">Submit</button>
+   <div class="row">
+    <div class="col s6 right-align">
+        <button mat-raised-button class="waves-effect waves-light btn" color="warn" type="submit">Update</button>
     </div>
+   </div>
 </form>
 
 
