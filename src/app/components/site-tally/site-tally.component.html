@@ -39,7 +39,7 @@
       <p>Name:&nbsp; {{ user.first_name }}&nbsp;{{ user.last_name }}</p>
     </mat-expansion-panel-header>
     <mat-action-row *ngFor="let request of user.requests">
-      <p>Request:&nbsp;{{ request.name }}</p>
+      <p class='left-align'>Request:&nbsp;{{ request.name }}</p>
       <a mat-button [routerLink]="['/city-care/view-request/', request.id]">View</a>
     </mat-action-row>
   </mat-expansion-panel>

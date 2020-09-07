@@ -10,11 +10,7 @@
 
   <div class='row'>
     <div class='col s12 m12 l12'>
-<<<<<<< HEAD
       <div class='card' *ngIf="user && userIsAuthenticated && !isOrg">
-=======
-      <div class='card' *ngIf="user && userIsAuthenticated && isOrg">
->>>>>>> 86e310c04aed87a85da7cacb86624802c579d2ef
         <h1>{{user.first_name}} {{user.last_name}}</h1>
         <div class='card-content'>
           <font><b>Email: </b> {{user.email}}</font><br>
@@ -29,16 +25,11 @@
 
           <div class='card-action'>
             <a *ngIf="isAuthenticated && !isLoading && !isOrg" routerLink="/city-care/create-request">NEW REQUEST</a>
-            <a routerLink="/city-care/home">BACK</a>
+            <a routerLink="/city-care/home">HOME</a>
             <a routerLink="/city-care/update-profile/{{user.id}}">UPDATE</a>
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-=======
-      <hr>
-      <div class='col s12 l12'>
->>>>>>> 86e310c04aed87a85da7cacb86624802c579d2ef
 
     </div>
   </div>
@@ -85,7 +76,7 @@
 
           <div class='card-action'>
             <a *ngIf="isAuthenticated && !isLoading && isOrg" routerLink="/city-care/create-listing">NEW LISTING</a>
-            <a routerLink="/city-care/home">BACK</a>
+            <a routerLink="/city-care/home">HOME</a>
             <a routerLink="/city-care/update-profile/{{user.id}}">UPDATE</a>
           </div>
         </div>
