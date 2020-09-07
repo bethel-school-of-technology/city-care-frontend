@@ -1,11 +1,11 @@
 <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
 
     <span class="sr-only">Loading...</span>
-  
-  </div>
 
-    <h2>Please register below</h2>
-    
+</div>
+
+<h2>Please register below</h2>
+
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 
 <form id="registerUser" (ngSubmit)="registerUser()" name="registerUser">
@@ -13,11 +13,13 @@
         <div>
             <p>Type of User:</p>
             <label>
-                <input type="radio" id="orgainizationTrue" [checked]="true" [value]="true" name="isOrg" (click)="setIsOrg(true)" [(ngModel)]="user.isOrg" />
+                <input type="radio" id="orgainizationTrue" [checked]="true" [value]="1" name="isOrg"
+                    (change)="setIsOrg(true)" [(ngModel)]="user.isOrg" />
                 <span>Organization</span>
             </label>
             <label>
-                <input type="radio" id="organizationFalse" [value]="false" name="isOrg" (click)="setIsOrg(false)" [(ngModel)]="user.isOrg" />
+                <input type="radio" id="organizationFalse" [value]="0" name="isOrg" (change)="setIsOrg(false)"
+                    [(ngModel)]="user.isOrg" />
                 <span>Individual</span>
             </label>
         </div>
