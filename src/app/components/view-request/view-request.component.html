@@ -1,19 +1,20 @@
 <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
 
-          <span class="sr-only">Loading...</span>
-        
-        </div>
+  <span class="sr-only">Loading...</span>
 
-<div class="card" *ngIf="request && user && !isLoading && userIsAuthenticated">
+</div>
 
-          Contact Person: {{user.first_name}} {{user.last_name}} <br>
-          Email: &nbsp;{{ user.email }} <br>
-          Phone: &nbsp;{{ user.phone }} <br>
-          Mobile: &nbsp;{{ user.mobile_phone }} <br>
-          <hr>
-          Need: &nbsp; {{ request.name }} <br>
-          Details: &nbsp; {{ request.details }}<br>
-          Date Needed: &nbsp; {{ request.needByDate | date }} <br>
+<div *ngIf="request && user && !isLoading && userIsAuthenticated">
 
-          <button class="back" routerLink="/city-care/site-postings">Back</button>&nbsp;
-      </div>
+  Contact Person: {{user.first_name}} {{user.last_name}} <br>
+  Email: &nbsp;{{ user.email }} <br>
+  Phone: &nbsp;{{ user.phone }} <br>
+  Mobile: &nbsp;{{ user.mobile_phone }} <br>
+  <hr>
+  Need: &nbsp; {{ request.name }} <br>
+  Details: &nbsp; {{ request.details }}<br>
+  Date Needed: &nbsp; {{ request.needByDate | date }} <br>
+
+
+</div>
+<button class="back" routerLink="/city-care/site-postings">Back</button>&nbsp;

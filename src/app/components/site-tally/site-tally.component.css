@@ -1,3 +1,9 @@
 :host {
-          display: block;
-        }
+  display: block;
+}
+
+.panel {
+  background-color: rgb(223, 223, 223);
+
+  color: black;
+}
