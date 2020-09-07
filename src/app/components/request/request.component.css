@@ -2,10 +2,24 @@
           display: block;
           margin: 1rem auto;
         }
+button {
+          padding: 5px 15px;
+}
 .card {
-          
+          padding: 20px 20px;
+          border: 3px inset lightslategrey;
 }
 form {
-          width: 100%;
+          width: 500px;
           height: auto;
+}
+h2 {
+          text-align: center;
+}
+input {
+          padding: 20px 20px;
+}
+#needByDate {
+          width: 150px;
+          padding-top: 20px; 
 }
