@@ -5,16 +5,18 @@
 </div>
 
 <div *ngIf="request && user && !isLoading && userIsAuthenticated">
-
-  Contact Person: {{user.first_name}} {{user.last_name}} <br>
-  Email: &nbsp;{{ user.email }} <br>
-  Phone: &nbsp;{{ user.phone }} <br>
-  Mobile: &nbsp;{{ user.mobile_phone }} <br>
+  <div class="card">
+    Contact Person: {{user.first_name}} {{user.last_name}} <br>
+  Email: &nbsp; {{ user.email }} <br>
+  Phone: &nbsp; {{ user.phone }} <br>
+  Mobile: &nbsp; {{ user.mobile_phone }} <br>
   <hr>
   Need: &nbsp; {{ request.name }} <br>
   Details: &nbsp; {{ request.details }}<br>
   Date Needed: &nbsp; {{ request.needByDate | date }} <br>
-
+  </div>
+</div>
+<div class="col sm6 right-align">
+  <button class="waves-effect waves-light btn back" routerLink="/city-care/site-postings">Back</button>&nbsp;
 
 </div>
-<button class="back" routerLink="/city-care/site-postings">Back</button>&nbsp;

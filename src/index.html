@@ -25,7 +25,8 @@
   <script>
     $(document).ready(function () {
       $(".dropdown-trigger").dropdown({
-        hover: false
+        hover: false,
+        passive: true
       });
     });
 
@@ -34,6 +35,8 @@
   <script>
     $(document).ready(function () {
       $('.sidenav').sidenav();
+    }, {
+      passive: true
     });
 
   </script>

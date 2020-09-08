@@ -37,32 +37,15 @@
 </div>
 
 
-<!-- Org Profile -->
-
-<!-- <div *ngIf="user && userIsAuthenticated && isOrg">
-    <a *ngIf="isAuthenticated && !isLoading && isOrg" routerLink="/city-care/create-listing">New Listing</a>
-
-    <div class="display-4"> {{user.first_name}} {{user.last_name}}</div>
-    <hr>
-    <div class="lead"><span>Username: {{user.email}}</span> Username: {{user.username}}</div>
-    <div class="my-4"><span>Contact: {{user.contact_name}}</span> Org. Name: {{user.org_name}}</div>
-    <div class="my-4"><span>Phone: {{user.phone}} </span> Mobile: {{user.mobile_phone}}</div>
-    <div class="my-4"><span>Address: {{user.address1}}</span> City: {{user.city}}</div>
-    <div class="my-4"><span>Address: {{user.address2}}</span> Fax: {{user.fax}}</div>
-    <div class="my-4"><span>State: {{user.state}} </span> County: {{user.county}}, Zip {{user.zip}}</div>
-    <br>
-    <button type="button" class="btn btn-primary" routerLink="/city-care/home">Back</button>
-    <button type="button" class="btn btn-warning" routerLink="/city-care/update-profile/{{user.id}}">Update</button>
-  </div> -->
 
 
 <div class='container'>
 
   <div class='row'>
     <div class='col s12 m12 l12'>
-      <div class='card' *ngIf="user && userIsAuthenticated && isOrg">
-        <h1>{{user.org_name}}</h1>
+      <div class='card content' *ngIf="user && userIsAuthenticated && isOrg">
         <div class='card-content'>
+          <h1>{{user.org_name}}</h1>
           <font><b>Email: </b>{{user.email}}</font><br>
           <font><b>Contact: </b>{{user.contact_name}}</font><br>
           <font><b>Phone: </b>{{user.phone}}</font><br>
@@ -86,10 +69,11 @@
   </div>
 </div>
 
+<hr *ngIf="userIsAuthenticated && isOrg">
 <!-- Org Listings -->
 
 <mat-accordion multi="true" *ngIf="listings.length > 0 && !isLoading &&  userIsAuthenticated && isOrg">
-  <h3>My Listings</h3>
+  <h2>My Listings</h2>
   <mat-expansion-panel class='panel' *ngFor="let listing of listings">
     <mat-expansion-panel-header>
       <p>{{listing.description }}</p>
@@ -104,7 +88,7 @@
 
   </mat-expansion-panel>
 </mat-accordion>
-<hr>
+<hr *ngIf="userIsAuthenticated && !isOrg">
 
 <!-- User Requests -->
 
