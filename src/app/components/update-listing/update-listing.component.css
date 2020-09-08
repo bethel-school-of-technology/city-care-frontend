@@ -1,31 +1,50 @@
 :host {
-          display: block;
-          margin: 1rem auto;
-        }
+  display: block;
+  margin: 1rem auto;
+}
+
 #availability {
-          width: 150px;
+  width: 150px;
 }
+
 button {
-          margin-top: 15px;
-          border: 3px inset lightslategrey;
+  background-color: rgb(29, 34, 59);
+  color: white;
+
+
 }
+
+.waves-effect {
+  background-color: rgb(29, 34, 59);
+
+}
+
+
+.waves-ripple {
+  background-color: white;
+}
+
 .card {
-          width: 100%;
-          height: auto;
-          padding: 10px 20px;
-          background-color: rgb(241, 241, 241);
-          border: 3px inset lightslategrey;
+  width: 100%;
+  height: auto;
+  padding: 10px 20px;
+  background-color: rgb(241, 241, 241);
+  border: 3px inset lightslategrey;
 }
+
 h2 {
-          text-align: center;
+  text-align: center;
 }
+
 hr {
-          border: 3px inset lightslategrey;
+  border: 3px inset lightslategrey;
 }
+
 p {
-          font-size: 18px;
-          padding: 10px 10px 10px 10px;
+  font-size: 18px;
+  padding: 10px 10px 10px 10px;
 }
+
 #quantity {
-          width: 75px;
+  width: 75px;
 }

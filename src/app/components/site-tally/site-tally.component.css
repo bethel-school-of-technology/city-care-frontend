@@ -3,13 +3,26 @@
   margin: 1rem auto;
 }
 
-
+description {
+  color: black;
+}
 .panel {
-  background-color: rgb(29, 34, 59);
-
-  color: white;
+  background-color: rgb(223, 223, 223);
+  text-align: start;
+  border: 3px inset lightslategrey;
+  color: black;
 }
 
 p {
   text-align: left;
+  color: black;
+}
+
+hr {
+  margin: 20px 0 20px 0;
+  border: 2.5px inset lightslategrey;
+}
+
+h3 {
+  text-align: center;
 }

@@ -55,13 +55,13 @@ export class SiteTallyComponent implements OnInit, OnDestroy {
 
   getEverythingOrgs() {
     this.listingService.getEverythingOrgs().subscribe((responses: any) => {
-      // console.log(responses.listings[1].listings);
-      this.orgs = responses.listings
+    console.log(responses.listings[0].listings)
+    this.orgs = responses.listings
     })
   }
   getEverythingUsers() {
     this.requestService.getEverythingUsers().subscribe((results: any) => {
-      //  console.log(results.requests[2].requests);
+       console.log(results.requests[0].requests)
       this.users = results.requests
     })
   }

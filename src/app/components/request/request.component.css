@@ -1,26 +1,44 @@
 :host {
-          display: block;
-          margin: 1rem auto;
-        }
+  display: block;
+  margin: 1rem auto;
+}
+
 button {
-          padding: 5px 15px;
+  padding: 5px 15px;
+  background-color: rgb(29, 34, 59);
+  color: white;
 }
+
+.waves-effect {
+  background-color: rgb(29, 34, 59);
+
+}
+
+
+.waves-ripple {
+  background-color: white;
+}
+
 .card {
-          padding: 20px 20px;
-          background-color: rgb(241, 241, 241);
-          border: 3px inset lightslategrey;
+  padding: 30px 30px;
+  background-color: rgb(241, 241, 241);
+  border: 3px inset lightslategrey;
 }
+
 form {
-          width: 500px;
-          height: auto;
+  width: 500px;
+  height: auto;
 }
+
 h2 {
-          text-align: center;
+  text-align: center;
 }
+
 input {
-          padding: 20px 20px;
+  padding: 20px 20px;
 }
+
 #needByDate {
-          width: 150px;
-          padding-top: 20px; 
+  width: 150px;
+  padding-top: 20px;
 }

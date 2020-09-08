@@ -2,13 +2,15 @@
   display: block;
   margin: 1rem auto;
 }
-
+.card-action {
+  border-top: 1px inset lightslategrey;
+  margin-top: 10px;
+}
 .card {
   width: 100%;
   height: auto;
   background-color: rgb(241, 241, 241);
-
-
+  border: 3px inset lightslategrey;
 }
 
 h1 {
@@ -16,7 +18,9 @@ h1 {
   margin: 15px 15px;
 }
 
-
+hr {
+  border: 3px inset lightslategrey;
+}
 
 .container {
   width: 100%;
@@ -30,23 +34,21 @@ h1 {
 font {
   font-size: 20px;
 }
-
+mat-action-row {
+  border-top: 1px inset lightslategrey;
+}
 .panel {
   background-color: rgb(223, 223, 223);
-
+  border: 3px inset lightslategrey;
   color: black;
+}
+h2 {
+  text-align: center;
+}
+p {
+  font-size: 16px;
 }
 
 
 
 
-
-
-/*  .card {
- height: auto;
- width: 180%
- }
- mat-expansion-panel {
-   width: 170%;
-   height: auto;
- } */
