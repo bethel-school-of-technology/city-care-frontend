@@ -12,7 +12,9 @@ description {
   border: 3px inset lightslategrey;
   color: black;
 }
-
+a {
+  color: black;
+}
 p {
   text-align: left;
   color: black;
