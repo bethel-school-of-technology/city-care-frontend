@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
@@ -10,7 +11,7 @@ import { Org } from '../models/org.model';
 })
 export class AuthorizationService {
 
-  api: string = 'http://localhost:3000/users';//Define the backend route
+  private api: string = 'http://localhost:3000/users';//Define the backend route
 
   public users: User[]; //Declare the users as an empty array
   public orgs: Org[];
@@ -198,7 +199,7 @@ logout() {
   clearTimeout(this.tokenTimer); //Clears the token timer out when the logout method is called. 
   this.clearAuthData();//clear the local storage
   this.userId = null; //Ensures the user Id is reset correctly after a user logs out. 
-  this.router.navigate(['/city-care/user-login']);
+  this.router.navigate(['/city-care/home']);
 }
 
   //Create the authorization timer
