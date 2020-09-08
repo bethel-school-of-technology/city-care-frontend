@@ -17,5 +17,6 @@ export class Orgs {
     county: string;
     zip: number;
     password: string;
+    hasListings: boolean;
     isOrg: number;
 }
