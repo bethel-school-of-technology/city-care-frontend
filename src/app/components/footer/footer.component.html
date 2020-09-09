@@ -1,13 +1,27 @@
+<!-- Footer -->
+<!-- <footer class="page-footer font-medium black"> -->
+  <!-- Copyright -->
+  <!-- <div *ngIf="userIsAuthenticated" class="footer-copyright text-center py-3">© 2020 Copyright -->
+    <!-- <a routerLink="/city-care/about-us"> Thomas & Friends 🚂</a> A Community That Works Together, Grows Together -->
+  <!-- </div> -->
+  <!-- Copyright -->
+<!-- </footer> -->
+<!-- Footer -->
+<!-- Footer -->
 
+<mat-toolbar *ngIf="userIsAuthenticated" class="page-footer font-medium black">
+  <span>© 2020 Copyright</span>
+  <span class="spacer"></span>
+  <span><a routerLink="/city-care/about-us"> Thomas & Friends 🚂</a></span>
+  <span class="spacer"></span>
+  <span>A Community That Works Together, Grows Together</span>
+</mat-toolbar> 
 
 <!-- Footer -->
-<footer class="page-footer font-medium black">
-
-  <!-- Copyright -->
-  <div *ngIf="userIsAuthenticated" class="footer-copyright text-center py-3" style="margin-left: 50px; margin-right: 50px;">© 2020 Copyright
-    <a routerLink="/city-care/about-us"> Thomas & Friends 🚂</a> A Community That Works Together, Grows Together
+<!-- <footer class="page-footer black">
+  <div  class="footer-copyright text-center py-3">
+      &copy;2020 Copyright:
+      <a routerLink="/city-care/about-us">Thomas & Friends 🚂</a>
+      <span>A coummunity that works together, grows together.</span>
   </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
+</footer> -->

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
@@ -24,7 +23,6 @@ export class AuthorizationService {
   private isAdmin: any; //Declare the is admin validator
   private authStatusListener = new Subject<boolean>(); //Set the authStatusListener as a subject boolean value
   private orgStatusListener = new Subject<boolean>();
-
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -144,7 +142,7 @@ usernameLogin(user:any) {
         this.authStatusListener.next(false);
         this.orgStatusListener.next(false);
       }
-    );
+    )
   }
     //Try to automatically initialize the authorization status when the app starts
   autoAuthUser() {
@@ -174,7 +172,7 @@ usernameLogin(user:any) {
   getProfile(userId: number): Observable<User> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<User>(`${this.api}/profile`, { headers: header });
+    return this.http.get<User>(`${this.api}/profile`, { headers: header })
   }
   
   //GET the user by the user id for the update profile page

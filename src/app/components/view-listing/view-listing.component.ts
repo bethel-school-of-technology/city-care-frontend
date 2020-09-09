@@ -5,6 +5,7 @@ import { AuthorizationService } from '../../shared/services/authorization.servic
 import { ListingService } from '../../shared/services/listing.service';
 import { Listing } from '../../shared/models/listing.model';
 import { User } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 
 @Component({
@@ -28,10 +29,13 @@ export class ViewListingComponent implements OnInit, OnDestroy {
   constructor(
     private authorizationService: AuthorizationService,
     private listingService: ListingService,
+    private userService: UserService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.getListing();
+    this.getUser();
     this.isLoading = true;
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
@@ -42,19 +46,23 @@ export class ViewListingComponent implements OnInit, OnDestroy {
     this.orgStatusSub = this.authorizationService.getOrgStatusListener().subscribe(isOrg => {
       this.userIsOrg = isOrg;
     });
-    const listingId = +this.route.snapshot.paramMap.get('id');
-    this.listingService.getUserListing(listingId).subscribe(listing => {
-      this.listing = listing
-      const userId = +this.route.snapshot.paramMap.get('id');
-      this.authorizationService.getUser(userId).subscribe(user => {
-        this.user = user;
-      })
-    });
     this.isLoading = false;
   }
-
-
-
+getListing() {
+  const listingId = +this.route.snapshot.paramMap.get('id');
+  this.listingService.getUserListing(listingId).subscribe(listing => {
+    console.log(listing)
+    this.listing = listing
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getThisOrgUser(id).subscribe(user => {
+      this.user = user;
+      console.log(user)
+    })   
+  });
+}
+getUser() {
+ 
+}
 
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HandleErrorsComponent } from './handle-errors.component';
+import { AppProblemComponent } from './app-problem.component';
 
-describe('HandleErrorsComponent', () => {
-  let component: HandleErrorsComponent;
-  let fixture: ComponentFixture<HandleErrorsComponent>;
+describe('AppProblemComponent', () => {
+  let component: AppProblemComponent;
+  let fixture: ComponentFixture<AppProblemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HandleErrorsComponent ]
+      declarations: [ AppProblemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HandleErrorsComponent);
+    fixture = TestBed.createComponent(AppProblemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

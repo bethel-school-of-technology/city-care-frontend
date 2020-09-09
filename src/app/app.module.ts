@@ -49,7 +49,6 @@ import { ViewRequestComponent } from './components/view-request/view-request.com
 import { EmailLoginComponent } from './components/email-login/email-login.component';
 import { UsernameLoginComponent } from './components/username-login/username-login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { HandleErrorsComponent } from './components/handle-errors/handle-errors.component';
 
 
 @NgModule({
@@ -72,7 +71,6 @@ import { HandleErrorsComponent } from './components/handle-errors/handle-errors.
     EmailLoginComponent,
     UsernameLoginComponent,
     PageNotFoundComponent,
-    HandleErrorsComponent    
   ],
   imports: [
     BrowserModule,

@@ -62,3 +62,7 @@
  .waves-ripple {
    background-color: white;
  }
+:host {
+  display: block;
+  margin: 1rem auto;
+}

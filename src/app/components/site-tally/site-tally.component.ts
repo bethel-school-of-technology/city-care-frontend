@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription, throwError } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AuthorizationService } from '../../shared/services/authorization.service'
 import { Listing } from '../../shared/models/listing.model';
 import { ListingService } from '../../shared/services/listing.service';
-import { Orgs } from 'src/app/shared/models/orgs.model';
+import { Org } from 'src/app/shared/models/org.model';
 import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../shared/models/request.model';
 import { User } from '../../shared/models/user.model';
@@ -15,7 +15,7 @@ import { User } from '../../shared/models/user.model';
 })
 export class SiteTallyComponent implements OnInit, OnDestroy {
 
-  public orgs: Orgs[] = [];
+  public orgs: Org[] = [];
   public users: User[] = [];
   public listings: Listing[] = [];
   public requests: Request[] = [];
