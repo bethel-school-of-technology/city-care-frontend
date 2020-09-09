@@ -1,13 +1,11 @@
 .nav-wrapper {
   background-color: rgb(29, 34, 59);
 
+
 }
 
 
-.navbar-nav {
-  display: flex;
-  margin-left: 80%;
-}
+
 
 
 a {
@@ -18,6 +16,9 @@ a {
 
 
 
+
+
 .waves-link {
-  color: black
+  color: black;
+
 }

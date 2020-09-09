@@ -1,8 +1,9 @@
 footer {
-  text-align: center;
+  /* text-align: center; */
   font-size: 19px;
-  font-weight: normal;
+  /* font-weight: normal; */
   color: white;
+  font-family: Roboto;
 }
 
 
@@ -12,8 +13,12 @@ a {
 
 .page-footer {
   position: fixed;
-  left: 0;
+   /* left: 0;  */
   bottom: 0;
   width: 100%;
   height: auto;
+}
+/* code below spaces the mat-toolbar items evenly, not responsive at all though*/
+.spacer {
+  flex: 1 1 auto;
 }

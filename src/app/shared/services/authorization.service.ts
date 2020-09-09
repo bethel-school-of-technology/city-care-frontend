@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
@@ -24,7 +23,6 @@ export class AuthorizationService {
   private isAdmin: any; //Declare the is admin validator
   private authStatusListener = new Subject<boolean>(); //Set the authStatusListener as a subject boolean value
   private orgStatusListener = new Subject<boolean>();
-
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -63,12 +61,13 @@ export class AuthorizationService {
   setIsOrg(e: boolean) {
     return this.isOrg = e;
    }
-
+//CREATE a new user 
   registerUser(user: User) {
     return this.http.post(`${this.api}/register`, user).subscribe(result => {
       this.router.navigate(['/city-care/home']);
     });
   }
+//Log a user in with a username
 usernameLogin(user:any) {
   return this.http.post(`${this.api}/usernameLogin`, user).subscribe(
     (res: any) => {
@@ -106,6 +105,7 @@ usernameLogin(user:any) {
     }
   );
 }
+//Log a user in with email
   emailLogin(user: any) {
     //Log a user in
     return this.http.post(`${this.api}/emailLogin`, user).subscribe(
@@ -142,11 +142,10 @@ usernameLogin(user:any) {
         this.authStatusListener.next(false);
         this.orgStatusListener.next(false);
       }
-    );
+    )
   }
-
-  autoAuthUser() {
     //Try to automatically initialize the authorization status when the app starts
+  autoAuthUser() {
     const authInformation = this.getAuthData(); //Create a variable to store the authorization data
     if (!authInformation) {
       //don't return anything if there isn't any authorization information
@@ -169,27 +168,27 @@ usernameLogin(user:any) {
     }
   }
 
-  //Get a user/organization profile
+  //GET a user/organization profile
   getProfile(userId: number): Observable<User> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<User>(`${this.api}/profile`, { headers: header });
+    return this.http.get<User>(`${this.api}/profile`, { headers: header })
   }
   
-  //Get the user by the user id for the update profile page
+  //GET the user by the user id for the update profile page
   getUser(userId): Observable<User> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<User>(`${this.api}/${userId}`, { headers: header });
   }
-
+//UPDATE a users/orgs information 
   updateUser(userId: number, user: any): Observable <User> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.put<User>(`${this.api}/${userId}`, user, {
       headers: header});
   }
-  //Logout method should remove everything from local storage
+  //Log a user out, method should remove everything from local storage
 logout() {
   this.token = null;
   this.isAuthenticated = false;
@@ -233,7 +232,7 @@ logout() {
     localStorage.removeItem('isOrg'); //removes the user Id from local storage
     localStorage.removeItem('isAdmin'); //Removes the administrators status from local storage
   }
-
+//Get the authorization information stored in local storage.
   private getAuthData() {
     const token = localStorage.getItem('access-token'); //Retrieve the token from local storage
     const expirationDate = localStorage.getItem('expirationDate'); //Retrieve the expiration date from local storage
