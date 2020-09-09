@@ -2,15 +2,17 @@
   display: block;
   margin: 1rem auto;
 }
+
 .card-action {
   border-top: 1px inset lightslategrey;
   margin-top: 10px;
 }
+
 .card {
   width: 100%;
   height: auto;
   background-color: rgb(241, 241, 241);
-  border: 3px inset lightslategrey;
+
 }
 
 h1 {
@@ -23,32 +25,30 @@ hr {
 }
 
 .container {
-  width: 100%;
+
   height: auto;
 }
 
-.section {
-  width: 100%;
-}
+
 
 font {
   font-size: 20px;
 }
+
 mat-action-row {
   border-top: 1px inset lightslategrey;
 }
+
 .panel {
-  background-color: rgb(223, 223, 223);
-  border: 3px inset lightslategrey;
+  background-color: rgb(231, 231, 231);
+
   color: black;
 }
+
 h2 {
   text-align: center;
 }
+
 p {
   font-size: 16px;
 }
-
-
-
-
