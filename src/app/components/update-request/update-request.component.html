@@ -11,12 +11,13 @@
       Details:&nbsp; {{request.details}}<br>
       Date Needed:&nbsp; {{request.needByDate | date}} <br>
     </p>
-   <div class="row">
-    <div class="col s6 right-align">
-      <button type="back" class="waves-effect waves-light btn white-text" routerLink="/city-care/users-profile">Back</button>
-    
-     </div>
-   </div>
+    <div class="row">
+      <div class="col s6 right-align">
+        <button type="back" class="waves-effect waves-light btn white-text"
+          routerLink="/city-care/users-profile">Back</button>
+
+      </div>
+    </div>
   </div>
 </div>
 
@@ -44,12 +45,13 @@
       </div>
       <div>
         <label>Need By Date:</label>
-        <input type="text" id="needByDate" name="needByDate" id="needByDate" [placeholder]="request.needByDate | date" [(ngModel)]="request.needByDate" />
+        <input type="text" id="needByDate" name="needByDate" id="needByDate" [placeholder]="request.needByDate | date"
+          [(ngModel)]="request.needByDate" />
       </div>
     </div>
     <div class="row">
       <div class="col sm6 right-align">
-          <button type="submit" class="waves-effect waves-light btn white-text">Submit Request</button>
+        <button type="submit" class="waves-effect waves-light btn white-text">Submit Request</button>
       </div>
     </div>
   </form>

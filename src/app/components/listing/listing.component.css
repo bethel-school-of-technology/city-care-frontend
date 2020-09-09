@@ -31,11 +31,11 @@ input {
 .card {
   padding: 20px 20px;
   background-color: rgb(241, 241, 241);
-  border: 1px outset rgb(231, 231, 231);
+  border: 3px inset lightslategrey;
 }
 
 form {
-  width: 400px;
+
   height: auto;
 }
 
@@ -51,4 +51,11 @@ form {
 
 .waves-ripple {
   background-color: white;
+}
+
+
+@media only screen and (max-width: 600px) {
+  form {
+    width: auto;
+  }
 }

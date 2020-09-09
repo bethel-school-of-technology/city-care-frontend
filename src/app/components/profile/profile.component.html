@@ -37,15 +37,16 @@
 </div>
 
 
-
+<!-- Org Profile -->
 
 <div class='container'>
 
   <div class='row'>
     <div class='col s12 m12 l12'>
-      <div class='card content' *ngIf="user && userIsAuthenticated && isOrg">
+      <div class='card' *ngIf="user && userIsAuthenticated && isOrg">
+        <h1>{{user.org_name}}</h1>
         <div class='card-content'>
-          <h1>{{user.org_name}}</h1>
+
           <font><b>Email: </b>{{user.email}}</font><br>
           <font><b>Contact: </b>{{user.contact_name}}</font><br>
           <font><b>Phone: </b>{{user.phone}}</font><br>
