@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ErrorIntercept } from './shared/services/error-interceptor';
+import { HttpClientModule } from '@angular/common/http';
 //Bring in the FormsModule and the ReactiveFormsModule
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -49,7 +49,7 @@ import { ViewRequestComponent } from './components/view-request/view-request.com
 import { EmailLoginComponent } from './components/email-login/email-login.component';
 import { UsernameLoginComponent } from './components/username-login/username-login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-
+import { HandleErrorsComponent } from './components/handle-errors/handle-errors.component';
 
 
 @NgModule({
@@ -71,7 +71,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ViewRequestComponent,
     EmailLoginComponent,
     UsernameLoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HandleErrorsComponent    
   ],
   imports: [
     BrowserModule,
@@ -102,13 +103,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [ 
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorIntercept,
-      multi: true
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

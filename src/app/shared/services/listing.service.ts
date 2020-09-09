@@ -22,32 +22,32 @@ export class ListingService {
     private router: Router
   ) { }
 
-  //Get all of  the listings made by an organization for the profile page
+  //GET all of  the listings made by an organization for the profile page
   getUserListings(): Observable<Listing[]> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Listing[]>(`${this.api}/listings`, { headers: header });
   }
  
-  // Delete an organizations listing
+  // DELETE an organizations listing
   deleteListing(listingId: number): Observable<Listing> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.delete<Listing>(`${this.api}/delete/${listingId}`, { headers: header });
   }
-  //Get a organizations listing by the listing id
+  //GET a organizations listing by the listing id
   getUserListing(listingId): Observable <Listing> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.get<Listing>(`${this.api}/listing/${listingId}`, {headers: header});
   }
-  //Create listing
+  //CREATE an organization listing 
   createListing(listing: Listing): Observable <Listing> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
     return this.http.post<Listing>(`${this.api}/create`, listing, {headers: header});
   }
-  //Update listing
+  //UPDATE an organization listing
   updateListing(listingId: number, listing: any): Observable <Listing> {
     let token = localStorage.getItem('access-token');
     let header = new HttpHeaders().set('jwt', token);
@@ -55,7 +55,7 @@ export class ListingService {
       headers: header,
     });
   }
-   //get all the users for the site tally page
+   //GET all the organization users and their listings for the site tally page
  getEverythingOrgs(): Observable <User[]> {
   let token = localStorage.getItem('access-token');
   let header = new HttpHeaders().set('jwt', token);
