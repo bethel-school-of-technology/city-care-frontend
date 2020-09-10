@@ -7,6 +7,7 @@ import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../shared/models/request.model';
 import { Subscription } from 'rxjs';
 import { User } from '../../shared/models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public user: User; //define the user
   public userIsOrg = false;
   public userIsAuthenticated = false;
+  public errorMessage = "";
 
   private authStatusSub: Subscription;
   private orgStatusSub: Subscription;
@@ -34,6 +36,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private authorizationService: AuthorizationService, //Declare and bring in the authorization service for use in the component
     private listingService: ListingService,//Declare and bring in the listing service for use in the component
     private requestService: RequestService, //Declare and bring in the request service for use in the component
+    private userService: UserService,
     private router: Router
 
 
@@ -60,20 +63,32 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   getProfile() {
     const userId = +this.route.snapshot.paramMap.get('user_id');
-    this.authorizationService.getProfile(userId).subscribe(user => {
+    this.userService.getProfile(userId).subscribe(user => {
       this.user = user
+    }, (error) => {
+      console.log('An error has occurred at the component level');
+      this.errorMessage = error;
+      this.router.navigate(['/city-care/error-handler/'])
     });
   }
 
   getUserListings() {
     this.listingService.getUserListings().subscribe((listings: any) => {
       this.listings = listings;
+    }, (error) => {
+      console.log('An error has occurred at the component level');
+      this.errorMessage = error;
+      this.router.navigate(['/city-care/error-handler/'])
     });
   }
 
   getUserRequests() {
     this.requestService.getUserRequests().subscribe((requests: any) => {
       this.requests = requests;
+    }, (error) => {
+      console.log('An error has occurred at the component level');
+      this.errorMessage = error;
+      this.router.navigate(['/city-care/error-handler/'])
     })
   }
 
@@ -81,13 +96,22 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.requests = this.requests.filter(request => request.id !== request.id);
     this.requestService.deleteRequest(requestId).subscribe(result => {
       this.router.navigate(['/city-care/users-profile']);
+    }, (error) => {
+      console.log('An error has occurred at the component level');
+      this.errorMessage = error;
+      this.router.navigate(['/city-care/error-handler/'])
     });
   }
 
   onClickDeleteListing(listingId: number) {
     this.listings = this.listings.filter(listing => listing.id !== listing.id);
     this.listingService.deleteListing(listingId).subscribe(result => {
+      result = result
       this.router.navigate(['/city-care/users-profile']);
+    }, (error) => {
+      console.log('Error caught in component')
+      this.errorMessage = error;
+      this.router.navigate(['/city-care/error-handler']);
     });
   }
 

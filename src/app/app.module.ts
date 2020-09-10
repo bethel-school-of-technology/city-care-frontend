@@ -1,6 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './shared/helpers/token.interceptor';
+import { GlobalErrorHandlerInterceptor } from './shared/helpers/global-error-handler.interceptor';
+import { ToastrModule } from 'ngx-toastr';
+
+
 //Bring in the FormsModule and the ReactiveFormsModule
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -41,7 +48,6 @@ import { UpdateRequestComponent } from './components/update-request/update-reque
 import { UpdateListingComponent } from './components/update-listing/update-listing.component';
 import { RequestComponent } from './components/request/request.component';
 import { ProfileEditorComponent } from './components/profile-editor/profile-editor.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListingComponent } from './components/listing/listing.component';
 import { SiteTallyComponent } from './components/site-tally/site-tally.component';
 import { ViewListingComponent } from './components/view-listing/view-listing.component';
@@ -49,7 +55,6 @@ import { ViewRequestComponent } from './components/view-request/view-request.com
 import { EmailLoginComponent } from './components/email-login/email-login.component';
 import { UsernameLoginComponent } from './components/username-login/username-login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-
 
 @NgModule({
   declarations: [
@@ -99,9 +104,18 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: GlobalErrorHandlerInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

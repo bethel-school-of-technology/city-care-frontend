@@ -168,26 +168,26 @@ usernameLogin(user:any) {
     }
   }
 
-  //GET a user/organization profile
-  getProfile(userId: number): Observable<User> {
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<User>(`${this.api}/profile`, { headers: header })
-  }
+//   //GET a user/organization profile
+//   getProfile(userId: number): Observable<User> {
+//     let token = localStorage.getItem('access-token');
+//     let header = new HttpHeaders().set('jwt', token);
+//     return this.http.get<User>(`${this.api}/profile`, { headers: header })
+//   }
   
-  //GET the user by the user id for the update profile page
-  getUser(userId): Observable<User> {
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<User>(`${this.api}/${userId}`, { headers: header });
-  }
-//UPDATE a users/orgs information 
-  updateUser(userId: number, user: any): Observable <User> {
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.put<User>(`${this.api}/${userId}`, user, {
-      headers: header});
-  }
+//   //GET the user by the user id for the update profile page
+//   getUser(userId): Observable<User> {
+//     let token = localStorage.getItem('access-token');
+//     let header = new HttpHeaders().set('jwt', token);
+//     return this.http.get<User>(`${this.api}/${userId}`, { headers: header });
+//   }
+// //UPDATE a users/orgs information 
+//   updateUser(userId: number, user: any): Observable <User> {
+//     let token = localStorage.getItem('access-token');
+//     let header = new HttpHeaders().set('jwt', token);
+//     return this.http.put<User>(`${this.api}/${userId}`, user, {
+//       headers: header});
+//   }
   //Log a user out, method should remove everything from local storage
 logout() {
   this.token = null;

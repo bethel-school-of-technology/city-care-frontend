@@ -3,6 +3,7 @@ import { AuthorizationService } from '../../shared/services/authorization.servic
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/shared/models/user.model';
 import { Subscription } from 'rxjs';
+import { UserService } from 'src/app/shared/services/user.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private authorizationService: AuthorizationService
+    private authorizationService: AuthorizationService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -45,14 +47,15 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
 
   getUser() {
     const userId = +this.route.snapshot.paramMap.get('id');
-    this.authorizationService.getUser(userId).subscribe((user: any) => {
+    this.userService.getUser(userId).subscribe((user: any) => {
       this.user = user;
     });
   }
 
   updateUser() {
     const userId = +this.route.snapshot.paramMap.get('id');
-    this.authorizationService.updateUser(userId, this.user).subscribe(result => {
+    this.userService.updateUser(userId, this.user).subscribe(user => {
+      console.log(user);
       this.router.navigate(['/city-care/users-profile']);
     })
   }
