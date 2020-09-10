@@ -34,8 +34,7 @@ export class ViewListingComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.getListing();
-    this.getUser();
+   
     this.isLoading = true;
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
@@ -46,23 +45,15 @@ export class ViewListingComponent implements OnInit, OnDestroy {
     this.orgStatusSub = this.authorizationService.getOrgStatusListener().subscribe(isOrg => {
       this.userIsOrg = isOrg;
     });
+    const org_id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getThisOrgUser(org_id).subscribe(user => {
+      this.user = user;
+    })
+    const listingId = +this.route.snapshot.paramMap.get('id');
+    this.listingService.getUserListing(listingId).subscribe(listing => this.listing = listing)
     this.isLoading = false;
   }
-getListing() {
-  const listingId = +this.route.snapshot.paramMap.get('id');
-  this.listingService.getUserListing(listingId).subscribe(listing => {
-    console.log(listing)
-    this.listing = listing
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getThisOrgUser(id).subscribe(user => {
-      this.user = user;
-      console.log(user)
-    })   
-  });
-}
-getUser() {
- 
-}
+
 
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();

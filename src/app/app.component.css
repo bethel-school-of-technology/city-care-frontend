@@ -2,7 +2,9 @@
           display: block;
           width: 100%;
 } */
-main {
+
+/* This was making mobile view render off-centered */
+/* main {
   width: 80%;
   margin: 1rem auto;
-}
+} */

@@ -18,32 +18,30 @@ export class UserService {
 
    //GET a user/organization profile
    getProfile(userId: number): Observable<User> {
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<User>(`${this.usersApi}/profile`, { headers: header })
+    // let token = localStorage.getItem('access-token');
+    // let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<User>(`${this.usersApi}/profile`)
   }
-  
   //GET the user by the user id for the update profile page
-  getUser(userId): Observable<User> {
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<User>(`${this.usersApi}/${userId}`, { headers: header });
+  getUser(userId: number): Observable<User> {
+    // let token = localStorage.getItem('access-token');
+    // let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<User>(`${this.usersApi}/${userId}`);
   }
 //UPDATE a users/orgs information 
   updateUser(userId: number, user: any): Observable <User> {
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.put<User>(`${this.usersApi}/${userId}`, user, {
-      headers: header});
+    /* let token = localStorage.getItem('access-token');
+    let header = new HttpHeaders().set('jwt', token); */
+    return this.http.put<User>(`${this.usersApi}/${userId}`, user, );
   }
-  getThisOrgUser(id: number): Observable <User> {
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<User>(`${this.usersApi}/${id}`, {headers: header})
+  getThisOrgUser(org_id: number): Observable <User> {
+    // let token = localStorage.getItem('access-token');
+    // let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<User>(`${this.usersApi}/${org_id}`)
   }
-  getThisUser(userId): Observable <User> {
-    let token = localStorage.getItem('access-token');
-    let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<User>(`${this.usersApi}/user/${userId}`, {headers: header})
+  getThisUser(userId: number): Observable <User> {
+    // let token = localStorage.getItem('access-token');
+    // let header = new HttpHeaders().set('jwt', token);
+    return this.http.get<User>(`${this.usersApi}/${userId}`)
   }
 }
