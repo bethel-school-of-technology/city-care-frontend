@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ListingService } from '../../shared/services/listing.service';
 import { Listing } from '../../shared/models/listing.model';
 import { AuthorizationService } from 'src/app/shared/services/authorization.service';
+import { NotificationService } from '../../shared/helpers/notification.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -27,8 +28,8 @@ export class ListingComponent implements OnInit, OnDestroy {
     //private route: ActivatedRoute,
     private router: Router,
     private listingService: ListingService,
-    private authorizationService: AuthorizationService
-
+    private authorizationService: AuthorizationService,
+    private notifcation: NotificationService
   ) { }
 
   ngOnInit() {
@@ -47,6 +48,7 @@ export class ListingComponent implements OnInit, OnDestroy {
 
   createListing() {
     this.listingService.createListing(this.listing).subscribe(result => {
+      this.notifcation.newListing()
       this.router.navigate(['/city-care/users-profile']);
     });
   }

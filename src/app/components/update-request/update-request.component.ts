@@ -4,6 +4,7 @@ import { AuthorizationService } from 'src/app/shared/services/authorization.serv
 import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../shared/models/request.model';
 import { Subscription } from 'rxjs';
+import { NotificationService } from 'src/app/shared/helpers/notification.service';
 
 @Component({
   selector: 'app-update-request',
@@ -25,6 +26,7 @@ export class UpdateRequestComponent implements OnInit, OnDestroy {
 
   constructor(
     private authorizationService: AuthorizationService,
+    private notification: NotificationService,
     private route: ActivatedRoute,
     private router: Router,
     private requestService: RequestService
@@ -49,6 +51,7 @@ export class UpdateRequestComponent implements OnInit, OnDestroy {
   updateRequest() {
     const requestId = +this.route.snapshot.paramMap.get('id');
     this.requestService.updateRequest(requestId, this.request).subscribe(request => {
+      this.notification.editRequest();
       this.router.navigate(['/city-care/users-profile'])
     })
   }

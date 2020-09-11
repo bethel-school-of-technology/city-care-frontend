@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/shared/models/user.model';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/shared/services/user.service';
+import { NotificationService } from 'src/app/shared/helpers/notification.service';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private authorizationService: AuthorizationService,
+    private notification: NotificationService,
     private userService: UserService
   ) { }
 
@@ -55,7 +57,7 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
   updateUser() {
     const userId = +this.route.snapshot.paramMap.get('id');
     this.userService.updateUser(userId, this.user).subscribe(user => {
-      console.log(user);
+      this.notification.editUser();
       this.router.navigate(['/city-care/users-profile']);
     })
   }

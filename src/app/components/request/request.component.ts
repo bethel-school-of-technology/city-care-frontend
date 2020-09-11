@@ -4,6 +4,7 @@ import { Request } from '../../shared/models/request.model';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { NotificationService } from 'src/app/shared/helpers/notification.service';
 
 @Component({
   selector: 'app-request',
@@ -26,6 +27,7 @@ export class RequestComponent implements OnInit, OnDestroy {
 
   constructor(
     private authorizationService: AuthorizationService,
+    private notification: NotificationService,
     private requestService: RequestService,
     private router: Router
   ) {}
@@ -47,6 +49,7 @@ export class RequestComponent implements OnInit, OnDestroy {
 
   createRequest() {
     this.requestService.createRequest(this.request).subscribe(result => {
+      this.notification.newRequest();
       this.router.navigate(['/city-care/users-profile']);
     });
 }

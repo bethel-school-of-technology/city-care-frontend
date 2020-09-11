@@ -11,7 +11,7 @@ import { Listing } from '../models/listing.model';
 })
 export class ListingService {
 
-  api: string = 'http://localhost:3000/listings';
+  private listingApi: string = 'http://localhost:3000/listings';
 
   public org: Org[];
   public users: User[];
@@ -24,38 +24,26 @@ export class ListingService {
 
   //GET all of  the listings made by an organization for the profile page
   getUserListings(): Observable<Listing[]> {
-    // let token = localStorage.getItem('access-token');
-    // let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<Listing[]>(`${this.api}/listings`);
+    return this.http.get<Listing[]>(`${this.listingApi}/listings`);
   }
   // DELETE an organizations listing
   deleteListing(listingId: number): Observable<Listing> {
-    // let token = localStorage.getItem('access-token');
-    // let header = new HttpHeaders().set('jwt', token);
-    return this.http.delete<Listing>(`${this.api}/delete/${listingId}`);
+    return this.http.delete<Listing>(`${this.listingApi}/delete/${listingId}`);
   }
   //GET a organizations listing by the listing id
   getUserListing(listingId: number): Observable <Listing> {
-    // let token = localStorage.getItem('access-token');
-    // let header = new HttpHeaders().set('jwt', token);
-    return this.http.get<Listing>(`${this.api}/listing/${listingId}`);
+    return this.http.get<Listing>(`${this.listingApi}/listing/${listingId}`);
   }
   //CREATE an organization listing 
   createListing(listing: Listing): Observable <Listing> {
-    // let token = localStorage.getItem('access-token');
-    // let header = new HttpHeaders().set('jwt', token);
-    return this.http.post<Listing>(`${this.api}/create`, listing);
+    return this.http.post<Listing>(`${this.listingApi}/create`, listing);
   }
   //UPDATE an organization listing
   updateListing(listingId: number, listing: any): Observable <Listing> {
-    // let token = localStorage.getItem('access-token');
-    // let header = new HttpHeaders().set('jwt', token);
-    return this.http.put<Listing>(`${this.api}/update/${listingId}`, listing);
+    return this.http.put<Listing>(`${this.listingApi}/update/${listingId}`, listing);
   }
    //GET all the organization users and their listings for the site tally page
  getEverythingOrgs(): Observable <User[]> {
-  // let token = localStorage.getItem('access-token');
-  // let header = new HttpHeaders().set('jwt', token);
-  return this.http.get<User[]>(`${this.api}/findOrgs`);
+  return this.http.get<User[]>(`${this.listingApi}/findOrgs`);
  } 
 }
