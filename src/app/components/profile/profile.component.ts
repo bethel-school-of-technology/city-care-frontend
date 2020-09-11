@@ -8,6 +8,7 @@ import { Request } from '../../shared/models/request.model';
 import { Subscription } from 'rxjs';
 import { User } from '../../shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
+import { NotificationService } from 'src/app/shared/helpers/notification.service';
 
 
 @Component({
@@ -35,6 +36,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute, //Set the route as the Activated Route
     private authorizationService: AuthorizationService, //Declare and bring in the authorization service for use in the component
     private listingService: ListingService,//Declare and bring in the listing service for use in the component
+    private notification: NotificationService,
     private requestService: RequestService, //Declare and bring in the request service for use in the component
     private userService: UserService,
     private router: Router
@@ -64,54 +66,35 @@ export class ProfileComponent implements OnInit, OnDestroy {
   getProfile() {
     const userId = +this.route.snapshot.paramMap.get('user_id');
     this.userService.getProfile(userId).subscribe(user => {
-      this.user = user
-    }, (error) => {
-      console.log('An error has occurred at the component level');
-      this.errorMessage = error;
-      this.router.navigate(['/city-care/error-handler/'])
+       this.user = user
     });
   }
 
   getUserListings() {
     this.listingService.getUserListings().subscribe((listings: any) => {
       this.listings = listings;
-    }, (error) => {
-      console.log('An error has occurred at the component level');
-      this.errorMessage = error;
-      this.router.navigate(['/city-care/error-handler/'])
     });
   }
 
   getUserRequests() {
     this.requestService.getUserRequests().subscribe((requests: any) => {
       this.requests = requests;
-    }, (error) => {
-      console.log('An error has occurred at the component level');
-      this.errorMessage = error;
-      this.router.navigate(['/city-care/error-handler/'])
     })
   }
 
   onClickDeleteRequest(requestId: number) {
     this.requests = this.requests.filter(request => request.id !== request.id);
     this.requestService.deleteRequest(requestId).subscribe(result => {
+      this.notification.removeRequest();
       this.router.navigate(['/city-care/users-profile']);
-    }, (error) => {
-      console.log('An error has occurred at the component level');
-      this.errorMessage = error;
-      this.router.navigate(['/city-care/error-handler/'])
     });
   }
 
   onClickDeleteListing(listingId: number) {
     this.listings = this.listings.filter(listing => listing.id !== listing.id);
     this.listingService.deleteListing(listingId).subscribe(result => {
-      result = result
+      this.notification.removeListing()
       this.router.navigate(['/city-care/users-profile']);
-    }, (error) => {
-      console.log('Error caught in component')
-      this.errorMessage = error;
-      this.router.navigate(['/city-care/error-handler']);
     });
   }
 

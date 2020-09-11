@@ -4,6 +4,7 @@ import { ListingService } from '../../shared/services/listing.service';
 import { Listing } from '../../shared/models/listing.model';
 import { AuthorizationService } from 'src/app/shared/services/authorization.service';
 import { Subscription } from 'rxjs';
+import { NotificationService } from 'src/app/shared/helpers/notification.service';
 
 @Component({
   selector: 'app-update-listing',
@@ -24,6 +25,7 @@ private orgStatusSub: Subscription;
 
   constructor(
     private authorizationService: AuthorizationService,
+    private notification: NotificationService,
     private route: ActivatedRoute,
     private router: Router,
     private listingService: ListingService
@@ -49,6 +51,7 @@ private orgStatusSub: Subscription;
 updateListing() {
   const listingId = +this.route.snapshot.paramMap.get('id');
   this.listingService.updateListing(listingId, this.listing).subscribe(listing => {
+    this.notification.editListing();
     this.router.navigate(['/city-care/users-profile'])
   })
 }

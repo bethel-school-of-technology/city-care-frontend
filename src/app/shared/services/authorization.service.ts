@@ -10,7 +10,7 @@ import { Org } from '../models/org.model';
 })
 export class AuthorizationService {
 
-  private api: string = 'http://localhost:3000/users';//Define the backend route
+  private authApi: string = 'http://localhost:3000/users';//Define the backend route
 
   public users: User[]; //Declare the users as an empty array
   public orgs: Org[];
@@ -63,13 +63,15 @@ export class AuthorizationService {
    }
 //CREATE a new user 
   registerUser(user: User) {
-    return this.http.post(`${this.api}/register`, user).subscribe(result => {
+    return this.http.post(`${this.authApi}/`, user).subscribe(result => {
       this.router.navigate(['/city-care/home']);
+    }, error => {
+
     });
   }
 //Log a user in with a username
-usernameLogin(user:any) {
-  return this.http.post(`${this.api}/usernameLogin`, user).subscribe(
+usernameLogin(user: any) {
+  return this.http.post(`${this.authApi}/usernameLogin`, user).subscribe(
     (res: any) => {
       const token = res.token;
       this.token = token;
@@ -108,7 +110,7 @@ usernameLogin(user:any) {
 //Log a user in with email
   emailLogin(user: any) {
     //Log a user in
-    return this.http.post(`${this.api}/emailLogin`, user).subscribe(
+    return this.http.post(`${this.authApi}/emailLogin`, user).subscribe(
       (res: any) => {
         const token = res.token;
         this.token = token;
@@ -167,27 +169,6 @@ usernameLogin(user:any) {
       this.orgStatusListener.next(true);
     }
   }
-
-//   //GET a user/organization profile
-//   getProfile(userId: number): Observable<User> {
-//     let token = localStorage.getItem('access-token');
-//     let header = new HttpHeaders().set('jwt', token);
-//     return this.http.get<User>(`${this.api}/profile`, { headers: header })
-//   }
-  
-//   //GET the user by the user id for the update profile page
-//   getUser(userId): Observable<User> {
-//     let token = localStorage.getItem('access-token');
-//     let header = new HttpHeaders().set('jwt', token);
-//     return this.http.get<User>(`${this.api}/${userId}`, { headers: header });
-//   }
-// //UPDATE a users/orgs information 
-//   updateUser(userId: number, user: any): Observable <User> {
-//     let token = localStorage.getItem('access-token');
-//     let header = new HttpHeaders().set('jwt', token);
-//     return this.http.put<User>(`${this.api}/${userId}`, user, {
-//       headers: header});
-//   }
   //Log a user out, method should remove everything from local storage
 logout() {
   this.token = null;

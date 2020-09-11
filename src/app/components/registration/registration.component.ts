@@ -33,7 +33,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   registerUser() {
-    this.authorizationService.registerUser(this.user)
+    this.authorizationService.registerUser(this.user);
   }
 
   setIsOrg(e: boolean) {

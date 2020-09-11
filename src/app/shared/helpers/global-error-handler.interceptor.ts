@@ -24,16 +24,16 @@ export class GlobalErrorHandlerInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       tap(res => {
-        if(res instanceof HttpResponse && res.status === 200) {
-          this.toasterService.success(res.body.message);
+        if(res instanceof HttpResponse && res.status === 201) {
+          this.toasterService.success(res.body.message, 'Request successful', { positionClass: 'toast-bottom-center'});
         }
       }),
       catchError((error: any) => {
         if(error instanceof HttpErrorResponse) {
           try {
-            this.toasterService.error(error.error.message);
+            this.toasterService.error(error.message, 'An error has occurred with a status code of 400', {positionClass: 'toast-bottom-center'});
           } catch(e) {
-            this.toasterService.error('An error has occurred', ' ', {positionClass: 'toast-bottom-center'});
+            this.toasterService.error(error.message, 'An error has occurred', {positionClass: 'toast-bottom-center'});
           } //log error
         }
         return of(error)
