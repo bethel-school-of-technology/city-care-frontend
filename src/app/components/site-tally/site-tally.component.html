@@ -48,7 +48,7 @@
       <p class='left-align'>Request: &nbsp;{{ request.name }} <br>
       {{request.details}}</p>
       <div class="col sm6 right-align">
-        <a mat-button routerLinkActive [routerLink]="['/city-care/view-request/', user.id, request.id]">View</a>
+        <a mat-button routerLinkActive [routerLink]="['/city-care/view-request/', request.id]">View</a>
       </div>
     </mat-panel-description>
   </mat-expansion-panel>

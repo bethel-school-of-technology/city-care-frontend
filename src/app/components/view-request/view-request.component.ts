@@ -44,13 +44,10 @@ export class ViewRequestComponent implements OnInit, OnDestroy {
     this.orgStatusSub = this.authorizationService.getAuthStatusListener().subscribe(isOrg => {
       this.userIsOrg = isOrg;
     });
-    const user_id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getThisUser(user_id).subscribe(user => {
-      this.user = user;
-    });
     const requestId = +this.route.snapshot.paramMap.get('id');
     this.requestService.getUserRequest(requestId).subscribe(request => {
       this.request = request
+      console.log(request)
     })
     
     this.isLoading = false;
