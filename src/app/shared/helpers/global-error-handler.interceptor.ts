@@ -31,9 +31,9 @@ export class GlobalErrorHandlerInterceptor implements HttpInterceptor {
       catchError((error: any) => {
         if(error instanceof HttpErrorResponse) {
           try {
-            this.toasterService.error(error.message, 'An error has occurred with a status code of 400', {positionClass: 'toast-bottom-center'});
+            this.toasterService.error( 'An error code of 500', 'Foul things have happend, internal server error!',{positionClass: 'toast-bottom-center'});
           } catch(e) {
-            this.toasterService.error(error.message, 'An error has occurred', {positionClass: 'toast-bottom-center'});
+            this.toasterService.error('A 401 error has occurred','User already exists!', {positionClass: 'toast-bottom-center'}); 
           } //log error
         }
         return of(error)
