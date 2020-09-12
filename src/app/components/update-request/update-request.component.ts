@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorizationService } from 'src/app/shared/services/authorization.service';
+import { NotificationService } from 'src/app/shared/helpers/notification.service';
 import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../shared/models/request.model';
 import { Subscription } from 'rxjs';
-import { NotificationService } from 'src/app/shared/helpers/notification.service';
 
 @Component({
   selector: 'app-update-request',

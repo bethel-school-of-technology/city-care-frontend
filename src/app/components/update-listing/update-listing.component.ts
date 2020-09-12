@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthorizationService } from 'src/app/shared/services/authorization.service';
 import { ListingService } from '../../shared/services/listing.service';
 import { Listing } from '../../shared/models/listing.model';
-import { AuthorizationService } from 'src/app/shared/services/authorization.service';
-import { Subscription } from 'rxjs';
 import { NotificationService } from 'src/app/shared/helpers/notification.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-update-listing',

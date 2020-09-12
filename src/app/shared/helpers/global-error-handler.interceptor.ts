@@ -18,22 +18,22 @@ export class GlobalErrorHandlerInterceptor implements HttpInterceptor {
   constructor(
     authorizationService: AuthorizationService,
     public toasterService: ToastrService
-  ) {}
+  ) { }
 
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       tap(res => {
-        if(res instanceof HttpResponse && res.status === 201) {
-          this.toasterService.success(res.body.message, 'Request successful', { positionClass: 'toast-bottom-center'});
+        if (res instanceof HttpResponse && res.status === 201) {
+          this.toasterService.success(res.body.message, 'Request successful', { positionClass: 'toast-bottom-center' });
         }
       }),
       catchError((error: any) => {
-        if(error instanceof HttpErrorResponse) {
+        if (error instanceof HttpErrorResponse) {
           try {
-            this.toasterService.error( 'An error code of 500', 'Foul things have happend, internal server error!',{positionClass: 'toast-bottom-center'});
-          } catch(e) {
-            this.toasterService.error('A 401 error has occurred','User already exists!', {positionClass: 'toast-bottom-center'}); 
+            this.toasterService.error('An error code of 500', 'Foul things have happend, internal server error!', { positionClass: 'toast-bottom-center' });
+          } catch (e) {
+            this.toasterService.error('A 401 error has occurred', 'User already exists!', { positionClass: 'toast-bottom-center' });
           } //log error
         }
         return of(error)

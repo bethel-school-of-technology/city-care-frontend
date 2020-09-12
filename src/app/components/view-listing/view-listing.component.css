@@ -9,7 +9,6 @@ button {
   color: white;
 }
 
-
 p {
   font-size: 16px;
   padding: 10px 10px 10px 10px;
@@ -17,7 +16,6 @@ p {
 
 .waves-effect {
   background-color: rgb(29, 34, 59);
-
 }
 
 .waves-ripple {
@@ -27,5 +25,4 @@ p {
 .card {
   padding: 30px 30px;
   background-color: rgb(241, 241, 241);
-
 }

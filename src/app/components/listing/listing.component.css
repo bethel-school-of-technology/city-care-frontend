@@ -8,7 +8,6 @@
 }
 
 button {
-
   padding: 5px 15px;
   margin-top: 20px;
 }
@@ -35,7 +34,6 @@ input {
 }
 
 form {
-
   height: auto;
 }
 
@@ -52,7 +50,6 @@ form {
 .waves-ripple {
   background-color: white;
 }
-
 
 @media only screen and (max-width: 600px) {
   form {

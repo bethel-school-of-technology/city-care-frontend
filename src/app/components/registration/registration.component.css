@@ -1,7 +1,8 @@
-form {
-         width: 100%;
-}
 :host {
           display: block;
           margin: 1rem auto;
         }
+
+form {
+          width: 100%;
+ }

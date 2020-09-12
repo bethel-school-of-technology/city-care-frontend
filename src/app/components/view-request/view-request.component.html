@@ -4,16 +4,16 @@
 
 </div>
 
-<div *ngIf="request && request.user && !isLoading && userIsAuthenticated">
+<div *ngIf="request && user && !isLoading && userIsAuthenticated">
   <div class="card">
     Contact Person: {{user.first_name}} {{user.last_name}} <br>
-  Email: &nbsp; {{ user.email }} <br>
-  Phone: &nbsp; {{ user.phone }} <br>
-  Mobile: &nbsp; {{ user.mobile_phone }} <br>
-  <hr>
-  Need: &nbsp; {{ request.name }} <br>
-  Details: &nbsp; {{ request.details }}<br>
-  Date Needed: &nbsp; {{ request.needByDate | date }} <br>
+    Email: &nbsp; {{ user.email }} <br>
+    Phone: &nbsp; {{ user.phone }} <br>
+    Mobile: &nbsp; {{ user.mobile_phone }} <br>
+    <hr>
+    Need: &nbsp; {{ request.name }} <br>
+    Details: &nbsp; {{ request.details }}<br>
+    Date Needed: &nbsp; {{ request.needByDate | date }} <br>
   </div>
 </div>
 <div class="col sm6 right-align">

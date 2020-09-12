@@ -1,12 +1,8 @@
  .img {
    width: 60%;
    height: auto;
-
-
    margin-left: auto;
    padding-top: 15px;
-
-
  }
 
  .jumbotron {
@@ -15,9 +11,7 @@
    margin-left: auto;
    margin-right: auto;
    background-color: rgb(255, 255, 255);
-
  }
-
 
  .icons {
    width: 45px;
@@ -26,15 +20,9 @@
  }
 
  .icon-container {
-
    padding-bottom: 35px;
-
-
    width: 100%
  }
-
-
-
 
  body {
    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -51,14 +39,10 @@
    font-size: 30px;
  }
 
-
-
  .waves-effect {
    background-color: rgb(29, 34, 59);
-
  }
-
-
+ 
  .waves-ripple {
    background-color: white;
  }

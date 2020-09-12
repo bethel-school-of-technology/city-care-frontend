@@ -10,29 +10,29 @@ import { User } from '../models/user.model';
 export class UserService {
 
   private usersApi: string = 'http://localhost:3000/users';//Define the backend route
-  
-   public user: User[];
+
+  public user: User[];
 
 
   constructor(private http: HttpClient) { }
 
-   //GET a user/organization profile
-   getProfile(userId: number): Observable<User> {
+  //GET a user/organization profile
+  getProfile(userId: number): Observable<User> {
     return this.http.get<User>(`${this.usersApi}/profile`)
   }
   //GET the user by the user id for the update profile page
   getUser(userId: number): Observable<User> {
     return this.http.get<User>(`${this.usersApi}/${userId}`);
   }
-//UPDATE a users/orgs information 
-  updateUser(userId: number, user: any): Observable <User> {
-    return this.http.put<User>(`${this.usersApi}/${userId}`, user, );
+  //UPDATE a users/orgs information 
+  updateUser(userId: number, user: any): Observable<User> {
+    return this.http.put<User>(`${this.usersApi}/${userId}`, user,);
   }
   //this route doesnt seem to work right
-  getThisOrgUser(org_id: number): Observable <User> {
+  getThisOrgUser(org_id: number): Observable<User> {
     return this.http.get<User>(`${this.usersApi}/${org_id}`)
   }
-  getThisUser(userId: number): Observable <User> {
+  getThisUser(userId: number): Observable<User> {
     return this.http.get<User>(`${this.usersApi}/${userId}`)
   }
 }
