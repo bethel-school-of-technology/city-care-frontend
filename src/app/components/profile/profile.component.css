@@ -11,10 +11,7 @@
 .card {
   width: 100%;
   height: auto;
-
-
   background-color: rgb(241, 241, 241);
-
 }
 
 h1 {
@@ -31,8 +28,6 @@ hr {
   height: auto;
 }
 
-
-
 font {
   font-size: 20px;
 }
@@ -43,7 +38,6 @@ mat-action-row {
 
 .panel {
   background-color: rgb(231, 231, 231);
-
   color: black;
 }
 

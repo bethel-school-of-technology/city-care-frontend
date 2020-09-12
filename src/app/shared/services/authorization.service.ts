@@ -24,7 +24,7 @@ export class AuthorizationService {
   private authStatusListener = new Subject<boolean>(); //Set the authStatusListener as a subject boolean value
   private orgStatusListener = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   getToken() {
     //get the token
@@ -44,7 +44,7 @@ export class AuthorizationService {
     //Get the individual status as organization or not
     return this.isOrg;
   }
-  
+
   getIsAdmin() {
     //Get the individual status as admin or not
     return this.isAdmin;
@@ -60,8 +60,8 @@ export class AuthorizationService {
   //Set the boolean value of isOrg
   setIsOrg(e: boolean) {
     return this.isOrg = e;
-   }
-//CREATE a new user 
+  }
+  //CREATE a new user 
   registerUser(user: User) {
     return this.http.post(`${this.authApi}/`, user).subscribe(result => {
       this.router.navigate(['/city-care/home']);
@@ -69,45 +69,45 @@ export class AuthorizationService {
 
     });
   }
-//Log a user in with a username
-usernameLogin(user: any) {
-  return this.http.post(`${this.authApi}/usernameLogin`, user).subscribe(
-    (res: any) => {
-      const token = res.token;
-      this.token = token;
-      if (token) {
-        const expiresInDuration = res.expiresIn; //Declare how long the token lasts variable and assign the token time to it
-        this.setAuthTimer(expiresInDuration); //Set the authorization timer
-        this.isAuthenticated = true; //Set the status of the user as authenticated or verified
-        this.userIsAuthenticated = true;
-        this.userId = res.userId; //Store the user id from the response in a variable called userId
-        this.isOrg = res.isOrg; //Store the status of the user in the isOrg variable
-        this.isAdmin = res.isAdmin; //Stores the adminstrative status of the user in the is admin variable
-        this.authStatusListener.next(true); //Turn the authorization status subject on to listen for the users activities
-        this.orgStatusListener.next(true);
-        const now = new Date(); //get the current time stamp
-        const expirationDate = new Date(
-          now.getTime() + expiresInDuration * 1000
-        ); //create the expiration date
-        this.saveAuthData(
-          token,
-          expirationDate,
-          this.userId,
-          this.isOrg,
-          this.isAdmin
-        ); // executes the method saveAuthData
+  //Log a user in with a username
+  usernameLogin(user: any) {
+    return this.http.post(`${this.authApi}/usernameLogin`, user).subscribe(
+      (res: any) => {
+        const token = res.token;
+        this.token = token;
+        if (token) {
+          const expiresInDuration = res.expiresIn; //Declare how long the token lasts variable and assign the token time to it
+          this.setAuthTimer(expiresInDuration); //Set the authorization timer
+          this.isAuthenticated = true; //Set the status of the user as authenticated or verified
+          this.userIsAuthenticated = true;
+          this.userId = res.userId; //Store the user id from the response in a variable called userId
+          this.isOrg = res.isOrg; //Store the status of the user in the isOrg variable
+          this.isAdmin = res.isAdmin; //Stores the adminstrative status of the user in the is admin variable
+          this.authStatusListener.next(true); //Turn the authorization status subject on to listen for the users activities
+          this.orgStatusListener.next(true);
+          const now = new Date(); //get the current time stamp
+          const expirationDate = new Date(
+            now.getTime() + expiresInDuration * 1000
+          ); //create the expiration date
+          this.saveAuthData(
+            token,
+            expirationDate,
+            this.userId,
+            this.isOrg,
+            this.isAdmin
+          ); // executes the method saveAuthData
+        }
+        localStorage.setItem('access-token', res.token); //Set the access token to the token recieved in the response header
+        this.router.navigate(['/city-care/users-profile']); //Navigate the user to their profile page
+      },
+      (error) => {
+        //if the user is not logged in or authenticated turn the authorization status listener off
+        this.authStatusListener.next(false);
+        this.orgStatusListener.next(false);
       }
-      localStorage.setItem('access-token', res.token); //Set the access token to the token recieved in the response header
-      this.router.navigate(['/city-care/users-profile']); //Navigate the user to their profile page
-    },
-    (error) => {
-      //if the user is not logged in or authenticated turn the authorization status listener off
-      this.authStatusListener.next(false);
-      this.orgStatusListener.next(false);
-    }
-  );
-}
-//Log a user in with email
+    );
+  }
+  //Log a user in with email
   emailLogin(user: any) {
     //Log a user in
     return this.http.post(`${this.authApi}/emailLogin`, user).subscribe(
@@ -146,7 +146,7 @@ usernameLogin(user: any) {
       }
     )
   }
-    //Try to automatically initialize the authorization status when the app starts
+  //Try to automatically initialize the authorization status when the app starts
   autoAuthUser() {
     const authInformation = this.getAuthData(); //Create a variable to store the authorization data
     if (!authInformation) {
@@ -170,17 +170,17 @@ usernameLogin(user: any) {
     }
   }
   //Log a user out, method should remove everything from local storage
-logout() {
-  this.token = null;
-  this.isAuthenticated = false;
-  this.isOrg = false;
-  this.authStatusListener.next(false);
-  this.orgStatusListener.next(false);
-  clearTimeout(this.tokenTimer); //Clears the token timer out when the logout method is called. 
-  this.clearAuthData();//clear the local storage
-  this.userId = null; //Ensures the user Id is reset correctly after a user logs out. 
-  this.router.navigate(['/city-care/email-login']);
-}
+  logout() {
+    this.token = null;
+    this.isAuthenticated = false;
+    this.isOrg = false;
+    this.authStatusListener.next(false);
+    this.orgStatusListener.next(false);
+    clearTimeout(this.tokenTimer); //Clears the token timer out when the logout method is called. 
+    this.clearAuthData();//clear the local storage
+    this.userId = null; //Ensures the user Id is reset correctly after a user logs out. 
+    this.router.navigate(['/city-care/email-login']);
+  }
 
   //Create the authorization timer
   private setAuthTimer(duration: number) {
@@ -213,7 +213,7 @@ logout() {
     localStorage.removeItem('isOrg'); //removes the user Id from local storage
     localStorage.removeItem('isAdmin'); //Removes the administrators status from local storage
   }
-//Get the authorization information stored in local storage.
+  //Get the authorization information stored in local storage.
   private getAuthData() {
     const token = localStorage.getItem('access-token'); //Retrieve the token from local storage
     const expirationDate = localStorage.getItem('expirationDate'); //Retrieve the expiration date from local storage

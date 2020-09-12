@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private authorizationService: AuthorizationService) {}
+  constructor(private authorizationService: AuthorizationService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.authorizationService.getToken();
@@ -19,7 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
     if (token) {
       newHeaders = newHeaders.append('jwt', token);
     }
-    const authReq = req.clone({headers: newHeaders});
+    const authReq = req.clone({ headers: newHeaders });
     return next.handle(authReq);
   }
 }

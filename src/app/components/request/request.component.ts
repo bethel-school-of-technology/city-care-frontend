@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthorizationService } from 'src/app/shared/services/authorization.service';
+import { NotificationService } from 'src/app/shared/helpers/notification.service';
 import { Request } from '../../shared/models/request.model';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { NotificationService } from 'src/app/shared/helpers/notification.service';
 
 @Component({
   selector: 'app-request',
