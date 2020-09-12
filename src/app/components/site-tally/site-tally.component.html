@@ -18,8 +18,8 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-panel-description>
-      <p>Email:&nbsp; {{org.email}} &nbsp;  Phone:&nbsp; {{ org.phone }} <br>
-      Address:&nbsp; {{org.address1}}&nbsp; {{org.city}}, {{org.state}}.&nbsp; {{org.zip}}</p>
+     <!--  <p>Email:&nbsp; {{org.email}} &nbsp;  Phone:&nbsp; {{ org.phone }} <br>
+      Address:&nbsp; {{org.address1}}&nbsp; {{org.city}}, {{org.state}}.&nbsp; {{org.zip}}</p> -->
     </mat-panel-description>
 <mat-panel-description  *ngFor="let listing of org.listings">
   <p>Qty:&nbsp; {{ listing.quantity }}<br> Listing: {{ listing.description }}</p>

@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'city-care/update-request/:id', component: UpdateRequestComponent, canActivate: [ AuthGuard ] },
   { path: 'city-care/update-listing/:id', component: UpdateListingComponent, canActivate: [ AuthGuard ] },
   { path: 'city-care/view-listing/:id', component: ViewListingComponent, canActivate: [ AuthGuard ] },
-  { path: 'city-care/view-request/:id/:id', component: ViewRequestComponent, canActivate: [ AuthGuard ] },
+  { path: 'city-care/view-request/:id', component: ViewRequestComponent, canActivate: [ AuthGuard ] },
   { path: 'city-care/update-profile/:id', component: ProfileEditorComponent, canActivate: [ AuthGuard ] },
   { path: 'city-care/site-postings', component: SiteTallyComponent, canActivate: [ AuthGuard ] },
   { path: '404', component: PageNotFoundComponent },
