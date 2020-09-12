@@ -179,7 +179,7 @@ logout() {
   clearTimeout(this.tokenTimer); //Clears the token timer out when the logout method is called. 
   this.clearAuthData();//clear the local storage
   this.userId = null; //Ensures the user Id is reset correctly after a user logs out. 
-  this.router.navigate(['/city-care/home']);
+  this.router.navigate(['/city-care/email-login']);
 }
 
   //Create the authorization timer

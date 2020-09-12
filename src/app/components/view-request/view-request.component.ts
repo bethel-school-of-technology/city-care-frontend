@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Route, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AuthorizationService } from '../../shared/services/authorization.service';
 import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../shared/models/request.model';
