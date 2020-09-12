@@ -4,7 +4,7 @@
 
 </div>
 
-<div *ngIf="request && user && !isLoading && userIsAuthenticated">
+<div *ngIf="request && request.user && !isLoading && userIsAuthenticated">
   <div class="card">
     Contact Person: {{user.first_name}} {{user.last_name}} <br>
   Email: &nbsp; {{ user.email }} <br>
