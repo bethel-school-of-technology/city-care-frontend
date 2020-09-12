@@ -1,7 +1,7 @@
 
 
 /* This was making mobile view render off-centered */
-/* main {
+main {
   width: 80%;
   margin: 1rem auto;
-} */
+}
