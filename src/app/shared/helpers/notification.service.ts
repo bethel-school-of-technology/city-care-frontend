@@ -37,4 +37,7 @@ export class NotificationService {
   removeRequest() {
     this.toasterService.success('Your request has been removed from the database!', 'Success', { positionClass: 'toast-bottom-center' });
   }
+  fileUploadSuccessful() {
+    this.toasterService.success('File successfully uploaded!', 'Congrats!', { positionClass: 'toast-bottom-center'})
+  }
 }

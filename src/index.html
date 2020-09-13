@@ -51,9 +51,28 @@
     }, {
       passive: true
     });
-
   </script>
-
+<script>
+  $(document).ready(function() {
+    let imagesPreview = function(input, placeToInsertImagePreview) {
+      if (input.images) {
+        let imageAmount = input.images.length;
+        for (i = 0; i < imagesAmount; i++) {
+          let reader = new FileReader();
+          reader.onload = function(event) {
+            $($.parseHTML("<img>"))
+              .attr("src", event.target.result)
+              .appendTo(placeToInsertImagePreview);
+          };
+          reader.readAsDataURL(input.images[i]);
+        }
+      }
+    };
+    $("#input-files").on("change", function() {
+      imagesPreview(this, "div.preview-images");
+    });
+  });
+</script>
 </body>
 
 </html>

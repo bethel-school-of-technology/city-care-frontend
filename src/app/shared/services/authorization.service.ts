@@ -63,7 +63,7 @@ export class AuthorizationService {
   }
   //CREATE a new user 
   registerUser(user: User) {
-    return this.http.post(`${this.authApi}/`, user).subscribe(result => {
+    return this.http.post(`${this.authApi}/register`, user).subscribe(result => {
       this.router.navigate(['/city-care/home']);
     }, error => {
 

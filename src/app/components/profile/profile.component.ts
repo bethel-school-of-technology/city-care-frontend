@@ -3,12 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorizationService } from '../../shared/services/authorization.service';
 import { ListingService } from '../../shared/services/listing.service';
 import { Listing } from '../../shared/models/listing.model';
+import { NotificationService } from 'src/app/shared/helpers/notification.service';
 import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../shared/models/request.model';
 import { Subscription } from 'rxjs';
 import { User } from '../../shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
-import { NotificationService } from 'src/app/shared/helpers/notification.service';
 
 
 @Component({
@@ -17,6 +17,7 @@ import { NotificationService } from 'src/app/shared/helpers/notification.service
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
+  
 
   public isLoading = false; //Determine if the page is still loading and set the value
   public isAuthenticated = false;

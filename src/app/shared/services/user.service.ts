@@ -35,4 +35,5 @@ export class UserService {
   getThisUser(userId: number): Observable<User> {
     return this.http.get<User>(`${this.usersApi}/${userId}`)
   }
+  
 }
