@@ -5,7 +5,6 @@ import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../shared/models/request.model';
 import { User } from '../../shared/models/user.model';
 import { Subscription } from 'rxjs';
-import { UserService } from 'src/app/shared/services/user.service';
 
 
 @Component({
@@ -29,7 +28,6 @@ export class ViewRequestComponent implements OnInit, OnDestroy {
   constructor(
     private authorizationService: AuthorizationService,
     private requestService: RequestService,
-    private userService: UserService,
     private route: ActivatedRoute
   ) { }
 
@@ -45,11 +43,9 @@ export class ViewRequestComponent implements OnInit, OnDestroy {
       this.userIsOrg = isOrg;
     });
     const requestId = +this.route.snapshot.paramMap.get('id');
-    this.requestService.getUserRequest(requestId).subscribe(request => {
-      this.request = request
-      console.log(request)
+    this.requestService.getUserRequest(requestId).subscribe((request: any) => {
+      this.request = request, this.user = request.user
     })
-    
     this.isLoading = false;
   }
 

@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Route, ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AuthorizationService } from '../../shared/services/authorization.service';
 import { ListingService } from '../../shared/services/listing.service';
 import { Listing } from '../../shared/models/listing.model';
 import { User } from 'src/app/shared/models/user.model';
-import { UserService } from 'src/app/shared/services/user.service';
 
 
 @Component({
@@ -29,12 +28,10 @@ export class ViewListingComponent implements OnInit, OnDestroy {
   constructor(
     private authorizationService: AuthorizationService,
     private listingService: ListingService,
-    private userService: UserService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-   
     this.isLoading = true;
     this.userIsAuthenticated = this.authorizationService.getIsAuth();
     this.authStatusSub = this.authorizationService.getAuthStatusListener().subscribe(
@@ -46,13 +43,10 @@ export class ViewListingComponent implements OnInit, OnDestroy {
       this.userIsOrg = isOrg;
     });
     const listingId = +this.route.snapshot.paramMap.get('id');
-    this.listingService.getUserListing(listingId).subscribe(listing => 
-      {this.listing = listing
-      console.log(listing)}
-      )
+    this.listingService.getUserListing(listingId).subscribe((listing: any) => { this.listing = listing, this.user = listing.user
+})
     this.isLoading = false;
   }
-
 
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
