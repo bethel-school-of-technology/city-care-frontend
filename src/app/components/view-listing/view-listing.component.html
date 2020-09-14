@@ -7,7 +7,7 @@
 <div *ngIf="listing && user && !isLoading && userIsAuthenticated">
   <div class="card">
     Contact Person: {{user.first_name}} {{user.last_name}} <br>
-    {{ user.email }} <br>
+   <a href="mailto:{{user.email}}"> {{ user.email }}</a> <br>
     {{ user.phone }} <br><br>
     <hr>
     Qty: {{ listing.quantity }} <br>
