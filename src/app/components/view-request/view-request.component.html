@@ -6,8 +6,8 @@
 
 <div *ngIf="request && user && !isLoading && userIsAuthenticated">
   <div class="card">
-    Contact Person: {{user.first_name}} {{user.last_name}} <br>
-    Email: &nbsp; {{ user.email }} <br>
+    Contact:&nbsp; {{user.first_name}} {{user.last_name}} <br>
+    Email:<a href="mailto:{{user.email}}">{{ user.email }}</a>  <br>
     Phone: &nbsp; {{ user.phone }} <br>
     Mobile: &nbsp; {{ user.mobile_phone }} <br>
     <hr>
