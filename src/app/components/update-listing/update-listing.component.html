@@ -20,25 +20,30 @@
 
 </div>
 
-<hr>
+
 
 <div *ngIf="listing && !isLoading && userIsAuthenticated && isOrg" class="card">
   <h2>Update This Listing</h2>
 
   <form (ngSubmit)="updateListing()" name="updateListing">
     <div>
+      <label>Quanity of good:</label><br>
       <input type="number" id="quantity" name="quantity" placeholder="listing.quantity"
         [(ngModel)]="listing.quantity" />
     </div>
+
     <div>
+      <label>Give a description:</label>
+      <input type="text" name="description" placeholder="Description" [(ngModel)]="listing.description" />
+    </div>
+    <div>
+      <label>Requirements for pickup:</label>
+      <input type="text" name="requirements" placeholder="Requirements" [(ngModel)]="listing.requirements" />
+    </div>
+    <div>
+      <label>When is it available?</label><br>
       <input type="date" id="availability" name="availability" [placeholder]="listing.availability | date"
         [(ngModel)]="listing.availability" />
-    </div>
-    <div>
-      <input type="text" name="description" placeholder="listing.description" [(ngModel)]="listing.description" />
-    </div>
-    <div>
-      <input type="text" name="requirements" placeholder="listing.rqeuirements" [(ngModel)]="listing.requirements" />
     </div>
 
     <div class="row">
