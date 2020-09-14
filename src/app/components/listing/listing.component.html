@@ -1,6 +1,6 @@
 <div *ngIf="isLoading" class="spinner-border text-primary">
 
-        <span class="sr-only">Loading...</span>
+  <span class="sr-only">Loading...</span>
 
 </div>
 
@@ -8,31 +8,32 @@
 <div *ngIf="userIsAuthenticated && isOrg">
 
 
-        <form (ngSubmit)="createListing()" name="createListing" class="card">
-                <div>
-                        <h2>Create New Listing</h2>
-                </div>
-                <div>
-                        <input type="number" id="quantity" name="quantity" placeholder="Qty"
-                                [(ngModel)]="listing.quantity" />
-                </div>
-                <div>
-                        <input type="date" id="availability" name="availability" placeholder="00/00/0000"
-                                [(ngModel)]="listing.availability" />
-                </div>
-                <div>
-                        <input type="text" id="description" name="description"
-                                placeholder="Description of goods/services" [(ngModel)]="listing.description" />
-                </div>
-                <div>
-                        <input type="text" id="requirements" name="requirements"
-                                placeholder="List an qualifying requirements to receive goods/services"
-                                [(ngModel)]="listing.requirements" />
-                </div>
-                <div class="row">
-                        <div class="col s6 right-align"><button type="submit"
-                                        class="waves-effect waves-light btn">List</button>
-                        </div>
-                </div>
-        </form>
+  <form (ngSubmit)="createListing()" name="createListing" class="card">
+    <div>
+      <h2>Create New Listing</h2>
+    </div>
+    <div>
+      <label>Quantity of good:</label><br>
+      <input type="number" id="quantity" name="quantity" placeholder="Qty" [(ngModel)]="listing.quantity" />
+    </div>
+    <div>
+      <label>Description:</label>
+      <input type="text" id="description" name="description" placeholder="Description of goods/services"
+        [(ngModel)]="listing.description" />
+    </div>
+    <div>
+      <label>Requirements for pickup:</label>
+      <input type="text" id="requirements" name="requirements"
+        placeholder="List an qualifying requirements to receive goods/services" [(ngModel)]="listing.requirements" />
+    </div>
+    <div>
+      <label>When is it available?</label><br>
+      <input type="date" id="availability" name="availability" placeholder="00/00/0000"
+        [(ngModel)]="listing.availability" />
+    </div>
+    <div class="row">
+      <div class="col s6 right-align"><button type="submit" class="waves-effect waves-light btn">List</button>
+      </div>
+    </div>
+  </form>
 </div>

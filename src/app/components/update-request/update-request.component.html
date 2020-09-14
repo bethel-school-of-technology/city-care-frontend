@@ -26,27 +26,27 @@
 <div *ngIf="request && !isLoading && userIsAuthenticated && !isOrg">
   <form *ngIf="request !isLoading" (ngSubmit)="updateRequest()" name="updateRequest" class="card">
     <div>
-      <h2>Enter your request details below</h2>
+      <h2>Update your request</h2>
     </div>
     <div>
       <div>
-        <input type="text" name="name" placeholder="request.name" [(ngModel)]="request.name" />
+        <label>Name of request</label>
+        <input type="text" name="name" placeholder="Request Title" [(ngModel)]="request.name" />
       </div>
       <div>
         <label>
-          <p>Please describe the goods and/or services you have need for. Consider including the following
+          <p>Give a description. Consider including the following
             information:</p>
           <ul>
             <li>A brief details</li>
             <li>Quantity</li>
             <li>Urgency of the need</li>
           </ul>
-        </label> <input type="text" name="request.details" [(ngModel)]="request.details" />
+        </label> <input type="text" placeholder="Details" name="request.details" [(ngModel)]="request.details" />
       </div>
       <div>
-        <label>Need By Date:</label>
-        <input type="text" id="needByDate" name="needByDate" id="needByDate" [placeholder]="request.needByDate | date"
-          [(ngModel)]="request.needByDate" />
+        <label>Needed by:</label>
+        <input type="date" id="needByDate" name="needByDate" placeholder="When?" [(ngModel)]="request.needByDate" />
       </div>
     </div>
     <div class="row">

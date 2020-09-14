@@ -11,12 +11,14 @@
     </div>
     <div>
       <div>
+        <label>Name of Request</label>
         <input type="text" name="name" placeholder="Enter a name for the request" [(ngModel)]="request.name" />
       </div>
       <div>
         <br>
         <label>
-          <p>Please describe the goods and/or services you have need for. Consider including the following
+          Give a description.
+          <p>Consider including the following
             information:</p>
           <ul>
             <li>A brief details</li>
@@ -24,10 +26,11 @@
             <li>Urgency of the need</li>
           </ul>
         </label>
-        <input type="text" name="details" [(ngModel)]="request.details" />
+
+        <input type="text" placeholder="Give a description" name="details" [(ngModel)]="request.details" />
       </div>
       <div>
-        <label>Need By Date:</label>
+        <label>Needed by:</label>
         <input type="date" id="needByDate" name="needByDate" placeholder="MM/DD/YYYY"
           [(ngModel)]="request.needByDate" />
       </div>
