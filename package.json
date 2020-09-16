@@ -7,8 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +28,8 @@
     "libphonenumber-js": "^1.7.57",
     "mdbootstrap": "^4.19.1",
     "ngx-toastr": "^13.0.0",
+    "node-cmd": "^3.0.0",
+    "node-ssh": "^11.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
