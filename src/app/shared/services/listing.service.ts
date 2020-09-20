@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-import { User } from '../models/user.model';
-import { Org } from '../models/org.model';
 import { Listing } from '../models/listing.model';
+import { User } from '../models/user.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListingService {
 
-  private listingApi: string = 'http://localhost:3000/listings';
+  private listingApi: string = 'http://localhost:4000/listings';
 
-  public org: Org[];
   public users: User[];
   public listings: Listing[];
 
   constructor(
     private http: HttpClient,
-    private router: Router
   ) { }
 
   //GET all of  the listings made by an organization for the profile page

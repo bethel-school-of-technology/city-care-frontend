@@ -10,7 +10,7 @@ import { User } from '../../shared/models/user.model';
   templateUrl: './email-login.component.html',
   styleUrls: ['./email-login.component.css']
 })
-export class EmailLoginComponent implements OnInit {
+export class EmailLoginComponent implements OnInit, OnDestroy {
 
   public isLoading = false;
   public isAuthenticated = false;

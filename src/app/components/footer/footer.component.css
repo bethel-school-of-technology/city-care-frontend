@@ -3,7 +3,6 @@ footer {
   font-family: Roboto;
 }
 
-
 a {
   color: white;
 }
@@ -16,6 +15,6 @@ a {
   height: auto;
 }
 /* code below spaces the mat-toolbar items evenly, not responsive at all though*/
-.spacer {
+/* .spacer {
   flex: 1 1 auto;
-}
+} */

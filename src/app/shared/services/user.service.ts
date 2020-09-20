@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
@@ -9,9 +9,9 @@ import { User } from '../models/user.model';
 })
 export class UserService {
 
-  private usersApi: string = 'http://localhost:3000/users';//Define the backend route
+  private usersApi: string = 'http://localhost:4000/users';//Define the backend route
 
-  public user: User[];
+  public user: User;
 
 
   constructor(private http: HttpClient) { }
