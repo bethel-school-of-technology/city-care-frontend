@@ -2,14 +2,18 @@ footer {
   color: white;
   font-family: Roboto;
 }
-
+mat-toolbar {
+  
+}
 a {
   color: white;
 }
 
 .page-footer {
+  font-size: 17px;
+  display: flex;
   position: fixed;
-  justify-content: space-between;
+  justify-content: space-around;
    /* left: 0;  */
   bottom: 0;
   width: 100%;
