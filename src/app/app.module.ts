@@ -83,7 +83,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
   imports: [
     BrowserModule,
     HttpClientModule,
-    FlexLayoutModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,
@@ -109,6 +108,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     ToastrModule.forRoot()
   ],
   providers: [{

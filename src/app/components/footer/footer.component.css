@@ -9,6 +9,7 @@ a {
 
 .page-footer {
   position: fixed;
+  justify-content: space-between;
    /* left: 0;  */
   bottom: 0;
   width: 100%;
