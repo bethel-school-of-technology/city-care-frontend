@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 //Bring in the FormsModule and the ReactiveFormsModule
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -82,6 +83,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
   imports: [
     BrowserModule,
     HttpClientModule,
+    FlexLayoutModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,

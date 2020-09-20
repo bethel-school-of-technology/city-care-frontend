@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Request } from '../models/request.model';
 import { User } from '../models/user.model';
@@ -10,10 +10,10 @@ import { User } from '../models/user.model';
 
 export class RequestService {
 
-  private requestApi: string = 'http://localhost:3000/requests';
+  private requestApi: string = 'http://localhost:4000/requests';
 
   public requests: Request[];
-
+  public users: User[];
 
   constructor(
     private http: HttpClient,

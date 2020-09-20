@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../models/user.model';
+import { HttpClient } from '@angular/common/http';
 import { Org } from '../models/org.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthorizationService {
 
-  private authApi: string = 'http://localhost:3000/users';//Define the backend route
+  private authApi: string = 'http://localhost:4000/users';//Define the backend route
 
   public users: User[]; //Declare the users as an empty array
   public orgs: Org[];
@@ -179,7 +179,7 @@ export class AuthorizationService {
     clearTimeout(this.tokenTimer); //Clears the token timer out when the logout method is called. 
     this.clearAuthData();//clear the local storage
     this.userId = null; //Ensures the user Id is reset correctly after a user logs out. 
-    this.router.navigate(['/city-care/email-login']);
+    this.router.navigate(['/city-care/home']);
   }
 
   //Create the authorization timer
