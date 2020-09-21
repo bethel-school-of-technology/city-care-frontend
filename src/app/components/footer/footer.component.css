@@ -8,6 +8,8 @@ a {
 }
 
 .page-footer {
+  font-size: 19px;
+  display: flex;
   position: fixed;
   justify-content: space-between;
    /* left: 0;  */
