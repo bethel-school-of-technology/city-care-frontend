@@ -10,7 +10,7 @@ import { User } from '../../shared/models/user.model';
   templateUrl: './username-login.component.html',
   styleUrls: ['./username-login.component.css']
 })
-export class UsernameLoginComponent implements OnInit {
+export class UsernameLoginComponent implements OnInit, OnDestroy {
 
   public user: User = new User();
   public isLoading = false;

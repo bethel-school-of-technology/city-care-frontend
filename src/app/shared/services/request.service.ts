@@ -10,7 +10,7 @@ import { User } from '../models/user.model';
 
 export class RequestService {
 
-  private requestApi: string = 'http://localhost:4000/requests';
+  private requestsApi: string = 'http://localhost:4000/requests';
 
   public requests: Request[];
   public users: User[];
@@ -20,26 +20,26 @@ export class RequestService {
   ) { }
   //CREATE a user request
   createRequest(request: any) {
-    return this.http.post(`${this.requestApi}/create`, request);
+    return this.http.post(`${this.requestsApi}/create`, request);
   }
   //UPDATE a users request
   updateRequest(requestId: number, request: any): Observable<Request> {
-    return this.http.put<Request>(`${this.requestApi}/update/${requestId}`, request);
+    return this.http.put<Request>(`${this.requestsApi}/update/${requestId}`, request);
   }
   //GET all of a users requests for goods or services for the profile page
   getUserRequests(): Observable<Request[]> {
-    return this.http.get<Request[]>(`${this.requestApi}/requests/profile`);
+    return this.http.get<Request[]>(`${this.requestsApi}/requests/profile`);
   }
   //GET a single request made by an individual for the update request page
   getUserRequest(requestId): Observable<Request> {
-    return this.http.get<Request>(`${this.requestApi}/${requestId}`);
+    return this.http.get<Request>(`${this.requestsApi}/${requestId}`);
   }
   //Delete a request from the from the database
   deleteRequest(requestId: number): Observable<Request> {
-    return this.http.delete<Request>(`${this.requestApi}/delete/${requestId}`);
+    return this.http.delete<Request>(`${this.requestsApi}/delete/${requestId}`);
   }
   //GET all of the users and their requests for the site tally page
   getEverythingUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.requestApi}/findUsers`);
+    return this.http.get<User[]>(`${this.requestsApi}/findUsers`);
   }
 }

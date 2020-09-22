@@ -12,12 +12,7 @@ a {
   display: flex;
   position: fixed;
   justify-content: space-between;
-   /* left: 0;  */
   bottom: 0;
   width: 100%;
   height: auto;
 }
-/* code below spaces the mat-toolbar items evenly, not responsive at all though*/
-/* .spacer {
-  flex: 1 1 auto;
-} */

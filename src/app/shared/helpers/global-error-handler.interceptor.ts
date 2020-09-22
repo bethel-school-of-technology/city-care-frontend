@@ -23,9 +23,11 @@ export class GlobalErrorHandlerInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-      tap(res => {
-        if (res instanceof HttpResponse && res.status === 201) {
-          this.toasterService.success(res.body.message, 'Request successful', { positionClass: 'toast-bottom-center' });
+      tap((event: HttpEvent<any>) => {
+        if (event instanceof HttpResponse && event.status === 201) {
+          this.toasterService.success(event.body.message, status, { positionClass: 'toast-bottom-center' });
+        }  else if(event instanceof HttpResponse && event.status === 202) {
+          this.toasterService.success(event.body.message, status, { positionClass: 'toast-bottom-center' });
         }
       }),
       catchError((error: any) => {
