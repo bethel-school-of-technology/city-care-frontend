@@ -7,8 +7,8 @@ import {
   HttpResponse,
   HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { tap, catchError, retry } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { AuthorizationService } from '../services/authorization.service';
 
@@ -30,16 +30,18 @@ export class GlobalErrorHandlerInterceptor implements HttpInterceptor {
           this.toasterService.success(event.body.message, status, { positionClass: 'toast-bottom-center' });
         }
       }),
-      catchError((error: any) => {
-        if (error instanceof HttpErrorResponse) {
-          try {
-            this.toasterService.error('An error has occured!', 'Foul things have happend, internal server error!', { positionClass: 'toast-bottom-center' });
-          } catch (e) {
-            this.toasterService.error('A 401 error has occurred!', 'User already exists!', { positionClass: 'toast-bottom-center' });
-          } //log error
-        }
-        return of(error)
-      })
+      retry(1),
+  catchError((error: HttpErrorResponse) => {
+    if (error.status === 401) {
+      this.toasterService.error("Access denied. Please enter the correct password and try again.", `${error.status}`, { positionClass: 'toast-bottom-center'});      
+    } else if(error.status === 404) {
+      this.toasterService.error('User not found. Please enter the correct information and try again.', `${error.status}`, { positionClass: 'toast-bottom-center'})
+    }
+    else if(error.status == 500) {
+      this.toasterService.error('Internal server error, please try again later.', `${error.status}`, { positionClass: 'toast-bottom-center'});
+    }
+    return throwError(error);
+  })
     )
   }
 }
