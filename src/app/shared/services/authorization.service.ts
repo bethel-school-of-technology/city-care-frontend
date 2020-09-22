@@ -24,7 +24,9 @@ export class AuthorizationService {
   private authStatusListener = new Subject<boolean>(); //Set the authStatusListener as a subject boolean value
   private orgStatusListener = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    
+   }
 
   getToken() {
     //get the token
@@ -34,7 +36,9 @@ export class AuthorizationService {
     //check to see if the user is authenticated
     return this.isAuthenticated;
   }
-
+// checkAuthorization() {
+//   return this.userIsAuthenticated;
+// }
   getUserId() {
     //Get the user Id
     return this.userId;

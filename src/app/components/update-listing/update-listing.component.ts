@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorizationService } from 'src/app/shared/services/authorization.service';
 import { ListingService } from '../../shared/services/listing.service';
 import { Listing } from '../../shared/models/listing.model';
-import { NotificationService } from 'src/app/shared/helpers/notification.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -25,7 +24,6 @@ private orgStatusSub: Subscription;
 
   constructor(
     private authorizationService: AuthorizationService,
-    private notification: NotificationService,
     private route: ActivatedRoute,
     private router: Router,
     private listingService: ListingService
@@ -51,7 +49,6 @@ private orgStatusSub: Subscription;
 updateListing() {
   const listingId = +this.route.snapshot.paramMap.get('id');
   this.listingService.updateListing(listingId, this.listing).subscribe(listing => {
-    this.notification.editListing();
     this.router.navigate(['/city-care/users-profile'])
   })
 }
