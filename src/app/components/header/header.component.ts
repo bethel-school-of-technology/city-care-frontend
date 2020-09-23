@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthorizationService } from '../../shared/services/authorization.service';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/shared/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private orgListenerSub: Subscription;//Listen for whether a user is an organizatio or a user. 
 
   constructor(
-    private authorizationService: AuthorizationService
+    private authorizationService: AuthorizationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
