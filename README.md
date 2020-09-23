@@ -1,38 +1,6 @@
 # City Care Front end
           Create an angular project
-                    components 
-                              Header
-                              Footer
-                              Home
-                              Email Login
-                              Username Login
-                              Listing
-                              Page Not Found
-                              Profile
-                              Profile Editor
-                              Registration
-                              Request
-                              Site-Tally
-                              Team-Bio
-                              Update-Listing
-                              Update-Request
-                              View-Listing
-                              View-Request
-                    Helpers
-                              Global.Error.Interceptor
-                              Token.Interceptor
-                    Services
-                              auth.guard
-                              authorization.service
-                              listing.service
-                              request.service
-                              user.service
-
-          
-          Jonathan - Project manager, keeping team on track, responsible for the registration page, create request page, update request page front and back end for all components worked on.
-          Jared - Database manager, ensuring proper modeling and database associations. Third week Scrum Master, responsible for the create listing, update listing pages, front and back end for all components worked on.
-          Peyton - Design manager, ensuring app wide theme, responsible for styling app, created edit and delete buttons and functionality, created login pages and functionality front and back end for all components worked on.
-          Thomas - Front end and back end manager, responsible for app wide authorization, error handling, token generation.  Created the footer page, about us page, update user page, site-postings page, view-listing and view-request pages, front and back end on all components worked on, styled footer.  Helped in all areas of application. 
+                    
 
 # Navigation        
           Connected the navigation links used in the header to the components they belong to.
